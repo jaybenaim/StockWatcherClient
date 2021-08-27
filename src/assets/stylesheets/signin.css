@@ -1,0 +1,11 @@
+.login__page {
+  margin-top: 120px;
+}
+.login__page .container {
+  display: flex;
+  justify-content: center;
+}
+.login__page .card {
+  padding: 8%;
+  min-width: 400px;
+}

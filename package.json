@@ -1,0 +1,49 @@
+{
+  "name": "react-starter-template",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "4.4.1",
+    "classnames": "2.2.6",
+    "debug": "4.1.1",
+    "firebase": "^7.16.0",
+    "fs-extra": "9.0.0",
+    "http-errors": "1.7.3",
+    "react": "16.13.1",
+    "react-bootstrap": "^1.2.1",
+    "react-dom": "16.13.1",
+    "react-redux": "^7.2.0",
+    "react-redux-firebase": "^3.6.0",
+    "react-router-dom": "5.1.2",
+    "react-scripts": "3.4.1",
+    "redux": "^4.0.5",
+    "redux-firestore": "^0.13.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "validator": "^13.0.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start-backend": "node server/server.js",
+    "start-frontend": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js src/**/*.jsx",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "homepage": "https://jaybenaim.github.io/react-starter-template/",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
