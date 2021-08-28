@@ -1,9 +1,9 @@
 ﻿import React from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
-import NavBar from "./components/NavBar";
+import NavBar from "./components/Layout/NavBar";
 
-import Home from "./components/Home/Home";
+import Home from "./components/Pages/Home/Home";
 import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
 import SignIn from "./components/Auth/SignIn/SignIn";
 import SignUp from "./components/Auth/SignUp/SignUp";

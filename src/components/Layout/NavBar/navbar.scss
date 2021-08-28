@@ -1,0 +1,8 @@
+.grow {
+  flex-grow: 1;
+}
+
+// Overrides
+.MuiAppBar-colorPrimary {
+  background-color: var(--primary-color) !important;
+}

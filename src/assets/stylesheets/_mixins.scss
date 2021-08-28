@@ -1,0 +1,129 @@
+@mixin flex($flex: flex, $dir: row, $wrap: nowrap, $justify: center, $align: center) {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: $flex;
+
+  flex-direction: $dir;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin transition($transition: 3s ease-in-out) {
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+
+@mixin animate(
+  $name,
+  $duration: 3s,
+  $ease: ease-in-out,
+  $fill: forwards,
+  $count: 1,
+  $delay: 0s,
+  $play: running,
+  $direction: normal
+) {
+  animation: $name $duration $ease $fill $count $delay $play $direction;
+}
+
+@mixin slideRight($duration: 3s, $fill: "forwards", $distance: 10%) {
+  @keyframes slide-right-custom {
+    100% {
+      margin-left: 5px;
+    }
+  }
+
+  @include animate($name: slide-right-custom, $duration: $duration, $fill: $fill);
+}
+
+@mixin theme() {
+  background-color: var(--background-color) !important;
+  color: var(--primary-text-color) !important;
+
+  &:hover {
+    color: var(--primary-text-color-hover) !important;
+  }
+}
+
+@mixin themeLink() {
+  a,
+  i,
+  span {
+    color: var(--primary-text-color) !important;
+  }
+
+  a:hover {
+    background-color: var(--background-color-hover) !important;
+  }
+
+  &:hover a,
+  &:hover i,
+  &:hover span {
+    color: var(--primary-text-color-hover) !important;
+  }
+}
+
+@mixin scrollbar(
+  $width: 14px,
+  $track: rgba(var(--background-color-rgb), 0.8) !important,
+  $thumb: rgba(var(--secondary-rgb), 0.7) !important,
+  $hover: rgba(var(--secondary-rgb), 0.5) !important,
+  $radius: 15px
+) {
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: $width;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $track;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $thumb;
+    border-radius: $radius;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: $hover;
+  }
+}
+
+@keyframes rotate-vert-center {
+  0% {
+    -webkit-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  100% {
+    -webkit-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+  }
+}
+
+// Truncate text while keeping tags
+@mixin truncate($lines: 7) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@mixin transform($transformation) {
+  -webkit-transform: $transformation;
+  transform: $transformation;
+}
+
+@mixin link() {
+  color: var(--primary-text-color);
+
+  &:hover {
+    color: var(--primary-text-color-hover);
+  }
+}

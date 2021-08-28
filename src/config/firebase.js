@@ -1,8 +1,8 @@
 import firebase from "firebase/app";
+// import { getAnalytics } from "firebase/analytics";
 import "firebase/storage";
 import "firebase/auth";
 import "firebase/firestore";
-
 var firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -14,11 +14,13 @@ var firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
+console.log(firebaseConfig)
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-//analytics is optional for this tutoral
+// analytics is optional
 // firebase.analytics();
+// const analytics = getAnalytics(app);
 
 const auth = firebase.auth();
 const firestore = firebase.firestore();

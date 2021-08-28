@@ -3,17 +3,18 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import unregister from "./registerServiceWorker";
-import ErrorBoundary from "./components/ErrorBoundary";
+import ErrorBoundary from "./components/Auth/ErrorBoundary";
 
 import { ReactReduxFirebaseProvider } from "react-redux-firebase";
 import { createFirestoreInstance } from "redux-firestore";
 
 import { Provider } from "react-redux";
-import store from "./redux/store";
+import store from "./redux-store/store";
 
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./config/firebase";
 import firebase from "firebase/app";
+
+import "assets/stylesheets/main.scss"
 
 const rrfConfig = {
   userProfile: "users",
@@ -25,10 +26,11 @@ const rrfProps = {
   dispatch: store.dispatch,
   createFirestoreInstance, //since we are using Firestore
 };
+
 ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
-      <BrowserRouter basename="react-starter-template">
+      <BrowserRouter>
         <ErrorBoundary>
           <App />
         </ErrorBoundary>
