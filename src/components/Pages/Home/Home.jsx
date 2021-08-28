@@ -1,4 +1,5 @@
-﻿import React from "react";
+﻿import AutoComplete from "components/AutoComplete/AutoComplete";
+import React from "react";
 
 const Home = () => {
   return (
