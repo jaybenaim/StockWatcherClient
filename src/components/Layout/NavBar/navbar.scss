@@ -3,6 +3,7 @@
 }
 
 // Overrides
-.MuiAppBar-colorPrimary {
+.MuiAppBar-colorPrimary,
+.MuiMenu-list {
   background-color: var(--primary-color) !important;
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import local from "api/local"
 import AutocompleteResults from './AutoCompleteResults';
@@ -51,7 +51,6 @@ const AutoComplete = () => {
 
   const [results, setResults] = useState([])
 
-  // const resultsNames = TICKS.map((tick) => tick.name)
 
   const autocompleteSearch = async (e) => {
     const query = e.target.value
@@ -91,8 +90,8 @@ const AutoComplete = () => {
           />
       </div>
 
-      <div class="autocomplete--results">
-        <AutocompleteResults results={results} />
+      <div className="autocomplete--results">
+        <AutocompleteResults results={results} setResults={setResults}/>
       </div>
     </>
   );

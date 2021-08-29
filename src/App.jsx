@@ -8,6 +8,7 @@ import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
 import SignIn from "./components/Auth/SignIn/SignIn";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import AdminHome from "./components/Admin/AdminHome/AdminHome";
+import WatchStock from "./components/Pages/WatchStock/WatchStock";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/home" component={Home} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
+        <Route path="/search/:symbol" component={WatchStock} />
       </Switch>
     </React.Fragment>
   );

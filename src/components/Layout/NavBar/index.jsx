@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { useFirebase } from "react-redux-firebase";
 import { useSelector } from "react-redux";
 import { alpha, makeStyles } from '@material-ui/core/styles';
@@ -11,7 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
-import Link from "@material-ui/core/Link"
+// import Link from "@material-ui/core/Link"
 
 import "./navbar.scss";
 import AutoComplete from 'components/AutoComplete/AutoComplete';
@@ -101,14 +101,14 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>
-         <Link href="/home">
+         <Link to="/home">
           Home
         </Link>
       </MenuItem>
 
       {isLoggedIn ? (
         <div>
-          <Link href="/admin">
+          <Link to="/admin" className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary">
             <MenuItem onClick={handleMenuClose}>
                 Account
             </MenuItem>
@@ -120,7 +120,7 @@ export default function PrimarySearchAppBar() {
         </div>
         ) : (
         <MenuItem onClick={handleMenuClose}>
-          <Link href="/sign-in">Sign In</Link>
+          <Link to="/sign-in">Sign In</Link>
         </MenuItem>
       )}
     </Menu>
@@ -137,21 +137,29 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem onClick={handleMenuClose}>
+         <Link to="/home">
+          Home
+        </Link>
+      </MenuItem>
+
       {isLoggedIn ? (
         <div>
-          <Link href="/admin">
+          <Link to="/admin">
             <MenuItem onClick={handleMenuClose}>
               Account
             </MenuItem>
           </Link>
 
             <MenuItem onClick={signOut}>
-              Logout
+              <Link to="/sign-in">
+                Logout
+              </Link>
             </MenuItem>
           </div>
         ) : (
           <MenuItem onClick={handleMenuClose}>
-            <Link href="/sign-in">Sign In</Link>
+            <Link to="/sign-in">Sign In</Link>
           </MenuItem>
       )}
     </Menu>
@@ -172,16 +180,18 @@ export default function PrimarySearchAppBar() {
           <div className={classes.grow} />
 
           <div className={classes.sectionDesktop}>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            <Link to="/admin">
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            </Link>
           </div>
 
           <div className={classes.sectionMobile}>

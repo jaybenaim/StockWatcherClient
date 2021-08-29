@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemText from '@material-ui/core/ListItemText';
+import { List, ListItem } from '@material-ui/core';
+import AutoCompleteResult from './AutoCompleteResult';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,16 +22,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AutocompleteResults = ({results}) => {
+const AutocompleteResults = ({ results, setResults }) => {
   const classes = useStyles();
 
   return (
     <List className={classes.root} subheader={<li />}>
       <ul className={classes.ul}>
         {results.map((result, i) => (
-          <ListItem key={i}>
-            <ListItemText className="autocomplete--result" primary={result} />
+          <Link
+            to={{
+              pathname: `search/${result.split('-')[0]}`,
+              state: { result }
+            }}
+            key={i}
+          >
+          <ListItem>
+            <AutoCompleteResult result={result} setResults={setResults} />
           </ListItem>
+        </Link>
         ))}
       </ul>
   </List>
