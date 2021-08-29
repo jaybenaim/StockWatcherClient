@@ -1,185 +1,124 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Grid, CircularProgress, Button } from '@material-ui/core';
-import local from 'api/local';
+import React, { useState } from 'react';
+import { Container, Grid, CircularProgress, Snackbar } from '@material-ui/core';
+import { Alert } from "@material-ui/lab";
+import { connect } from 'react-redux';
+import PropTypes from "prop-types"
+
+import WatchStockForm from 'components/WatchStockForm/WatchStockForm';
+import WatchStockData from 'components/WatchStockData/WatchStockData';
 import "./WatchStock.scss";
-import { useReducer } from 'react';
 
 const WatchStock = (props) => {
   const symbol = props.match?.params?.symbol || ''
   const fullName = props.location?.state?.result?.replace(`${symbol} -`, '')
-  const [price, setPrice] = useState(0)
   const [stockData, setStockData] = useState({
     currency: '',
     regularMarketDayHigh: '',
     regularMarketDayLow: '',
     open: '',
     bid: '',
-    bidSize: ''
+    bidSize: '',
+    currentPrice: ''
   })
   const [isLoading, setLoading] = useState(false)
+  const [watchStockForm, showWatchStockForm] = useState(false)
+  const [min, setMin] = useState()
+  const [max, setMax] = useState()
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alert, setAlert] = useState({
+    severity: "",
+    message: ""
+  })
 
-  const getStockData = async (e, stockSymbol = '') => {
-    let query;
-
-    if (e && 'target' in e.keys()) {
-      query = e.target.value
-    } else {
-      if (stockSymbol.length > 0) {
-        query = stockSymbol
-      }
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
     }
 
-    if (query.length > 0) {
-      try {
-        setLoading(true)
-        const response = await local.get(`/search/summary?symbol=${symbol}`)
-        console.log(response)
-
-        if (response.status == 200) {
-          const price = response.data.current_price || []
-          console.log(response.data[symbol])
-          setStockData(response.data)
-        }
-      } catch(err) {
-        console.log(err)
-      }
-    }
-
-    setLoading(false)
-  }
-
-  useEffect(() => {
-    symbol.length > 1 && getStockData(null, symbol)
-  }, [symbol])
+    setAlertOpen(false);
+  };
 
   return (
     <Container className="p-3">
-      <Grid container spacing={2}>
-        <Grid
-          item
-          container
-          justifyContent="center"
-          direction="column"
-          xs={12}
-        >
-          <h1>
-            {symbol}
-          </h1>
-          <h2>
-            {fullName}
-          </h2>
-        </Grid>
-
-        <Grid
-          item
-          container
-          direction="column"
-          xs={6}
-        >
-          <p>
-            \
-                _/\
-            __/    -
-          </p>
-          CHART
-        </Grid>
-
-        <Grid
-          item
-          container
-          xs={6}
-          direction="column"
-          className="stock-data--right-column"
-        >
-          {!isLoading && stockData && Object.keys(stockData).length > 0 && (
-            <Grid
-              container
-            >
-              <Grid
-                item
-                xs={6}>
-                <p>
-                  Current Price ${stockData.currentPrice} {stockData.currency}
-                </p>
-              </Grid>
-
-              <Grid
-                item
-                xs={6}>
-                <p>
-                  Open - {stockData.open}
-                </p>
-              </Grid>
-
-              <Grid
-                item
-                xs={6}>
-                <p>
-                  Day High - {stockData.regularMarketDayHigh}
-                </p>
-              </Grid>
-
-              <Grid
-                item
-                xs={6}>
-                <p>
-                  Day Low - {stockData.regularMarketDayLow}
-                </p>
-              </Grid>
-
-              <Grid
-                item
-                xs={6}>
-                <p>
-                  Last Bid - {stockData.bid}
-                </p>
-              </Grid>
-
-              <Grid
-                item
-                xs={6}>
-                <p>
-                  Bid Size - {stockData.bidSize}
-                </p>
-              </Grid>
-            </Grid>
-          )}
-        </Grid>
-
-        <Grid
-          item
-          container
-          justifyContent="center"
-          alignItems="center"
-          xs={12}
-        >
-          {isLoading && <CircularProgress />}
-        </Grid>
-
-        <Grid
-          item
-          container
-          direction="column"
-          xs={6}
-        >
-          chart
-        </Grid>
-
-        <Grid
-            item
-            container
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            xs={12}
-          >
-            <Button onClick={getStockData} variant="outlined">
-              Watch This Stock
-            </Button>
-          </Grid>
+      {/* Title */}
+      <Grid
+        item
+        container
+        justifyContent="center"
+        direction="column"
+        xs={12}
+      >
+        <h1>
+          {symbol}
+        </h1>
+        <h2>
+          {fullName}
+        </h2>
       </Grid>
+
+      {/* Loader */}
+      <Grid
+        item
+        container
+        justifyContent="center"
+        alignItems="center"
+        xs={12}
+      >
+        {isLoading && <CircularProgress />}
+      </Grid>
+
+      {/* Alert */}
+      <Grid
+        item
+        xs={12}
+        className="text-center pt-2"
+      >
+        <Snackbar open={alertOpen} autoHideDuration={6000} onClose={handleClose}>
+          <Alert severity={alert.severity} onClose={handleClose}>{alert.message}</Alert>
+        </Snackbar>
+      </Grid>
+
+      <WatchStockData
+        symbol={symbol}
+        stockData={stockData}
+        setStockData={setStockData}
+        watchStockForm={watchStockForm}
+        showWatchStockForm={showWatchStockForm}
+        setAlert={setAlert}
+        isLoading={isLoading}
+        setLoading={setLoading}
+      />
+
+      {/* Watch Stock Form */}
+      {!watchStockForm && (
+        <WatchStockForm
+          symbol={symbol}
+          min={min}
+          max={max}
+          setMin={setMin}
+          setMax={setMax}
+          stockData={stockData}
+          setAlertOpen={setAlertOpen}
+          setAlert={setAlert}
+          setLoading={setLoading}
+        />
+      )}
     </Container>
    );
 }
 
-export default WatchStock;
+
+WatchStock.propTypes = {
+  user: PropTypes.string,
+  match: PropTypes.object,
+  location: PropTypes.object,
+}
+
+const mapStateToProps = (state) => {
+  return {
+    errors: state.errors,
+    user: state.firebase.profile.email
+  }
+};
+
+export default connect(mapStateToProps, {})(WatchStock);

@@ -1,3 +1,5 @@
+@import "assets/stylesheets/main.scss";
+
 h1, h2 {
   text-align: center;
 }
@@ -8,4 +10,16 @@ h1, h2 {
       margin: 0.5em 0;
     }
   }
+}
+
+.watch-stock--form {
+  &--submit {
+    @include flex();
+    margin: 3em auto !important;
+  }
+}
+
+// Overrides
+.MuiFormControl-root {
+  margin: initial;
 }

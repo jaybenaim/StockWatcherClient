@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory, Link } from "react-router-dom";
 import { useFirebase } from "react-redux-firebase";
 import { useSelector } from "react-redux";
-import { alpha, makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';

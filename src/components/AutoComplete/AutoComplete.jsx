@@ -57,10 +57,10 @@ const AutoComplete = () => {
 
     if (query.length >= 2) {
       try {
-        const response = await local.get(`/search?query=${query}`)
+        const response = await local.get(`stock/search?query=${query}`)
         console.log(response)
 
-        if (response.status == 200) {
+        if (response.status === 200) {
           const results = response.data.results || []
           setResults(results)
         }
