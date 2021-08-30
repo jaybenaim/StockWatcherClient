@@ -1,12 +1,14 @@
-﻿import React from "react";
+﻿import StockWatcherList from "components/StockWatcherList/StockWatcherList";
+import React, {useState} from "react";
 
 const Home = () => {
+  const [loading, setLoading] = useState(false)
   return (
     <main id="mainContent">
       <div className="container">
-        <div className="row justify-content-center mt-5 p-0">
-          <h3>Home</h3>
-        </div>
+        <StockWatcherList
+          setLoading={setLoading}
+        />
       </div>
     </main>
   );

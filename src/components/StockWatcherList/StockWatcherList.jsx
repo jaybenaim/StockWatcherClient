@@ -10,7 +10,13 @@ const StockWatcherList = ({ symbol, userEmail, setLoading }) => {
   const getStockWatchers = async () => {
     try {
       setLoading(true)
-      const response = await local.get(`ticker_watchers?email=${userEmail}&symbol=${symbol}`)
+      let symbolParam = ''
+
+      if (symbol && symbol.length > 0) {
+        symbolParam = `&symbol=${symbol}`
+      }
+
+      const response = await local.get(`ticker_watchers?email=${userEmail}${symbolParam}`)
       console.log(response)
 
       if (response.status === 200) {
@@ -79,7 +85,11 @@ const StockWatcherList = ({ symbol, userEmail, setLoading }) => {
 
   return (
     <Container>
-      <h3 className="center pt-3">Current watchers for {symbol}</h3>
+      {symbol ? (
+        <h3 className="center pt-3">Current Watchers for {symbol}</h3>
+      ): (
+        <h3 className="center pt-3">Current Stock Watchers</h3>
+      )}
 
       <List className="stock-watcher--list">
         {stockWatchers && listItems()}
