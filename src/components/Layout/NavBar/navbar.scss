@@ -6,4 +6,13 @@
 .MuiAppBar-colorPrimary,
 .MuiMenu-list {
   background-color: var(--primary-color) !important;
+  min-width: 100px;
+
+  &, a {
+    color: #eee;
+  }
+
+  li:hover {
+    font-weight: 600;
+  }
 }

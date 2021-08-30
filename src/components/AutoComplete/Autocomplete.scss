@@ -31,7 +31,22 @@
     }
   }
 
-  &--checkbox path {
-    fill: #eee;
+  &--checkbox {
+    position: absolute;
+    color: #000;
+    top: 50px;
+    left: 40px;
+
+    @media (min-width: 480px) {
+      position: unset;
+    }
+
+    path {
+      fill: #eee;
+
+      @media (min-width: 480px) {
+        fill: #000;
+      }
+    }
   }
 }

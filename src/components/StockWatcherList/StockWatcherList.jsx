@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from "prop-types"
 import { Container, List, ListItem } from '@material-ui/core';
 import local from 'api/local';
+import moment from "moment"
+import { Link } from 'react-router-dom';
 
 const StockWatcherList = ({ symbol, userEmail, setLoading }) => {
   const [stockWatchers, setStockWatchers] = useState([])
@@ -42,25 +44,31 @@ const StockWatcherList = ({ symbol, userEmail, setLoading }) => {
 
   const listItems = () => {
     return stockWatchers.map((tickerWatcher, i) => {
-        const {
-          ticker,
-          min_price,
-          max_price,
-          // created_at,
-          updated_at
-        } = tickerWatcher
+      const {
+        ticker,
+        min_price,
+        max_price,
+        created_at,
+        // updated_at
+      } = tickerWatcher
 
-      const lastUpdated = new Date(updated_at)
+      const dateFormat = 'lll'
+      const created = moment(created_at).format(dateFormat).replace(', 2021', ' - ')
+      const lastUpdated = moment(ticker.updated_at).format(dateFormat).replace(', 2021', ' - ')
 
       return (
         <ListItem
           key={i}
           className="stock-watcher--list-item display-col justify-start"
         >
-          <p>{ticker.symbol} - ${" "}
-            <span className={ticker.price < min_price || ticker.price > max_price ? 'price-out-of-range' : 'price-in-range'}>
-              {ticker.price}
-            </span>
+          <p>
+            <Link to={`search/${ticker.symbol}`}>
+              {ticker.symbol} - ${" "}
+
+              <span className={ticker.price < min_price || ticker.price > max_price ? 'price-out-of-range' : 'price-in-range'}>
+                {ticker.price}
+              </span>
+            </Link>
           </p>
 
           {ticker.name && (
@@ -78,7 +86,11 @@ const StockWatcherList = ({ symbol, userEmail, setLoading }) => {
           </p>
 
           <p>
-            <strong>Last Updated: </strong><span>{lastUpdated.toLocaleString()}</span>
+            <strong>Created At: </strong><span>{created}</span>
+          </p>
+
+          <p>
+            <strong>Price Last Updated: </strong><span>{lastUpdated}</span>
           </p>
         </ListItem>
       )

@@ -9,8 +9,10 @@ import SignIn from "components/Auth/SignIn/SignIn";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import AdminHome from "./components/Admin/AdminHome/AdminHome";
 import WatchStock from "./components/Pages/WatchStock/WatchStock";
+import { connect } from "react-redux";
 
 const App = () => {
+
   return (
     <React.Fragment>
       <NavBar />
@@ -27,4 +29,11 @@ const App = () => {
   );
 };
 
-export default App;
+App.propTypes = {
+}
+
+const mapStateToProps = (state) => {
+  return {}
+};
+
+export default connect(mapStateToProps, {})(App);

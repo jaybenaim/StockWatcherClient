@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import local from "api/local"
 import AutocompleteResults from './AutoCompleteResults';
 import SearchIcon from '@material-ui/icons/Search';
 import {Checkbox, FormControlLabel, InputBase} from "@material-ui/core"
+import PropTypes from "prop-types";
 import "./Autocomplete.scss"
+import { connect, useDispatch, useSelector } from 'react-redux';
+import { getWindowWidth } from 'redux-store/actions/responsiveActions';
+import { SET_WINDOW_WIDTH } from 'redux-store/types';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -47,6 +51,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AutoComplete = () => {
+  const {screenSize, windowWidth} = useSelector((state) => state.responsive)
+  const dispatch = useDispatch()
   const classes = useStyles();
 
   const [results, setResults] = useState([])
@@ -84,6 +90,13 @@ const AutoComplete = () => {
     setChecked(event.target.checked);
   };
 
+  useEffect(() => {
+    window.addEventListener('resize', () => dispatch({ type: SET_WINDOW_WIDTH }))
+
+    return () => window.removeEventListener('resize', () => dispatch({ type: SET_WINDOW_WIDTH }))
+
+  },[screenSize, windowWidth])
+
   return (
     <div className={classes.search}>
       <div className={classes.searchIcon}>
@@ -100,26 +113,35 @@ const AutoComplete = () => {
           onChange={autocompleteSearch}
         />
 
-
-      <FormControlLabel
-        control={
-        <Checkbox
+        <FormControlLabel
           className="autocomplete--checkbox"
-          color="primary"
-          checked={checked}
-          onChange={handleChange}
-          inputProps={{ 'aria-label': 'secondary checkbox' }}
-        />
-      }
-        label="Include Names"
-      >
-      </FormControlLabel>
+          control={
+          <Checkbox
+            color="primary"
+            checked={checked}
+            onChange={handleChange}
+            inputProps={{ 'aria-label': 'secondary checkbox' }}
+          />
+        }
+          label="Include Names"
+        >
+        </FormControlLabel>
 
-      <div className="autocomplete--results">
-        <AutocompleteResults results={results} setResults={setResults}/>
-      </div>
+        <div className="autocomplete--results">
+          <AutocompleteResults results={results} setResults={setResults}/>
+        </div>
     </div>
   );
 }
 
-export default AutoComplete;
+AutoComplete.propTypes = {
+  responsive: PropTypes.object
+}
+
+const mapStateToProps = (state) => {
+  return {
+    responsive: state.responsive
+  }
+};
+
+export default connect(mapStateToProps, {})(AutoComplete);

@@ -108,11 +108,11 @@ export default function PrimarySearchAppBar() {
 
       {isLoggedIn ? (
         <div>
-          <Link to="/admin" className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary">
-            <MenuItem onClick={handleMenuClose}>
-                Account
-            </MenuItem>
-          </Link>
+          <MenuItem onClick={handleMenuClose}>
+            <Link to="/admin" className="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary">
+                  Account
+            </Link>
+          </MenuItem>
 
           <MenuItem onClick={signOut}>
             Logout
@@ -145,11 +145,11 @@ export default function PrimarySearchAppBar() {
 
       {isLoggedIn ? (
         <div>
-          <Link to="/admin">
-            <MenuItem onClick={handleMenuClose}>
-              Account
-            </MenuItem>
-          </Link>
+          <MenuItem onClick={handleMenuClose}>
+            <Link to="/admin">
+                Account
+            </Link>
+          </MenuItem>
 
             <MenuItem onClick={signOut}>
               <Link to="/sign-in">
