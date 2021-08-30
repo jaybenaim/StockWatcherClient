@@ -37,6 +37,10 @@ a {
   padding-top: 2em;
 }
 
+.pt-3 {
+  padding-top: 3em;
+}
+
 // Margin
 .m-1 {
   margin: 1em;
@@ -65,5 +69,18 @@ a {
 // Positioning
 
 .center {
-  @include flex()
+  @include flex();
+}
+
+.display-col {
+  @include flex($dir: column);
+}
+
+.display-row {
+  @include flex($dir: row, $wrap: wrap);
+  max-width: 100%;
+}
+
+.justify-start {
+  justify-content: flex-start;
 }

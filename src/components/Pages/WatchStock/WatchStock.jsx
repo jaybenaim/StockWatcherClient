@@ -7,6 +7,7 @@ import PropTypes from "prop-types"
 import WatchStockForm from 'components/WatchStockForm/WatchStockForm';
 import WatchStockData from 'components/WatchStockData/WatchStockData';
 import "./WatchStock.scss";
+import StockWatcherList from 'components/StockWatcherList/StockWatcherList';
 
 const WatchStock = (props) => {
   const symbol = props.match?.params?.symbol || ''
@@ -78,6 +79,7 @@ const WatchStock = (props) => {
         </Snackbar>
       </Grid>
 
+      {/* Stock Data */}
       <WatchStockData
         symbol={symbol}
         stockData={stockData}
@@ -90,7 +92,7 @@ const WatchStock = (props) => {
       />
 
       {/* Watch Stock Form */}
-      {!watchStockForm && (
+      {watchStockForm && (
         <WatchStockForm
           symbol={symbol}
           min={min}
@@ -103,10 +105,15 @@ const WatchStock = (props) => {
           setLoading={setLoading}
         />
       )}
+
+      {/* Current Stock Watchers */}
+      <StockWatcherList
+        symbol={symbol}
+        setLoading={setLoading}
+      />
     </Container>
    );
 }
-
 
 WatchStock.propTypes = {
   user: PropTypes.string,

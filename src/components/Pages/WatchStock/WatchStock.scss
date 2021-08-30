@@ -19,6 +19,43 @@ h1, h2 {
   }
 }
 
+.stock-watcher {
+
+  &--list {
+    @include flex($dir: row, $justify: flex-start, $wrap: wrap);
+    max-width: 100%;
+  }
+
+  &--list-item {
+    width: 50% !important;
+    justify-content: flex-start;
+
+    p {
+      width: 100%;
+      margin: 0.2em 0;
+      line-height: 24px;
+    }
+
+    .price-out-of-range {
+      color: #f00;
+      font-size: 1.2em;
+    }
+
+    .price-in-range {
+      color: rgb(20, 155, 20);
+      font-size: 1.2em;
+    }
+
+    @media (min-width: 789px) {
+      width: 30% !important;
+    }
+
+    @media (min-width: 1025px) {
+      width: 25% !important;
+    }
+  }
+}
+
 // Overrides
 .MuiFormControl-root {
   margin: initial;
