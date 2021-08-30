@@ -54,6 +54,11 @@ h1, h2 {
       width: 25% !important;
     }
   }
+
+  &--list-item-link {
+    color: #000;
+    font-weight: 700;
+  }
 }
 
 // Overrides

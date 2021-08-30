@@ -6,7 +6,7 @@ import local from 'api/local';
 import moment from "moment"
 import { Link } from 'react-router-dom';
 
-const StockWatcherList = ({ symbol, userEmail, setLoading }) => {
+const StockWatcherList = ({ symbol, userEmail, loading, setLoading }) => {
   const [stockWatchers, setStockWatchers] = useState([])
 
   const getStockWatchers = async () => {
@@ -62,7 +62,9 @@ const StockWatcherList = ({ symbol, userEmail, setLoading }) => {
           className="stock-watcher--list-item display-col justify-start"
         >
           <p>
-            <Link to={`search/${ticker.symbol}`}>
+            <Link
+              to={`search/${ticker.symbol}`} className="stock-watcher--list-item-link"
+            >
               {ticker.symbol} - ${" "}
 
               <span className={ticker.price < min_price || ticker.price > max_price ? 'price-out-of-range' : 'price-in-range'}>
@@ -115,6 +117,7 @@ const StockWatcherList = ({ symbol, userEmail, setLoading }) => {
 StockWatcherList.propTypes = {
   symbol: PropTypes.string,
   userEmail: PropTypes.string,
+  loading: PropTypes.bool,
   setLoading: PropTypes.func
 }
 

@@ -7,6 +7,7 @@ const Home = () => {
     <main id="mainContent">
       <div className="container">
         <StockWatcherList
+          loading={loading}
           setLoading={setLoading}
         />
       </div>

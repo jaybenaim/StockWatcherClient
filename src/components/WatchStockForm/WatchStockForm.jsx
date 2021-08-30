@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import { FormControl, FormGroup, FormHelperText, InputLabel, Grid, Input, Button, Snackbar } from '@material-ui/core';
+import React from 'react';
+import { FormControl, FormGroup, FormHelperText, InputLabel, Grid, Input, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types"
 import local from 'api/local';
-import { Alert } from '@material-ui/lab';
 
 const WatchStockForm = ({
   user,

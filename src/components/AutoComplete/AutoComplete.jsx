@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import local from "api/local"
 import AutocompleteResults from './AutoCompleteResults';
 import SearchIcon from '@material-ui/icons/Search';
 import {Checkbox, FormControlLabel, InputBase} from "@material-ui/core"
-import PropTypes from "prop-types";
 import "./Autocomplete.scss"
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { getWindowWidth } from 'redux-store/actions/responsiveActions';
-import { SET_WINDOW_WIDTH } from 'redux-store/types';
+import { connect } from 'react-redux';
+// import { getWindowWidth } from 'redux-store/actions/responsiveActions';
+// import { SET_WINDOW_WIDTH } from 'redux-store/types';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -51,8 +50,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AutoComplete = () => {
-  const { screenSize, windowWidth, isMobile } = useSelector((state) => state.responsive)
-  const dispatch = useDispatch()
+  // const { screenSize, windowWidth, isMobile } = useSelector((state) => state.responsive)
+  // const dispatch = useDispatch()
   const classes = useStyles();
 
   const [results, setResults] = useState([])
@@ -90,12 +89,12 @@ const AutoComplete = () => {
     setChecked(event.target.checked);
   };
 
-  useEffect(() => {
-    window.addEventListener('resize', () => dispatch({ type: SET_WINDOW_WIDTH }))
+  // useEffect(() => {
+  //   window.addEventListener('resize', () => dispatch({ type: SET_WINDOW_WIDTH }))
 
-    return () => window.removeEventListener('resize', () => dispatch({ type: SET_WINDOW_WIDTH }))
+  //   return () => window.removeEventListener('resize', () => dispatch({ type: SET_WINDOW_WIDTH }))
 
-  },[screenSize, windowWidth])
+  // },[screenSize, windowWidth])
 
   return (
     <div className={classes.search}>
@@ -123,7 +122,7 @@ const AutoComplete = () => {
             inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
         }
-          label={isMobile ? "Name" : "Include Names"}
+          label="Include Names"
         >
         </FormControlLabel>
 
@@ -135,12 +134,12 @@ const AutoComplete = () => {
 }
 
 AutoComplete.propTypes = {
-  responsive: PropTypes.object
+  // responsive: PropTypes.object
 }
 
 const mapStateToProps = (state) => {
   return {
-    responsive: state.responsive
+    // responsive: state.responsive
   }
 };
 
