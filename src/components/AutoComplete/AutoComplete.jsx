@@ -3,7 +3,7 @@ import { alpha, makeStyles } from '@material-ui/core/styles';
 import local from "api/local"
 import AutocompleteResults from './AutoCompleteResults';
 import SearchIcon from '@material-ui/icons/Search';
-import {InputBase} from "@material-ui/core"
+import {Checkbox, FormControlLabel, InputBase} from "@material-ui/core"
 import "./Autocomplete.scss"
 
 const useStyles = makeStyles((theme) => ({
@@ -50,15 +50,23 @@ const AutoComplete = () => {
   const classes = useStyles();
 
   const [results, setResults] = useState([])
-
+  const [checked, setChecked] = useState(false);
 
   const autocompleteSearch = async (e) => {
     const query = e.target.value
 
     if (query.length >= 2) {
+      setTimeout(() => {
+      }, 200)
+
       try {
-        const response = await local.get(`stock/search?query=${query}`)
-        console.log(response)
+        let url = `stock/search?query=${query}`
+
+        if (checked) {
+          url += '&include_name_in_search=true'
+        }
+
+        const response = await local.get(url)
 
         if (response.status === 200) {
           const results = response.data.results || []
@@ -72,28 +80,45 @@ const AutoComplete = () => {
     }
   }
 
-  return (
-    <>
-      <div className={classes.search}>
-        <div className={classes.searchIcon}>
-          <SearchIcon />
-        </div>
+  const handleChange = (event) => {
+    setChecked(event.target.checked);
+  };
 
-        <InputBase
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-            inputProps={{ 'aria-label': 'search' }}
-            onChange={autocompleteSearch}
-          />
+  return (
+    <div className={classes.search}>
+      <div className={classes.searchIcon}>
+        <SearchIcon />
       </div>
+
+      <InputBase
+          placeholder="Search…"
+          classes={{
+            root: classes.inputRoot,
+            input: classes.inputInput,
+          }}
+          inputProps={{ 'aria-label': 'search' }}
+          onChange={autocompleteSearch}
+        />
+
+
+      <FormControlLabel
+        control={
+        <Checkbox
+          className="autocomplete--checkbox"
+          color="primary"
+          checked={checked}
+          onChange={handleChange}
+          inputProps={{ 'aria-label': 'secondary checkbox' }}
+        />
+      }
+        label="Include Names"
+      >
+      </FormControlLabel>
 
       <div className="autocomplete--results">
         <AutocompleteResults results={results} setResults={setResults}/>
       </div>
-    </>
+    </div>
   );
 }
 

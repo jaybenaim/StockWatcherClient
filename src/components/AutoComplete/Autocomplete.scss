@@ -1,11 +1,23 @@
+@import "../../assets/stylesheets/mixins";
+
 .autocomplete {
   background-color: var(--primary-color);
 
   &--results {
     position: absolute;
-    top: 47px;
+    top: 52px;
     color: #fff;
     box-shadow: 0px 12px 26px -6px rgba(0,0,0,0.73);
+    z-index: 5;
+    width: fit-content;
+
+    @include scrollbar(
+      $width: 12px,
+      $track: var(--primary-color) !important,
+      $thumb: #eee !important,
+      $hover: #eee !important,
+      $radius: 15px
+    )
 
     &, * {
       background-color: var(--primary-color);
@@ -13,6 +25,13 @@
 
     ul {
       padding-bottom: 0;
+      width: fit-content;
+      min-width: fit-content;
+      max-width: unset;
     }
+  }
+
+  &--checkbox path {
+    fill: #eee;
   }
 }

@@ -29,17 +29,17 @@ const WatchStockData = ({
       try {
         setLoading(true)
         const response = await local.get(`stock/search/summary?symbol=${symbol}`)
-        console.log(response)
 
         if (response.status === 200) {
           setStockData(response.data)
+          setLoading(false)
+
         }
       } catch(err) {
         console.log(err)
+        setLoading(false)
       }
     }
-
-    setLoading(false)
   }
 
   useEffect(() => {
