@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/StockWatcherClient/static/css/main.d07236a7.chunk.css",
+    "main.js": "/StockWatcherClient/static/js/main.a4bdad20.chunk.js",
+    "main.js.map": "/StockWatcherClient/static/js/main.a4bdad20.chunk.js.map",
+    "runtime-main.js": "/StockWatcherClient/static/js/runtime-main.e51d0e06.js",
+    "runtime-main.js.map": "/StockWatcherClient/static/js/runtime-main.e51d0e06.js.map",
+    "static/js/2.9c6ff865.chunk.js": "/StockWatcherClient/static/js/2.9c6ff865.chunk.js",
+    "static/js/2.9c6ff865.chunk.js.map": "/StockWatcherClient/static/js/2.9c6ff865.chunk.js.map",
+    "index.html": "/StockWatcherClient/index.html",
+    "precache-manifest.ebb631fdbcfe7e85ca741140df05d449.js": "/StockWatcherClient/precache-manifest.ebb631fdbcfe7e85ca741140df05d449.js",
+    "service-worker.js": "/StockWatcherClient/service-worker.js",
+    "static/css/main.d07236a7.chunk.css.map": "/StockWatcherClient/static/css/main.d07236a7.chunk.css.map",
+    "static/js/2.9c6ff865.chunk.js.LICENSE.txt": "/StockWatcherClient/static/js/2.9c6ff865.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e51d0e06.js",
+    "static/js/2.9c6ff865.chunk.js",
+    "static/css/main.d07236a7.chunk.css",
+    "static/js/main.a4bdad20.chunk.js"
+  ]
+}
