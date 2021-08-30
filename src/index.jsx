@@ -30,7 +30,7 @@ const rrfProps = {
 ReactDOM.render(
   <Provider store={store}>
     <ReactReduxFirebaseProvider {...rrfProps}>
-      <BrowserRouter basename="StockWatcher">
+      <BrowserRouter basename="/StockWatcher">
         <ErrorBoundary>
           <App />
         </ErrorBoundary>
