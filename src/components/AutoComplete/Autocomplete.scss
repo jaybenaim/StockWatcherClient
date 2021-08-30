@@ -39,13 +39,14 @@
 
     @media (min-width: 480px) {
       position: unset;
+      color: #eee;
     }
 
-    path {
-      fill: #eee;
+    svg path {
+      fill: #000;
 
       @media (min-width: 480px) {
-        fill: #000;
+        fill: #eee;
       }
     }
   }

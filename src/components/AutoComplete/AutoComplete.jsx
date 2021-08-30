@@ -51,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AutoComplete = () => {
-  const {screenSize, windowWidth} = useSelector((state) => state.responsive)
+  const { screenSize, windowWidth, isMobile } = useSelector((state) => state.responsive)
   const dispatch = useDispatch()
   const classes = useStyles();
 
@@ -123,7 +123,7 @@ const AutoComplete = () => {
             inputProps={{ 'aria-label': 'secondary checkbox' }}
           />
         }
-          label="Include Names"
+          label={isMobile ? "Name" : "Include Names"}
         >
         </FormControlLabel>
 

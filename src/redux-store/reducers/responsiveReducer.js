@@ -1,8 +1,9 @@
-import { SET_WINDOW_WIDTH, GET_SCREEN_SIZE } from "../types";
+import { SET_WINDOW_WIDTH } from "../types";
 
 const initialState = {
   windowWidth: window.innerWidth,
-  screenSize: 'wide'
+  screenSize: 'wide',
+  isMobile: false
 };
 
 export default function(state = initialState, action) {
@@ -25,14 +26,16 @@ export default function(state = initialState, action) {
 
   switch (action.type) {
     case SET_WINDOW_WIDTH:
-      console.log(state.windowWidth, window.innerWidth)
-
       state.windowWidth = window.innerWidth
+
+      if (window.innerWidth <= 768) {
+        state.isMobile = true
+      } else {
+        state.isMobile = false
+      }
+
       setScreenSize()
       return {...state};
-    case GET_SCREEN_SIZE:
-      setScreenSize()
-      return state
     default:
       return {...state};
   }
