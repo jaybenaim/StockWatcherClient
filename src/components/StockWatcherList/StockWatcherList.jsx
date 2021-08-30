@@ -32,7 +32,9 @@ const StockWatcherList = ({ symbol, userEmail, setLoading }) => {
   }
 
   useEffect(() => {
-    getStockWatchers()
+    if (userEmail && userEmail.length > 0) {
+      getStockWatchers()
+    }
 
   // eslint-disable-next-line
   }, [userEmail])
