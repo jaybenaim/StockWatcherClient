@@ -3,17 +3,20 @@ import firebase from "firebase/app";
 import "firebase/storage";
 import "firebase/auth";
 import "firebase/firestore";
+
 var firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyAPKBvgxHlWj_eLvlzux99pkgKekYgk-WQ",
+  authDomain: "stock-watcher-7b087.firebaseapp.com",
+  databaseURL: "https://stock-watcher-7b087-default-rtdb.firebaseio.com/",
+  projectId: "stock-watcher-7b087",
+  storageBucket: "stock-watcher-7b087.appspot.com",
+  messagingSenderId: "919980135889",
+  appId: "1:919980135889:web:6cac8ef1ef7e9efca33cf0",
+  measurementId: "G-X0483QH77X",
 };
 
+
+console.log(firebaseConfig)
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
