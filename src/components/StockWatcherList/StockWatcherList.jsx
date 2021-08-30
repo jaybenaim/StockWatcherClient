@@ -46,7 +46,7 @@ const StockWatcherList = ({ symbol, userEmail, setLoading }) => {
           ticker,
           min_price,
           max_price,
-          created_at,
+          // created_at,
           updated_at
         } = tickerWatcher
 

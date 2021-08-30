@@ -21,7 +21,7 @@ const SignIn = () => {
           password,
         })
         .then(() => {
-          history.push("/home");
+          history.push("/");
         })
         .catch((err) => {
           if (err.code.includes("account-exists")) {
@@ -37,7 +37,7 @@ const SignIn = () => {
           password: userPassword,
         })
         .then(() => {
-          history.push("/home");
+          history.push("/");
         })
         .catch((err) => {
           if (err.code.includes("account-exists")) {

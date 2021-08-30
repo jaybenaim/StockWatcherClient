@@ -101,7 +101,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>
-         <Link to="/home">
+         <Link to="/">
           Home
         </Link>
       </MenuItem>
@@ -138,7 +138,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>
-         <Link to="/home">
+         <Link to="/">
           Home
         </Link>
       </MenuItem>
@@ -169,7 +169,7 @@ export default function PrimarySearchAppBar() {
     <div className="grow main-nav-menu">
       <AppBar position="static">
         <Toolbar>
-          <Link to="/home">
+          <Link to="/">
             <Typography className={classes.title} variant="h6" noWrap>
               Stock Watcher
             </Typography>
