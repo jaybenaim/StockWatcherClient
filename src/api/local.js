@@ -1,6 +1,6 @@
 import axios from "axios";
 const csrfTokenRegex = RegExp(/(csrftoken=.*;|csrftoken=.*)/)
-const csrfToken = document.cookie.match(csrfTokenRegex)[0]
+const csrfToken = document.cookie.match(csrfTokenRegex)[0] || ''
 
 console.log(csrfToken)
 // axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
