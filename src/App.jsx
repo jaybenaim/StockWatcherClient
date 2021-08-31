@@ -10,6 +10,7 @@ import SignUp from "./components/Auth/SignUp/SignUp";
 import AdminHome from "./components/Admin/AdminHome/AdminHome";
 import WatchStock from "./components/Pages/WatchStock/WatchStock";
 import { connect } from "react-redux";
+import ForgotPassword from "components/Auth/ForgotPassword/ForgotPassword";
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
         <Route exact path="/" component={Home} />
         <Route exact path="/sign-in" component={SignIn} />
         <Route exact path="/sign-up" component={SignUp} />
+        <Route exact path="/forgot-password" component={ForgotPassword} />
         <Route exact path="/search/:symbol" component={WatchStock} />
       </Switch>
     </React.Fragment>

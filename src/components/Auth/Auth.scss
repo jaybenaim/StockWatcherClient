@@ -17,11 +17,22 @@
   }
 }
 
-.sign-up {
-
-}
-
 .lock-icon {
   margin: 8px;
   background-color: #f31919 !important;
+}
+
+.forgot-password {
+    &--email {
+    margin-top: 2em !important;
+
+    &, * {
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+
+  &--back-to-sign-in {
+
+  }
 }

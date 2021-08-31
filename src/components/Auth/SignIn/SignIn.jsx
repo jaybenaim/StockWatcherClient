@@ -40,12 +40,12 @@ export default function SignIn() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const signInWithProvider = (event, provider) => {
+  const signInWithProvider = async (event, provider) => {
     event.preventDefault()
     let userEmail = email.length >= 1 ? email : "";
     let userPassword = password.length >= 1 ? password : "";
 
-    firebase
+    await firebase
       .login({
         provider: provider === "email" ? null : provider,
         type: "popup",
@@ -62,6 +62,21 @@ export default function SignIn() {
       });
   };
 
+  const forgotPassword = (event) => {
+    event.preventDefault()
+
+    firebase
+      .auth()
+      .sendPasswordResetEmail()
+      .then(() => {
+        history.push("/admin");
+      })
+      .catch((err) => {
+        if (err.code.includes("account-exists")) {
+          setErrors([...errors, "Account Exists"]);
+        }
+      });
+  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />

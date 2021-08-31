@@ -46,12 +46,12 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const signInWithProvider = (event, provider) => {
+  const signInWithProvider = async (event, provider) => {
     event.preventDefault()
     let userEmail = email.length >= 1 ? email : "";
     let userPassword = password.length >= 1 ? password : "";
     if (provider === "email") {
-      firebase
+      await firebase
         .createUser({
           email,
           password,
@@ -65,7 +65,7 @@ export default function SignUp() {
           }
         });
     } else {
-      firebase
+      await firebase
         .login({
           provider: provider === "email" ? null : provider,
           type: "popup",

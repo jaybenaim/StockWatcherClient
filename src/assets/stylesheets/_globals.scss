@@ -42,3 +42,7 @@ a {
 .justify-start {
   justify-content: flex-start;
 }
+
+.space-between {
+  @include flex($justify: space-between);
+}
