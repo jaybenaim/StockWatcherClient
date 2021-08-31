@@ -56,6 +56,7 @@ const AutoComplete = () => {
 
   const [results, setResults] = useState([])
   const [checked, setChecked] = useState(false);
+  const [showFilters, setShowFilters] = useState(false)
 
   const autocompleteSearch = async (e) => {
     const query = e.target.value
@@ -110,21 +111,25 @@ const AutoComplete = () => {
           }}
           inputProps={{ 'aria-label': 'search' }}
           onChange={autocompleteSearch}
+          onFocus={() => setShowFilters(true)}
+          onBlur={() => setShowFilters(false)}
         />
 
-        <FormControlLabel
-          className="autocomplete--checkbox"
-          control={
-          <Checkbox
-            color="primary"
-            checked={checked}
-            onChange={handleChange}
-            inputProps={{ 'aria-label': 'secondary checkbox' }}
+        {showFilters && (
+          <FormControlLabel
+            className="autocomplete--checkbox"
+            control={
+            <Checkbox
+              color="primary"
+              checked={checked}
+              onChange={handleChange}
+              inputProps={{ 'aria-label': 'secondary checkbox' }}
+            />
+          }
+            label="Include Names"
           />
-        }
-          label="Include Names"
-        >
-        </FormControlLabel>
+        )}
+
 
         <div className="autocomplete--results">
           <AutocompleteResults results={results} setResults={setResults}/>
