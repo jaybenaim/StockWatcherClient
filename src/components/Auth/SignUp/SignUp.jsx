@@ -1,17 +1,53 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  FormControlLabel,
+  Grid,
+  Box,
+  Typography,
+  Container,
+  Checkbox
+} from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { makeStyles } from '@material-ui/core/styles';
+import Copyright from 'components/Copyright/Copyright';
 import { useFirebase } from "react-redux-firebase";
 import { useHistory, Link } from "react-router-dom";
-import Notifications from "../../General/Notifications/Notifications";
-import "../../../assets/stylesheets/signin.css";
+import "../Auth.scss";
 
-const SignIn = () => {
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+export default function SignUp() {
+  const classes = useStyles();
   const firebase = useFirebase();
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const signInWithProvider = (provider) => {
+  const signInWithProvider = (event, provider) => {
+    event.preventDefault()
     let userEmail = email.length >= 1 ? email : "";
     let userPassword = password.length >= 1 ? password : "";
     if (provider === "email") {
@@ -46,131 +82,118 @@ const SignIn = () => {
         });
     }
   };
-  const errorElements = () =>
-    errors.map((error, i) => <div key={i}>{error}</div>);
 
   return (
-    <div className="login__page">
-      {errors.length >= 1 && (
-        <Notifications
-          type={"alert"}
-          variant={"danger"}
-          heading={"Error"}
-          body={errorElements()}
-        />
-      )}
-      <div className="container">
-        <div className="row">
-          <div className="card col-md-4 col-md-offset-4">
-            <div className="login__card">
-              <div className="card-block">
-                <form name="userform" method="post">
-                  <h3>Sign up </h3>
-                  <Link to="sign-in">Log In</Link>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className="lock-icon">
+          <LockOutlinedIcon />
+        </Avatar>
 
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Email address</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="exampleInputEmail1"
-                      placeholder="Email"
-                      name="email"
-                      required
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Password"
-                      name="password"
-                      required
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </div>
+        <Typography component="h1" variant="h5">
+          Sign up
+        </Typography>
 
-                  <div className="form-group">
-                    <button
-                      type="buton"
-                      className="btn btn-primary btn-block"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        signInWithProvider("email");
-                      }}
-                    >
-                      Login with Email
-                    </button>
-                  </div>
+        <form className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            {/* <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="fname"
+                name="firstName"
+                variant="outlined"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+              />
+            </Grid>
 
-                  <div className="form-group">
-                    <button
-                      type="buton"
-                      className="btn btn-block"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        signInWithProvider("facebook");
-                      }}
-                    >
-                      <i className="fa fa-facebook" aria-hidden="true"></i>
-                      Login with Facebook
-                    </button>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="lname"
+              />
+            </Grid> */}
 
-                    <button
-                      type="button"
-                      className="btn btn-block"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        signInWithProvider("twitter");
-                      }}
-                    >
-                      <i className="fa fa-twitter" aria-hidden="true"></i>
-                      Login with Twitter
-                    </button>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Grid>
 
-                    <button
-                      type="button"
-                      className="btn btn-block"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        signInWithProvider("github");
-                      }}
-                    >
-                      <i className="fa fa-github" aria-hidden="true"></i>
-                      Login with Github
-                    </button>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Grid>
 
-                    <button
-                      type="button"
-                      className="btn btn-block"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        signInWithProvider("google");
-                      }}
-                    >
-                      <i className="fa fa-google" aria-hidden="true"></i>
-                      Login with Google
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+            {/* <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                label="I want to receive inspiration, marketing promotions and updates via email."
+              />
+            </Grid> */}
+          </Grid>
+
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            className="sign-in--email primary-bg"
+            onClick={(event) => signInWithProvider(event, "email")}
+          >
+            Sign Up
+          </Button>
+
+          <Grid container justifyContent="flex-end">
+            <Grid item>
+              <Link to="/sign-in" variant="body2">
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
+
+          <Grid item xs={12} className="display-center p-2">
+              <Button
+                variant="contained"
+                className="sign-in--google primary-bg"
+                onClick={(event) => signInWithProvider(event, "google")}
+              >
+                <i className="fa fa-google" aria-hidden="true"></i>
+
+                <span className="pl-1">
+                  Sign Up with Google
+                </span>
+              </Button>
+            </Grid>
+        </form>
       </div>
-      {/* <h1>Sign In</h1>
-      <button
-        onClick={(event) => {
-          event.preventDefault();
-          signInWithGoogle();
-        }}
-      >
-        Sign In with Google
-      </button> */}
-    </div>
+
+      <Box mt={5}>
+        <Copyright />
+      </Box>
+    </Container>
   );
-};
-export default SignIn;
+}

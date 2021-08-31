@@ -5,7 +5,7 @@ import NavBar from "./components/Layout/NavBar";
 
 import Home from "./components/Pages/Home/Home";
 import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
-import SignIn2 from "components/Auth/SignIn/SignIn2";
+import SignIn from "components/Auth/SignIn/SignIn";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import AdminHome from "./components/Admin/AdminHome/AdminHome";
 import WatchStock from "./components/Pages/WatchStock/WatchStock";
@@ -21,7 +21,7 @@ const App = () => {
           <AdminHome />
         </PrivateRoute>
         <Route exact path="/" component={Home} />
-        <Route exact path="/sign-in" component={SignIn2} />
+        <Route exact path="/sign-in" component={SignIn} />
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/search/:symbol" component={WatchStock} />
       </Switch>

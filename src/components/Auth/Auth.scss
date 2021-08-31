@@ -1,0 +1,27 @@
+.sign-in {
+  &--email {
+    margin: 2em 0 !important;
+
+    &, * {
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+
+  &--google {
+
+    &, * {
+      color: #fff;
+      font-weight: 700;
+    }
+  }
+}
+
+.sign-up {
+
+}
+
+.lock-icon {
+  margin: 8px;
+  background-color: #f31919 !important;
+}

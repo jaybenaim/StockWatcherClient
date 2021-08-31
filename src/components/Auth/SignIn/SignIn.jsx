@@ -1,18 +1,47 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  FormControlLabel,
+  Grid,
+  Box,
+  Typography,
+  Container,
+  Checkbox
+} from '@material-ui/core';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { makeStyles } from '@material-ui/core/styles';
 import { useFirebase } from "react-redux-firebase";
 import { useHistory, Link } from "react-router-dom";
-import Notifications from "../../General/Notifications/Notifications";
+// import Notifications from "../../General/Notifications/Notifications";
+import "../Auth.scss";
+import Copyright from 'components/Copyright/Copyright';
 
-import "../../../assets/stylesheets/signin.css";
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  }
+}));
 
-const SignIn = () => {
+export default function SignIn() {
+  const classes = useStyles();
   const firebase = useFirebase();
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const signInWithProvider = (provider) => {
+  const signInWithProvider = (event, provider) => {
+    event.preventDefault()
     let userEmail = email.length >= 1 ? email : "";
     let userPassword = password.length >= 1 ? password : "";
 
@@ -32,121 +61,94 @@ const SignIn = () => {
         }
       });
   };
-  const errorElements = () =>
-    errors.map((error, i) => <div key={i}>{error}</div>);
 
   return (
-    <div className="login__page">
-      {errors.length >= 1 && (
-        <Notifications
-          type={"alert"}
-          variant={"danger"}
-          heading={"Error"}
-          body={errorElements()}
-        />
-      )}
-      <div className="container">
-        <div className="row">
-          <div className="card col-md-4 col-md-offset-4">
-            <div className="login__card">
-              <div className="card-block">
-                <form name="userform" method="post">
-                  <h3>Log In </h3>
-                  <Link to="sign-up">Sign up</Link>
-                  <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Email address</label>
-                    <input
-                      type="email"
-                      className="form-control"
-                      id="exampleInputEmail1"
-                      placeholder="Email"
-                      name="email"
-                      required
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Password</label>
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="exampleInputPassword1"
-                      placeholder="Password"
-                      name="password"
-                      required
-                      onChange={(e) => setPassword(e.target.value)}
-                    />
-                  </div>
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className="lock-icon">
+          <LockOutlinedIcon />
+        </Avatar>
 
-                  <div className="form-group">
-                    <button
-                      type="buton"
-                      className="btn btn-primary btn-block"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        signInWithProvider("email");
-                      }}
-                    >
-                      Login with Email
-                    </button>
-                  </div>
+        <Typography component="h1" variant="h5">
+          Sign in
+        </Typography>
 
-                  <div className="form-group">
-                    <button
-                      type="buton"
-                      className="btn btn-block"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        signInWithProvider("facebook");
-                      }}
-                    >
-                      <i className="fa fa-facebook" aria-hidden="true"></i>
-                      Login with Facebook
-                    </button>
+        <form className={classes.form} noValidate>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            onChange={(e) => setEmail(e.target.value)}
+          />
 
-                    <button
-                      type="button"
-                      className="btn btn-block"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        signInWithProvider("twitter");
-                      }}
-                    >
-                      <i className="fa fa-twitter" aria-hidden="true"></i>
-                      Login with Twitter
-                    </button>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
-                    <button
-                      type="button"
-                      className="btn btn-block"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        signInWithProvider("github");
-                      }}
-                    >
-                      <i className="fa fa-github" aria-hidden="true"></i>
-                      Login with Github
-                    </button>
+          <FormControlLabel
+            control={<Checkbox value="remember" color="primary" />}
+            label="Remember me"
+          />
 
-                    <button
-                      type="button"
-                      className="btn btn-block"
-                      onClick={(event) => {
-                        event.preventDefault();
-                        signInWithProvider("google");
-                      }}
-                    >
-                      <i className="fa fa-google" aria-hidden="true"></i>
-                      Login with Google
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            className="sign-in--email primary-bg"
+            onClick={(event) => signInWithProvider("email")}
+          >
+            Sign In
+          </Button>
+
+          <Grid container>
+            <Grid item xs>
+              <Link to="/forgot-password" variant="body2">
+                Forgot password?
+              </Link>
+            </Grid>
+
+            <Grid item>
+              <Link to="/sign-up" variant="body2">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+
+            <Grid item xs={12} className="display-center p-3">
+              <Button
+                variant="contained"
+                className="sign-in--google primary-bg"
+                onClick={(event) => signInWithProvider(event, "google")}
+              >
+                <i className="fa fa-google" aria-hidden="true"></i>
+
+                <span className="pl-1">
+                  Login with Google
+                </span>
+              </Button>
+            </Grid>
+          </Grid>
+        </form>
       </div>
-    </div>
+
+      <Box mt={8}>
+        <Copyright />
+      </Box>
+    </Container>
   );
-};
-export default SignIn;
+}
