@@ -4,12 +4,10 @@ import {
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
   Grid,
   Box,
   Typography,
   Container,
-  Checkbox
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { makeStyles } from '@material-ui/core/styles';

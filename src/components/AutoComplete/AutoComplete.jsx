@@ -5,9 +5,11 @@ import AutocompleteResults from './AutoCompleteResults';
 import SearchIcon from '@material-ui/icons/Search';
 import {Checkbox, FormControlLabel, InputBase} from "@material-ui/core"
 import "./Autocomplete.scss"
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 // import { getWindowWidth } from 'redux-store/actions/responsiveActions';
 // import { SET_WINDOW_WIDTH } from 'redux-store/types';
+import PropTypes from "prop-types";
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -50,24 +52,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const AutoComplete = () => {
-  // const { screenSize, windowWidth, isMobile } = useSelector((state) => state.responsive)
+  const { isMobile } = useSelector((state) => state.responsive)
   // const dispatch = useDispatch()
   const classes = useStyles();
 
+  const [queryString, setQueryString] = useState('');
   const [results, setResults] = useState([])
   const [checked, setChecked] = useState(false);
   const [showFilters, setShowFilters] = useState(false)
 
   const autocompleteSearch = async (e) => {
-    const query = e.target.value
+    const query = e?.target?.value || queryString
 
-    if (query.length >= 2) {
+    if (query.length >= 3) {
       setTimeout(() => {
       }, 200)
 
       try {
-        let url = `stock/search?query=${query}`
+        setResults(["Loading..."])
 
+        let url = `stock/search?query=${query}`
         if (checked) {
           url += '&include_name_in_search=true'
         }
@@ -77,25 +81,27 @@ const AutoComplete = () => {
         if (response.status === 200) {
           const results = response.data.results || []
           setResults(results)
+          setQueryString(query)
+          return
         }
       } catch(err) {
         console.log(err)
       }
-    } else if (query.length <= 1) {
-      setResults([])
     }
+
+    setResults([])
   }
 
   const handleChange = (event) => {
-    setChecked(event.target.checked);
+    setChecked(event.target.checked, );
   };
 
-  // useEffect(() => {
-  //   window.addEventListener('resize', () => dispatch({ type: SET_WINDOW_WIDTH }))
-
-  //   return () => window.removeEventListener('resize', () => dispatch({ type: SET_WINDOW_WIDTH }))
-
-  // },[screenSize, windowWidth])
+  useEffect(() => {
+    if (queryString.length > 0) {
+      autocompleteSearch()
+    }
+    // eslint-disable-next-line
+  }, [checked])
 
   return (
     <div className={classes.search}>
@@ -112,12 +118,14 @@ const AutoComplete = () => {
           inputProps={{ 'aria-label': 'search' }}
           onChange={autocompleteSearch}
           onFocus={() => setShowFilters(true)}
-          onBlur={() => setShowFilters(false)}
         />
 
         {showFilters && (
           <FormControlLabel
-            className="autocomplete--checkbox"
+            className={
+              results.length > 1 && isMobile
+               ? "autocomplete--checkbox inline tooltip"
+                : "autocomplete--checkbox"}
             control={
             <Checkbox
               color="primary"
@@ -126,12 +134,19 @@ const AutoComplete = () => {
               inputProps={{ 'aria-label': 'secondary checkbox' }}
             />
           }
-            label="Include Names"
+            label={
+              results.length > 1 && isMobile
+                ? (<span className="tooltiptext">Names</span>)
+                  : "Include Names"
+            }
           />
         )}
 
 
-        <div className="autocomplete--results">
+        <div
+          className="autocomplete--results"
+          onClick={() => setShowFilters(false)}
+        >
           <AutocompleteResults results={results} setResults={setResults}/>
         </div>
     </div>
@@ -139,12 +154,12 @@ const AutoComplete = () => {
 }
 
 AutoComplete.propTypes = {
-  // responsive: PropTypes.object
+  responsive: PropTypes.object
 }
 
 const mapStateToProps = (state) => {
   return {
-    // responsive: state.responsive
+    responsive: state.responsive
   }
 };
 

@@ -5,7 +5,7 @@
 
   &--results {
     position: absolute;
-    top: 52px;
+    top: 45px;
     color: #fff;
     box-shadow: 0px 12px 26px -6px rgba(0,0,0,0.73);
     z-index: 5;
@@ -29,16 +29,45 @@
       min-width: fit-content;
       max-width: unset;
     }
+
+    @media (min-width: 789px) {
+      top: 52px;
+    }
   }
 
   &--checkbox {
-    position: absolute;
+    position: absolute !important;
     color: #000;
     top: 50px;
     left: 20px;
 
+    &.inline {
+      top: -4px;
+      left: 175px;
+
+      svg path {
+        fill: #eee;
+      }
+
+      &.tooltip {
+        border-bottom: none;
+      }
+
+      & .tooltiptext {
+        width: 75px;
+      }
+
+      @media (min-width: 320px) {
+        left: 200px;
+      }
+
+      @media (min-width: 400px) {
+        left: 250px;
+      }
+    }
+
     @media (min-width: 480px) {
-      position: unset;
+      position: unset !important;
       color: #eee;
     }
 

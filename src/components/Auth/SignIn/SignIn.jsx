@@ -62,21 +62,6 @@ export default function SignIn() {
       });
   };
 
-  const forgotPassword = (event) => {
-    event.preventDefault()
-
-    firebase
-      .auth()
-      .sendPasswordResetEmail()
-      .then(() => {
-        history.push("/admin");
-      })
-      .catch((err) => {
-        if (err.code.includes("account-exists")) {
-          setErrors([...errors, "Account Exists"]);
-        }
-      });
-  };
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
