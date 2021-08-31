@@ -1,3 +1,4 @@
 export const GET_ERRORS = "GET_ERRORS";
 export const SAMPLE_TYPE = "SAMPLE_TYPE";
 export const SET_WINDOW_WIDTH = "SET_WINDOW_WIDTH";
+export const SET_SHOW_MENU_FILTERS = "SET_SHOW_MENU_FILTERS";

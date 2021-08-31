@@ -12,10 +12,14 @@ import WatchStock from "./components/Pages/WatchStock/WatchStock";
 import { connect, useDispatch } from "react-redux";
 import ForgotPassword from "components/Auth/ForgotPassword/ForgotPassword";
 import { SET_WINDOW_WIDTH } from "redux-store/types";
+import PropTypes from "prop-types";
 
 const App = () => {
   const dispatch = useDispatch()
+
   useEffect(() => {
+    dispatch({ type: SET_WINDOW_WIDTH })
+
     window.addEventListener('resize', () => dispatch({ type: SET_WINDOW_WIDTH }))
 
     return () => window.removeEventListener('resize', () => dispatch({ type: SET_WINDOW_WIDTH }))
@@ -25,6 +29,7 @@ const App = () => {
   return (
     <React.Fragment>
       <NavBar />
+
       <Switch>
         <PrivateRoute exact path="/admin">
           <AdminHome />
@@ -40,10 +45,12 @@ const App = () => {
 };
 
 App.propTypes = {
+  showSearchFilters: PropTypes.bool
 }
 
 const mapStateToProps = (state) => {
   return {
+    showSearchFilters: state.general.showSearchFilters
   }
 };
 

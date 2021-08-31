@@ -5,11 +5,10 @@ import AutocompleteResults from './AutoCompleteResults';
 import SearchIcon from '@material-ui/icons/Search';
 import {Checkbox, FormControlLabel, InputBase} from "@material-ui/core"
 import "./Autocomplete.scss"
-import { connect, useSelector } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-// import { getWindowWidth } from 'redux-store/actions/responsiveActions';
-// import { SET_WINDOW_WIDTH } from 'redux-store/types';
 import PropTypes from "prop-types";
+import { SET_SHOW_MENU_FILTERS } from 'redux-store/types';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -51,15 +50,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AutoComplete = () => {
-  const { isMobile } = useSelector((state) => state.responsive)
-  // const dispatch = useDispatch()
+const AutoComplete = ({ showFilters }) => {
+  const dispatch = useDispatch()
   const classes = useStyles();
 
   const [queryString, setQueryString] = useState('');
   const [results, setResults] = useState([])
   const [checked, setChecked] = useState(false);
-  const [showFilters, setShowFilters] = useState(false)
 
   const autocompleteSearch = async (e) => {
     const query = e?.target?.value || queryString
@@ -87,13 +84,14 @@ const AutoComplete = () => {
       } catch(err) {
         console.log(err)
       }
+    } else {
+      setResults([])
+      setQueryString('')
     }
-
-    setResults([])
   }
 
   const handleChange = (event) => {
-    setChecked(event.target.checked, );
+    setChecked(event.target.checked);
   };
 
   useEffect(() => {
@@ -105,11 +103,17 @@ const AutoComplete = () => {
 
   return (
     <div className={classes.search}>
+      <div
+        className="autocomplete--hidden-container"
+        onClick={
+        () => results.length <= 3 && dispatch({ type: SET_SHOW_MENU_FILTERS, payload: false })}
+      >
+      </div>
+
       <div className={classes.searchIcon}>
         <SearchIcon />
       </div>
-
-      <InputBase
+        <InputBase
           placeholder="Search…"
           classes={{
             root: classes.inputRoot,
@@ -117,14 +121,14 @@ const AutoComplete = () => {
           }}
           inputProps={{ 'aria-label': 'search' }}
           onChange={autocompleteSearch}
-          onFocus={() => setShowFilters(true)}
+          onFocus={() => !showFilters && dispatch({ type: SET_SHOW_MENU_FILTERS, payload: true })}
         />
 
         {showFilters && (
           <FormControlLabel
             className={
-              results.length > 1 && isMobile
-               ? "autocomplete--checkbox inline tooltip"
+            queryString.length >= 1
+              ? "autocomplete--checkbox inline tooltip"
                 : "autocomplete--checkbox"}
             control={
             <Checkbox
@@ -135,31 +139,31 @@ const AutoComplete = () => {
             />
           }
             label={
-              results.length > 1 && isMobile
+              queryString.length >= 1
                 ? (<span className="tooltiptext">Names</span>)
                   : "Include Names"
             }
           />
         )}
 
-
-        <div
-          className="autocomplete--results"
-          onClick={() => setShowFilters(false)}
-        >
+      {results.length > 0 && (
+        <div className="autocomplete--results">
           <AutocompleteResults results={results} setResults={setResults}/>
         </div>
+      )}
     </div>
   );
 }
 
 AutoComplete.propTypes = {
-  responsive: PropTypes.object
+  isMobile: PropTypes.bool,
+  showFilters: PropTypes.bool
 }
 
 const mapStateToProps = (state) => {
   return {
-    responsive: state.responsive
+    isMobile: state.responsive.isMobile,
+    showFilters: state.general.showSearchFilters
   }
 };
 
