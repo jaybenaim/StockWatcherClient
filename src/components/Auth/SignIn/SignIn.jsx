@@ -53,12 +53,17 @@ export default function SignIn() {
         password: userPassword,
       })
       .then(() => {
-        history.push("/admin");
+        history.push("/");
+        firebase.auth().currentUser.getIdToken()
+        .then(token => {
+          localStorage.setItem('fb-token', token)
+        })
       })
       .catch((err) => {
-        if (err.code.includes("account-exists")) {
+        if (err.code?.includes("account-exists")) {
           setErrors([...errors, "Account Exists"]);
         }
+        console.log(err)
       });
   };
 

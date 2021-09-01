@@ -3,12 +3,12 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/Layout/NavBar";
 
-import Home from "./components/Pages/Home/Home";
+import Home from "./Pages/Home/Home";
 import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
 import SignIn from "components/Auth/SignIn/SignIn";
 import SignUp from "./components/Auth/SignUp/SignUp";
 import AdminHome from "./components/Admin/AdminHome/AdminHome";
-import WatchStock from "./components/Pages/WatchStock/WatchStock";
+import WatchStock from "./Pages/WatchStock/WatchStock";
 import { connect, useDispatch } from "react-redux";
 import ForgotPassword from "components/Auth/ForgotPassword/ForgotPassword";
 import { SET_WINDOW_WIDTH } from "redux-store/types";

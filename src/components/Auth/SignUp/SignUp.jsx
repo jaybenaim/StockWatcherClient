@@ -56,11 +56,16 @@ export default function SignUp() {
         })
         .then(() => {
           history.push("/");
+          firebase.auth().currentUser.getIdToken()
+          .then(token => {
+            localStorage.setItem('fb-token', token)
+          })
         })
         .catch((err) => {
-          if (err.code.includes("account-exists")) {
+          if (err.code?.includes("account-exists")) {
             setErrors([...errors, "Account Exists"]);
           }
+          console.log(err)
         });
     } else {
       await firebase
@@ -72,11 +77,16 @@ export default function SignUp() {
         })
         .then(() => {
           history.push("/");
+          firebase.auth().currentUser.getIdToken()
+          .then(token => {
+            localStorage.setItem('fb-token', token)
+          })
         })
         .catch((err) => {
-          if (err.code.includes("account-exists")) {
+          if (err.code?.includes("account-exists")) {
             setErrors([...errors, "Account Exists"]);
           }
+          console.log(err)
         });
     }
   };

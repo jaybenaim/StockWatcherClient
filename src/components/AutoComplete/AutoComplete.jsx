@@ -106,7 +106,7 @@ const AutoComplete = ({ showFilters }) => {
       <div
         className="autocomplete--hidden-container"
         onClick={
-        () => results.length <= 3 && dispatch({ type: SET_SHOW_MENU_FILTERS, payload: false })}
+        () => showFilters && dispatch({ type: SET_SHOW_MENU_FILTERS, payload: false })}
       >
       </div>
 

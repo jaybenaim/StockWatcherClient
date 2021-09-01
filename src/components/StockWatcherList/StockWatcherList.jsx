@@ -18,12 +18,14 @@ const StockWatcherList = ({ symbol, userEmail, loading, setLoading }) => {
         symbolParam = `&symbol=${symbol}`
       }
 
-      const response = await local.get(`ticker_watchers?email=${userEmail}${symbolParam}`)
+      const response = await local.get(`api/watchers?email=${userEmail}${symbolParam}`)
       console.log(response)
 
       if (response.status === 200) {
         console.log(response.data.results)
-        setStockWatchers(response.data.results)
+        const results = response.data.results
+
+        results.length > 0 && setStockWatchers(response.data.results)
       }
 
     } catch(err) {

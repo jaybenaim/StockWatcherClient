@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // eslint-disable-next-line
 import { Route } from "react-router-dom";
-import Home from "../../Pages/Home/Home";
+import Home from "../../../Pages/Home/Home";
 import { useSelector } from "react-redux";
 
 function PrivateRoute({ role, children: Component, ...rest }) {
