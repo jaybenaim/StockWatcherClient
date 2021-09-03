@@ -1,4 +1,5 @@
-﻿import StockWatcherList from "components/StockWatcherList/StockWatcherList";
+﻿import StockWatcherList from "components/StockList/StockWatcherList/StockWatcherList";
+import TickerSlider from "components/TickerSlider/TickerSlider";
 import React, {useState} from "react";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
           loading={loading}
           setLoading={setLoading}
         />
+        <TickerSlider/>
       </div>
     </main>
   );

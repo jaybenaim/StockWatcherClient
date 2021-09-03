@@ -7,7 +7,7 @@ import PropTypes from "prop-types"
 import WatchStockForm from 'components/WatchStockForm/WatchStockForm';
 import WatchStockData from 'components/WatchStockData/WatchStockData';
 import "./WatchStock.scss";
-import StockWatcherList from 'components/StockWatcherList/StockWatcherList';
+import StockWatcherList from 'components/StockList/StockWatcherList/StockWatcherList';
 
 const WatchStock = (props) => {
   const symbol = props.match?.params?.symbol || ''
