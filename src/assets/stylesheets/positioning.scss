@@ -1,0 +1,32 @@
+
+// Positioning
+.center {
+  @include flex();
+  text-align: center;
+  margin: 0 auto;
+}
+
+.display-center {
+  @include flex();
+}
+
+.flex-end {
+  @include flex($justify: flex-end);
+}
+
+.display-col {
+  @include flex($dir: column);
+}
+
+.display-row {
+  @include flex($dir: row, $wrap: wrap);
+  max-width: 100%;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.space-between {
+  @include flex($justify: space-between);
+}

@@ -42,52 +42,84 @@ export default function SignUp() {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({
+    "email": "",
+    "password": "",
+    "error": ""
+  });
 
   const signInWithProvider = async (event, provider) => {
     event.preventDefault()
     let userEmail = email.length >= 1 ? email : "";
     let userPassword = password.length >= 1 ? password : "";
     if (provider === "email") {
-      await firebase
-        .createUser({
-          email,
-          password,
-        })
-        .then(() => {
-          history.push("/");
-          firebase.auth().currentUser.getIdToken()
-          .then(token => {
-            localStorage.setItem('fb-token', token)
+      try {
+        const response = await firebase
+          .createUser({
+            email,
+            password,
           })
-        })
-        .catch((err) => {
-          if (err.code?.includes("account-exists")) {
-            setErrors([...errors, "Account Exists"]);
-          }
-          console.log(err)
-        });
+
+      console.log(response)
+      const token = await firebase.auth().currentUser.getIdToken()
+      localStorage.setItem('fb-token', token)
+      history.push("/");
+    } catch (err) {
+        if (err.code?.includes('email')) {
+          setErrors({
+            "email": err.message,
+            "password": errors.password,
+            "error": errors.error
+          });
+        } else if (err.code?.includes('password')) {
+          setErrors({
+            "email": errors.email,
+            "password": err.message,
+            "error": errors.error
+          });
+        } else {
+          setErrors({
+            "email": errors.email,
+            "password": errors.password,
+            "error": err.message,
+          });
+        }
+      }
     } else {
-      await firebase
-        .login({
-          provider: provider === "email" ? null : provider,
-          type: "popup",
-          email: userEmail,
-          password: userPassword,
-        })
-        .then(() => {
-          history.push("/");
-          firebase.auth().currentUser.getIdToken()
-          .then(token => {
-            localStorage.setItem('fb-token', token)
+      try {
+        const response = await firebase
+          .login({
+            provider: provider,
+            type: "popup",
+            email: userEmail,
+            password: userPassword,
           })
-        })
-        .catch((err) => {
-          if (err.code?.includes("account-exists")) {
-            setErrors([...errors, "Account Exists"]);
-          }
-          console.log(err)
-        });
+
+        console.log(response)
+        const token = await firebase.auth().currentUser.getIdToken()
+        localStorage.setItem('fb-token', token)
+        history.push("/");
+    } catch (err) {
+        if (err.code?.includes('email')) {
+          setErrors({
+            "email": err.message,
+            "password": errors.password,
+            "error": errors.error
+          });
+        } else if (err.code?.includes('password')) {
+          setErrors({
+            "email": errors.email,
+            "password": err.message,
+            "error": errors.error
+          });
+        } else {
+          setErrors({
+            "email": errors.email,
+            "password": errors.password,
+            "error": err.message,
+          });
+        }
+      }
     }
   };
 
@@ -104,66 +136,40 @@ export default function SignUp() {
         </Typography>
 
         <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            {/* <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
+          <fieldset>
+            <TextField
                 variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid> */}
-
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
+                margin="normal"
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label={errors.email.length < 1 ? "Email Address" : "Email ERROR"}
+                helperText={errors.email.length > 0 && errors.email}
                 name="email"
                 autoComplete="email"
+                autoFocus
+                type="email"
                 onChange={(e) => setEmail(e.target.value)}
+                error={errors.email.length > 0}
               />
-            </Grid>
+          </fieldset>
 
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Grid>
-
-            {/* <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
-            </Grid> */}
-          </Grid>
+          <fieldset>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label={errors.password.length < 1 ? "Password" : "Password ERROR"}
+              helperText={errors.password.length > 0 && errors.password}
+              id="password"
+              autoComplete="current-password"
+              type="password"
+              onChange={(e) => setPassword(e.target.value)}
+              error={errors.password.length > 0}
+            />
+          </fieldset>
 
           <Button
             type="submit"
@@ -177,13 +183,24 @@ export default function SignUp() {
 
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link to="/sign-in" variant="body2">
-                Already have an account? Sign in
+              <Link to="/sign-in">
+                <Typography
+                  component="p"
+                  variant="subtitle1"
+                  className="display-center"
+                >
+                  Already have an account?
+                  <Button
+                    variant="text"
+                    color="primary"
+                    className="ml-2">
+                      Sign In
+                  </Button>
+                </Typography>
               </Link>
             </Grid>
-          </Grid>
 
-          <Grid item xs={12} className="display-center p-2">
+          <Grid item xs={12} className="display-center mt-2">
               <Button
                 variant="contained"
                 className="sign-in--google primary-bg"
@@ -196,6 +213,7 @@ export default function SignUp() {
                 </span>
               </Button>
             </Grid>
+          </Grid>
         </form>
       </div>
 
