@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from "prop-types"
-import { Container, List, ListItem } from '@material-ui/core';
-import local from 'api/local';
+import { Container, List } from '@material-ui/core';
 import moment from "moment"
-import { Link } from 'react-router-dom';
 import StockWatcherListItem from '../StockWatcherListItem/StockWatcherListItem';
-import { GET_STOCK_WATCHERS_BY_EMAIL } from 'redux-store/types';
 import { getStockWatchersByEmail } from 'redux-store/actions/watcherActions';
 
 const StockWatcherList = (props) => {
-  let { symbol, userEmail, loading, setLoading, watchers } = props
+  let { symbol, userEmail, setLoading, watchers } = props
 
   const getStockWatchers = async () => {
     try {

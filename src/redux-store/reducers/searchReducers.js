@@ -1,13 +1,12 @@
-import { GET_STOCK_WATCHERS_BY_EMAIL } from "../types";
+import { SET_AUTOCOMPLETE_RESULTS } from "../types";
 
 const initialState = {
-  watchersForUser: []
+ searchResults: []
 };
-
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_STOCK_WATCHERS_BY_EMAIL:
-      state.watchersForUser = action.payload
+    case SET_AUTOCOMPLETE_RESULTS:
+      state.searchResults = action.payload
       return {
         ...state,
       };

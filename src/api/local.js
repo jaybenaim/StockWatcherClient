@@ -15,7 +15,7 @@ if (fbToken !== undefined) {
   }
 
   local = axios.create({
-    baseURL: "https://d546-2607-fea8-3f60-6ff0-d066-1a43-dba9-77ac.ngrok.io/",
+    baseURL: "http://localhost:9009",
     withCredentials: true,
     xsrfHeaderName: 'X-CSRFToken',
     xsrfCookieName: 'csrftoken',

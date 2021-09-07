@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { alpha, makeStyles } from '@material-ui/core/styles';
-import local from "api/local"
 import AutocompleteResults from './AutoCompleteResults';
 import SearchIcon from '@material-ui/icons/Search';
 import {Checkbox, FormControlLabel, InputBase} from "@material-ui/core"
-import "./Autocomplete.scss"
 import { connect, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import PropTypes from "prop-types";
 import { SET_SHOW_MENU_FILTERS } from 'redux-store/types';
+import "./Autocomplete.scss"
+import { autocompleteSearch } from 'redux-store/actions/searchActions';
 
 const useStyles = makeStyles((theme) => ({
   search: {
@@ -50,15 +50,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AutoComplete = ({ showFilters }) => {
-  const dispatch = useDispatch()
-  const classes = useStyles();
+const AutoComplete = (props) => {
+  // Props
+  const { showFilters, searchResults } = props
 
+  // Hooks
+  const dispatch = useDispatch()
   const [queryString, setQueryString] = useState('');
   const [results, setResults] = useState([])
   const [checked, setChecked] = useState(false);
 
-  const autocompleteSearch = async (e) => {
+  const classes = useStyles();
+
+  const search = async (e) => {
     const query = e?.target?.value || queryString
 
     if (query.length >= 3) {
@@ -73,14 +77,9 @@ const AutoComplete = ({ showFilters }) => {
           url += '&include_name_in_search=true'
         }
 
-        const response = await local.get(url)
+        await props.autocompleteSearch({ url })
 
-        if (response.status === 200) {
-          const results = response.data.results || []
-          setResults(results)
-          setQueryString(query)
-          return
-        }
+        setQueryString(query)
       } catch(err) {
         console.log(err)
       }
@@ -96,10 +95,15 @@ const AutoComplete = ({ showFilters }) => {
 
   useEffect(() => {
     if (queryString.length > 0) {
-      autocompleteSearch()
+      search()
     }
     // eslint-disable-next-line
   }, [checked])
+
+
+  useEffect(() => {
+    setResults(searchResults)
+  }, [searchResults, checked])
 
   return (
     <div className={classes.search}>
@@ -120,7 +124,7 @@ const AutoComplete = ({ showFilters }) => {
             input: classes.inputInput,
           }}
           inputProps={{ 'aria-label': 'search' }}
-          onChange={autocompleteSearch}
+          onChange={search}
           onFocus={() => !showFilters && dispatch({ type: SET_SHOW_MENU_FILTERS, payload: true })}
         />
 
@@ -157,14 +161,17 @@ const AutoComplete = ({ showFilters }) => {
 
 AutoComplete.propTypes = {
   isMobile: PropTypes.bool,
-  showFilters: PropTypes.bool
+  showFilters: PropTypes.bool,
+  autocompleteSearch: PropTypes.func,
+  searchResults: PropTypes.array
 }
 
 const mapStateToProps = (state) => {
   return {
     isMobile: state.responsive.isMobile,
-    showFilters: state.general.showSearchFilters
+    showFilters: state.general.showSearchFilters,
+    searchResults: state.search.searchResults
   }
 };
 
-export default connect(mapStateToProps, {})(AutoComplete);
+export default connect(mapStateToProps, { autocompleteSearch })(AutoComplete);

@@ -19,7 +19,7 @@ export const getStockWatchersByEmail = (payload) => async (dispatch) => {
     }
 
   } catch(err) {
-    dispatch({
+    return dispatch({
       type: SET_ERRORS,
       payload: err,
     });
