@@ -21,7 +21,7 @@ const StockWatcherListItem = ({
         >
           {ticker.symbol} - ${" "}
 
-          <span className={ticker.price < min_price || ticker.price > max_price ? 'price-out-of-range' : 'price-in-range'}>
+          <span className={ticker.price < Number(min_price) || ticker.price > Number(max_price) ? 'price-out-of-range' : 'price-in-range'}>
             {ticker.price}
           </span>
         </Link>

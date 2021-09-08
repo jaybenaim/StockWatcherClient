@@ -6,6 +6,7 @@ import { firestoreReducer } from "redux-firestore";
 import generalReducers from "./generalReducers";
 import watcherReducers from "./watcherReducers";
 import searchReducers from "./searchReducers";
+import tickerReducers from "./tickerReducers";
 
 export default combineReducers({
   firebase: firebaseReducer,
@@ -13,6 +14,7 @@ export default combineReducers({
   general: generalReducers,
   responsive: responsiveReducer,
   search: searchReducers,
+  tickers: tickerReducers,
   watchers: watcherReducers,
   errors: errorReducer,
 });

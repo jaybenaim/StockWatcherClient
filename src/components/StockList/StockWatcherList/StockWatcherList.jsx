@@ -43,8 +43,8 @@ const StockWatcherList = (props) => {
       } = tickerWatcher
 
       const dateFormat = 'lll'
-      const created = moment(created_at).format(dateFormat).replace(', 2021', ' - ')
-      const lastUpdated = moment(ticker.updated_at).format(dateFormat).replace(', 2021', ' - ')
+      const created = moment(created_at).format(dateFormat).replace(', 2021', ', ')
+      const lastUpdated = moment(ticker.updated_at).format(dateFormat).replace(', 2021', ', ')
 
       return (
         <StockWatcherListItem

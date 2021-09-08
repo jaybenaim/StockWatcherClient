@@ -12,6 +12,7 @@ const Home = () => {
           loading={loading}
           setLoading={setLoading}
         />
+
         <TickerSlider/>
       </div>
     </main>
