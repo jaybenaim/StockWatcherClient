@@ -10,12 +10,20 @@ let local;
 if (fbToken !== undefined) {
 
   const headers =  {
-    "X-CSRFToken": csrfToken,
-    "Authorization": `Token ${fbToken}`
+    // "Authorization" : "Token ${token}"
+
+  }
+
+  if (csrfToken) {
+    headers['X-CSRFToken'] = csrfToken
+  }
+
+  if (fbToken) {
+    headers['Authorization'] = `Token ${fbToken}`
   }
 
   local = axios.create({
-    baseURL: "https://16d5-2607-fea8-3f60-6ff0-f197-1df2-961a-8592.ngrok.io",
+    baseURL: "http://localhost:8000/api",
     withCredentials: true,
     xsrfHeaderName: 'X-CSRFToken',
     xsrfCookieName: 'csrftoken',

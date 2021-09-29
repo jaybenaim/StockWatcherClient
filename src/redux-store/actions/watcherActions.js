@@ -9,7 +9,7 @@ export const getStockWatchersByEmail = (payload) => async (dispatch) => {
       symbolParam = `&symbol=${symbol}`
     }
 
-    const response = await local.get(`api/watchers?email=${email}${symbolParam}`)
+    const response = await local.get(`/watchers?email=${email}${symbolParam}`)
 
     if (response.status === 200) {
       dispatch ({

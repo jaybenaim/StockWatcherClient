@@ -19,6 +19,7 @@ import { useHistory, Link } from "react-router-dom";
 import "../Auth.scss";
 import Copyright from 'components/Copyright/Copyright';
 import { Alert, AlertTitle } from '@material-ui/lab';
+import local from 'api/local';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -59,11 +60,42 @@ export default function SignIn() {
         password: userPassword,
       })
 
-      console.log(response)
-      const token = await firebase.auth().currentUser.getIdToken()
-      localStorage.setItem('fb-token', token)
-      history.push("/");
+      // const token = await firebase.auth().currentUser.getIdToken()
+      // localStorage.setItem('fb-token', token)
 
+      const newUserEmail = response.profile.email || ''
+
+      if (provider !== "email" && newUserEmail.length > 0) {
+        try {
+          const newUser = await local.post('/users/', {
+            username: newUserEmail,
+            email: newUserEmail
+          })
+
+          if (newUser.data.id) {
+             firebase.updateProfile({
+              "id": newUser.data.id
+            })
+          }
+
+          if (newUser.data.status !== 409) {
+            const token = await firebase.auth().currentUser.getIdToken()
+            localStorage.setItem('fb-token', token)
+            history.push("/");
+          } else {
+            setErrors({
+              ...errors,
+              "error": "User already exists."
+            });
+          }
+        } catch (err) {
+          setErrors({
+            ...errors,
+            "error": err
+          });
+        }
+      }
+      history.push("/");
     } catch(err) {
       console.log(err)
       console.log(`Error: ${err.message}`)

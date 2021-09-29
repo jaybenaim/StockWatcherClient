@@ -8,12 +8,12 @@ const Home = () => {
   return (
     <main id="mainContent">
       <div className="container">
+        <TickerSlider/>
+
         <StockWatcherList
           loading={loading}
           setLoading={setLoading}
         />
-
-        <TickerSlider/>
       </div>
     </main>
   );

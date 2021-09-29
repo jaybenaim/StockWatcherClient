@@ -30,15 +30,20 @@ const WatchStockForm = ({
       const response = await local.post(`stock/watch/`, data)
       console.log(response)
 
-      if (response.status === 200) {
+      if (response.data.status !== 500) {
         console.log(response.data)
         setAlertOpen(true);
         setAlert({
           severity: "success",
           message: "New Stock Watcher Created"
         })
+      } else {
+        setAlertOpen(true);
+        setAlert({
+          severity: "error",
+          message: "Issue creating new stock watcher, please try again."
+        })
       }
-
     } catch(err) {
       console.log(err)
     }

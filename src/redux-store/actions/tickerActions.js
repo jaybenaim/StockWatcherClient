@@ -10,10 +10,9 @@ export const getRecentTickers = (payload) => async (dispatch) => {
       param = '?all=true'
     }
 
-    const response = await local.get(`api/tickers${param}`)
+    const response = await local.get(`/tickers${param}`)
 
     if (response.status === 200) {
-      console.log(response.data)
       dispatch ({
         type: RECENT_TICKERS,
         payload: response.data.results,

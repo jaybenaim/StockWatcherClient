@@ -15,6 +15,7 @@ import Copyright from 'components/Copyright/Copyright';
 import { useFirebase } from "react-redux-firebase";
 import { useHistory, Link } from "react-router-dom";
 import "../Auth.scss";
+import local from 'api/local';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -60,9 +61,38 @@ export default function SignUp() {
             password,
           })
 
-      console.log(response)
-      const token = await firebase.auth().currentUser.getIdToken()
-      localStorage.setItem('fb-token', token)
+          const newUserEmail = response.profile.email || ''
+
+          if (provider !== "email" && newUserEmail.length > 0) {
+            try {
+              const newUser = await local.post('/users/', {
+                username: newUserEmail,
+                email: newUserEmail
+              })
+
+              if (newUser.data.id) {
+                 firebase.updateProfile({
+                  "id": newUser.data.id
+                })
+              }
+
+              if (newUser.data.status !== 409) {
+                const token = await firebase.auth().currentUser.getIdToken()
+                localStorage.setItem('fb-token', token)
+                history.push("/");
+              } else {
+                setErrors({
+                  ...errors,
+                  "error": "User already exists."
+                });
+              }
+            } catch (err) {
+              setErrors({
+                ...errors,
+                "error": err
+              });
+            }
+          }
       history.push("/");
     } catch (err) {
         if (err.code?.includes('email')) {
@@ -95,9 +125,39 @@ export default function SignUp() {
             password: userPassword,
           })
 
-        console.log(response)
-        const token = await firebase.auth().currentUser.getIdToken()
-        localStorage.setItem('fb-token', token)
+        console.log('Res', response)
+        const newUserEmail = response.profile.email || ''
+
+        if (provider !== "email" && newUserEmail.length > 0) {
+          try {
+            const newUser = await local.post('/users/', {
+              username: newUserEmail,
+              email: newUserEmail
+            })
+
+            if (newUser.data.id) {
+               firebase.updateProfile({
+                "id": newUser.data.id
+              })
+            }
+
+            if (newUser.data.status !== 409) {
+              const token = await firebase.auth().currentUser.getIdToken()
+              localStorage.setItem('fb-token', token)
+              history.push("/");
+            } else {
+              setErrors({
+                ...errors,
+                "error": "User already exists."
+              });
+            }
+          } catch (err) {
+            setErrors({
+              ...errors,
+              "error": err
+            });
+          }
+        }
         history.push("/");
     } catch (err) {
         if (err.code?.includes('email')) {
