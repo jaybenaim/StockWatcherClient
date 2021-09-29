@@ -31,7 +31,7 @@ const AutocompleteResults = ({ results, setResults }) => {
         {results.map((result, i) => (
           <Link
             to={{
-              pathname: `search/${result.split('-')[0]}`,
+              pathname: `/search/${result.split('-')[0]}`,
               state: { result }
             }}
             key={i}
