@@ -1,24 +1,31 @@
 import React, { useEffect } from 'react';
 import PropTypes from "prop-types";
-import { connect } from "react-redux"
+import { connect, useDispatch } from "react-redux"
 import { getRecentTickers } from "redux-store/actions/tickerActions"
-import { Paper, Slide } from '@material-ui/core';
-import Ticker from 'react-ticker';
+import { Paper } from '@material-ui/core';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
+import StockWatcherListItem from 'components/StockList/StockWatcherListItem/StockWatcherListItem';
 
 const TickerSlider = (props) => {
   const { recentTickers } = props
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    props.getRecentTickers()
+    dispatch(getRecentTickers())
     // eslint-disable-next-line
   }, [])
 
   const slides = () => recentTickers.map((ticker, i) => (
     <Paper elevation={2} className="ticker-slider__item" key={i}>
-      <p>Ticker: {ticker.symbol}</p>
-      <p>Price: <span className="price">{ticker.price}</span></p>
-      <p>{moment(ticker.updated_at).format('MMM Do, h:mm a')}</p>
+      <Link to={{
+        pathname: "/search/" + ticker.symbol,
+        state: { ticker }
+      }}>
+        <p>Tkr: <span className="ticker-slider__item--ticker">{ticker.symbol}</span></p>
+        <p>Price: <span className="ticker-slider__item--price">{ticker.price}</span></p>
+        <p>{moment(ticker.updated_at).format('MMM Do, h:mm a')}</p>
+      </Link>
     </Paper>
   ))
 

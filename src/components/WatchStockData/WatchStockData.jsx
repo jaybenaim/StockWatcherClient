@@ -28,7 +28,7 @@ const WatchStockData = ({
     if (query.length > 0) {
       try {
         setLoading(true)
-        const response = await local.get(`stock/search/summary?symbol=${symbol}`)
+        const response = await local.get(`/stock/summary?symbol=${symbol}`)
 
         if (response.status === 200) {
           setStockData(response.data)
