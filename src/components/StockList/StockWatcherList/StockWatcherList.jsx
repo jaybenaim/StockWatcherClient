@@ -1,22 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types"
-import { Button, Container, List } from '@material-ui/core';
+import { Button, Container, List, Snackbar } from '@material-ui/core';
 import moment from "moment"
 import StockWatcherListItem from '../StockWatcherListItem/StockWatcherListItem';
 import { getStockWatchersByEmail } from 'redux-store/actions/watcherActions';
 import StockWatcherEditForm from '../StockWatcherEditForm/StockWatcherEditForm';
 import { ArrowDownward } from '@material-ui/icons';
+import local from 'api/local';
+import { Alert } from '@material-ui/lab';
 
 const StockWatcherList = (props) => {
   let { symbol, userEmail, setLoading, watchers } = props
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alert, setAlert] = useState({
+    severity: "info",
+    message: ""
+  })
   const [ tickerToEdit, setTickerToEdit ] = useState(undefined)
   const [ showEditButton, toggleEditButton ] = useState({
     ticker: undefined,
     open: false
-  })
-  const [ showEditForm, toggleEditForm ] = useState({
-    ticker: undefined
   })
 
   const getStockWatchers = async () => {
@@ -41,13 +45,39 @@ const StockWatcherList = (props) => {
   // eslint-disable-next-line
   }, [userEmail])
 
-
-
   const handleEdit = (tickerSymbol) => {
     if (tickerSymbol === tickerToEdit) {
       setTickerToEdit(undefined)
     } else {
       setTickerToEdit(tickerSymbol)
+    }
+  }
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await local.delete(`/watchers/${id}`)
+
+      console.log(response)
+      if (response.status !== 500) {
+        setAlertOpen(true);
+        setAlert({
+          severity: "success",
+          message: `Deleted Stock Watcher for ${showEditButton.ticker}`
+        })
+        getStockWatchers()
+      } else {
+        setAlertOpen(true);
+        setAlert({
+          severity: "error",
+          message: "Issue deleting current stock watcher, please try again."
+        })
+      }
+    } catch (err) {
+      setAlertOpen(true);
+      setAlert({
+        severity: "error",
+        message: err.message
+      })
     }
   }
 
@@ -85,11 +115,21 @@ const StockWatcherList = (props) => {
               />
 
               {(showEditButton.ticker === ticker.symbol) && showEditButton.open ? (
-                <Button
-                  onClick={() => handleEdit(ticker.symbol)}
-                >
-                  {tickerToEdit === ticker.symbol ? "Hide" : "Edit"}
-                </Button>
+                <div className="stock-watcher-list__dropdown-buttons">
+                  <Button
+                    onClick={() => handleEdit(ticker.symbol)}
+                    variant="outlined"
+                  >
+                    {tickerToEdit === ticker.symbol ? "Hide" : "Edit"}
+                  </Button>
+
+                  <Button
+                    onClick={() => handleDelete(tickerWatcher.id)}
+                    variant="contained"
+                  >
+                    Delete
+                  </Button>
+                </div>
               ) : (
                 <div
                   className="stock-watcher-list__edit-toggle-icon"
@@ -119,6 +159,14 @@ const StockWatcherList = (props) => {
     })
   }
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setAlertOpen(false);
+  };
+
   return (
     <Container>
       {symbol ? (
@@ -130,6 +178,10 @@ const StockWatcherList = (props) => {
       <List className="stock-watcher--list">
         {watchers && listItems()}
       </List>
+
+      <Snackbar open={alertOpen} autoHideDuration={6000} onClose={handleClose}>
+        <Alert severity={alert.severity} onClose={handleClose}>{alert.message}</Alert>
+      </Snackbar>
     </Container>
    );
 }

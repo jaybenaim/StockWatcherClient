@@ -5,8 +5,7 @@ import local from 'api/local';
 import { connect } from 'react-redux';
 import { Alert } from '@material-ui/lab';
 
-const StockWatcherEditForm = ({ user, tickerWatcher, min: prevMin, max: prevMax, onSuccess: getStockWatchers }) => {
-  const { ticker } = tickerWatcher
+const StockWatcherEditForm = ({ tickerWatcher, min: prevMin, max: prevMax, onSuccess: getStockWatchers }) => {
   const [isLoading, setLoading] = useState(false)
   const [min, setMin] = useState(prevMin)
   const [max, setMax] = useState(prevMax)
@@ -26,10 +25,8 @@ const StockWatcherEditForm = ({ user, tickerWatcher, min: prevMin, max: prevMax,
       }
 
       const response = await local.put(`/watchers/${tickerWatcher.id}/`, data)
-      console.log(response)
 
       if (response.data.status !== 500) {
-        console.log(response.data)
         getStockWatchers()
         setAlertOpen(true);
         setAlert({
@@ -44,7 +41,6 @@ const StockWatcherEditForm = ({ user, tickerWatcher, min: prevMin, max: prevMax,
         })
       }
     } catch(err) {
-      console.log(err)
       setAlertOpen(true);
       setAlert({
         severity: "error",

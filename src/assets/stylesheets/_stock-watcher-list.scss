@@ -11,4 +11,10 @@
   &__edit-toggle-icon {
     width: 25%;
   }
+
+  &__dropdown-buttons {
+    button {
+      margin: 0 2em;
+    }
+  }
 }
