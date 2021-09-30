@@ -61,6 +61,7 @@ export default function PrimarySearchAppBar() {
       .then(function () {
         // Sign-out successful.
         console.log("signed out");
+        localStorage.removeItem('fb-token')
         history.push("/sign-in");
       })
       .catch(function (error) {

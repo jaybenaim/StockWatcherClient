@@ -17,7 +17,6 @@ var firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
 // analytics is optional
 // firebase.analytics();
 // const analytics = getAnalytics(app);

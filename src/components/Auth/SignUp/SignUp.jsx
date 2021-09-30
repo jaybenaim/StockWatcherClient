@@ -16,6 +16,7 @@ import { useFirebase } from "react-redux-firebase";
 import { useHistory, Link } from "react-router-dom";
 import "../Auth.scss";
 import local from 'api/local';
+import { auth } from 'config/firebase';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -61,7 +62,9 @@ export default function SignUp() {
             password,
           })
 
-          const newUserEmail = response.profile.email || ''
+          const newUserEmail = response.email || ''
+          const token = await auth.currentUser.getIdToken()
+          localStorage.setItem('fb-token', token)
 
           if (provider !== "email" && newUserEmail.length > 0) {
             try {
@@ -77,8 +80,6 @@ export default function SignUp() {
               }
 
               if (newUser.data.status !== 409) {
-                const token = await firebase.auth().currentUser.getIdToken()
-                localStorage.setItem('fb-token', token)
                 history.push("/");
               } else {
                 setErrors({
@@ -127,7 +128,8 @@ export default function SignUp() {
 
         console.log('Res', response)
         const newUserEmail = response.profile.email || ''
-
+        const token = await response.user.getIdToken()
+        localStorage.setItem('fb-token', token)
         if (provider !== "email" && newUserEmail.length > 0) {
           try {
             const newUser = await local.post('/users/', {
@@ -142,8 +144,6 @@ export default function SignUp() {
             }
 
             if (newUser.data.status !== 409) {
-              const token = await firebase.auth().currentUser.getIdToken()
-              localStorage.setItem('fb-token', token)
               history.push("/");
             } else {
               setErrors({

@@ -20,6 +20,7 @@ import "../Auth.scss";
 import Copyright from 'components/Copyright/Copyright';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import local from 'api/local';
+import { auth } from 'config/firebase';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -62,8 +63,13 @@ export default function SignIn() {
 
       // const token = await firebase.auth().currentUser.getIdToken()
       // localStorage.setItem('fb-token', token)
+      console.log(response)
 
-      const newUserEmail = response.profile.email || ''
+      const newUserEmail = response.user.email || ''
+
+      const token = await auth.currentUser.getIdToken(true)
+      console.log('Token', token)
+      localStorage.setItem('fb-token', token)
 
       if (provider !== "email" && newUserEmail.length > 0) {
         try {
@@ -78,8 +84,10 @@ export default function SignIn() {
             })
           }
 
+          console.log('new USer', newUser)
+
           if (newUser.data.status !== 409) {
-            const token = await firebase.auth().currentUser.getIdToken()
+            // const token = await firebase.auth().currentUser.getIdToken()
             localStorage.setItem('fb-token', token)
             history.push("/");
           } else {
