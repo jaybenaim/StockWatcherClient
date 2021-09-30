@@ -6,9 +6,15 @@ import moment from "moment"
 import StockWatcherListItem from '../StockWatcherListItem/StockWatcherListItem';
 import { getStockWatchersByEmail } from 'redux-store/actions/watcherActions';
 import StockWatcherEditForm from '../StockWatcherEditForm/StockWatcherEditForm';
+import { ArrowDownward } from '@material-ui/icons';
 
 const StockWatcherList = (props) => {
   let { symbol, userEmail, setLoading, watchers } = props
+  const [ tickerToEdit, setTickerToEdit ] = useState(undefined)
+  const [ showEditButton, toggleEditButton ] = useState({
+    ticker: undefined,
+    open: false
+  })
   const [ showEditForm, toggleEditForm ] = useState({
     ticker: undefined
   })
@@ -36,10 +42,9 @@ const StockWatcherList = (props) => {
   }, [userEmail])
 
 
-  const [ tickerToEdit, setTickerToEdit ] = useState(undefined)
 
   const handleEdit = (tickerSymbol) => {
-    if (tickerSymbol == tickerToEdit) {
+    if (tickerSymbol === tickerToEdit) {
       setTickerToEdit(undefined)
     } else {
       setTickerToEdit(tickerSymbol)
@@ -61,9 +66,16 @@ const StockWatcherList = (props) => {
       const lastUpdated = moment(ticker.updated_at).format(dateFormat).replace(', 2021', ', ')
 
       return (
-        <div key={i}>
+        <div
+          key={i}
+          className="stock-watcher-list__item"
+          onMouseLeave={() => toggleEditButton({
+            ticker: ticker.symbol,
+            open: false
+          })}
+        >
           {((tickerToEdit === undefined) || (tickerToEdit === ticker.symbol)) && (
-            <div>
+            <div className="stock-watcher-list__item-wrapper">
               <StockWatcherListItem
                 ticker={ticker}
                 min={min_price}
@@ -72,7 +84,23 @@ const StockWatcherList = (props) => {
                 lastUpdated={lastUpdated}
               />
 
-              <Button onClick={() => handleEdit(ticker.symbol)}>Edit</Button>
+              {(showEditButton.ticker === ticker.symbol) && showEditButton.open ? (
+                <Button
+                  onClick={() => handleEdit(ticker.symbol)}
+                >
+                  {tickerToEdit === ticker.symbol ? "Hide" : "Edit"}
+                </Button>
+              ) : (
+                <div
+                  className="stock-watcher-list__edit-toggle-icon"
+                  onMouseEnter={() => toggleEditButton({
+                    ticker: ticker.symbol,
+                    open: true
+                  })}
+                >
+                  <ArrowDownward />
+                </div>
+              )}
             </div>
           )}
 

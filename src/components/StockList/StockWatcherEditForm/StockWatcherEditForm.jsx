@@ -96,6 +96,7 @@ const StockWatcherEditForm = ({ user, tickerWatcher, min: prevMin, max: prevMax,
 
             <Grid
               item
+              xs={5}
               className="center"
             >
               <FormControl>
@@ -114,6 +115,12 @@ const StockWatcherEditForm = ({ user, tickerWatcher, min: prevMin, max: prevMax,
 
             <Grid
               item
+              xs={2}
+            />
+
+            <Grid
+              item
+              xs={5}
               className="center"
             >
               <FormControl>

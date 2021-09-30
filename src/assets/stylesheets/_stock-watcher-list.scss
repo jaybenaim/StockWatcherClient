@@ -1,0 +1,14 @@
+.stock-watcher-list {
+  &__item {
+    @include flex();
+    min-height: 300px;
+  }
+
+  &__item-wrapper {
+    min-height: 300px;
+  }
+
+  &__edit-toggle-icon {
+    width: 25%;
+  }
+}

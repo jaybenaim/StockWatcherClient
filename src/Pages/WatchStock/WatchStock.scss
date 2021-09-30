@@ -24,6 +24,7 @@ h1, h2 {
   &--list {
     @include flex($dir: row, $justify: flex-start, $wrap: wrap);
     max-width: 100%;
+    min-height: 300px;
   }
 
   &--list-item {
