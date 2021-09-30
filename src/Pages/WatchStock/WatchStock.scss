@@ -27,7 +27,7 @@ h1, h2 {
   }
 
   &--list-item {
-    width: 50% !important;
+    width: 100% !important;
     justify-content: flex-start;
 
     p {
@@ -47,11 +47,11 @@ h1, h2 {
     }
 
     @media (min-width: 789px) {
-      width: 30% !important;
+      // width: 30% !important;
     }
 
     @media (min-width: 1025px) {
-      width: 25% !important;
+      // width: 25% !important;
     }
   }
 

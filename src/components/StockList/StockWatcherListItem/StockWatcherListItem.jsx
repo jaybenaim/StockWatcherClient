@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from "prop-types";
 import { ListItem } from '@material-ui/core';
 import { Link } from 'react-router-dom';
@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 
 const StockWatcherListItem = ({
   ticker,
-  min_price,
-  max_price,
+  min,
+  max,
   created,
   lastUpdated
 }) => {
@@ -16,12 +16,14 @@ const StockWatcherListItem = ({
       className="stock-watcher--list-item display-col justify-start"
     >
       <p>
-        <Link
-          to={`search/${ticker.symbol}`} className="stock-watcher--list-item-link"
-        >
+        <Link to={`search/${ticker.symbol}`} className="stock-watcher--list-item-link">
           {ticker.symbol} - ${" "}
 
-          <span className={ticker.price < Number(min_price) || ticker.price > Number(max_price) ? 'price-out-of-range' : 'price-in-range'}>
+          <span className={
+            (Number(ticker.price) < Number(min)) || (Number(ticker.price) > Number(max))
+            ? 'price-out-of-range'
+            : 'price-in-range'}
+          >
             {ticker.price}
           </span>
         </Link>
@@ -34,11 +36,11 @@ const StockWatcherListItem = ({
       )}
 
       <p>
-        <strong>Min: </strong><span>{min_price}</span>
+        <strong>Min: </strong><span>{min}</span>
       </p>
 
       <p>
-        <strong>Max: </strong><span>{max_price}</span>
+        <strong>Max: </strong><span>{max}</span>
       </p>
 
       <p>
@@ -54,8 +56,8 @@ const StockWatcherListItem = ({
 
 StockWatcherListItem.propTypes = {
   ticker: PropTypes.object,
-  min_price: PropTypes.string,
-  max_price: PropTypes.string,
+  min: PropTypes.string,
+  max: PropTypes.string,
   created: PropTypes.string,
   lastUpdated: PropTypes.string
 }

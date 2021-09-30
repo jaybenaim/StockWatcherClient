@@ -1,63 +1,87 @@
-import React from 'react';
-import { FormControl, FormGroup, FormHelperText, InputLabel, Grid, Input, Button } from '@material-ui/core';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { FormControl, FormGroup, FormHelperText, InputLabel, Grid, Input, Button, Snackbar, CircularProgress } from '@material-ui/core';
 import PropTypes from "prop-types"
 import local from 'api/local';
+import { connect } from 'react-redux';
+import { Alert } from '@material-ui/lab';
 
-const WatchStockForm = ({
-  user,
-  symbol,
-  min,
-  max,
-  setMin,
-  setMax,
-  stockData,
-  setAlertOpen,
-  setAlert,
-  setLoading
-}) => {
-  const watchStock = async () => {
+const StockWatcherEditForm = ({ user, tickerWatcher, min: prevMin, max: prevMax, onSuccess: getStockWatchers }) => {
+  const { ticker } = tickerWatcher
+  const [isLoading, setLoading] = useState(false)
+  const [min, setMin] = useState(prevMin)
+  const [max, setMax] = useState(prevMax)
+
+  const [alertOpen, setAlertOpen] = useState(false)
+  const [alert, setAlert] = useState({
+    severity: "info",
+    message: ""
+  })
+
+  const editStockWatcher = async () => {
     try {
       setLoading(true)
       const data = {
-        "user": user,
-        "symbol": symbol,
-        "price": stockData.currentPrice,
         "min_price": min,
         "max_price": max
       }
 
-      const response = await local.post(`stock/watch/`, data)
+      const response = await local.put(`/watchers/${tickerWatcher.id}/`, data)
       console.log(response)
 
       if (response.data.status !== 500) {
         console.log(response.data)
+        getStockWatchers()
         setAlertOpen(true);
         setAlert({
           severity: "success",
-          message: "New Stock Watcher Created"
+          message: "Updated Stock Watcher"
         })
       } else {
         setAlertOpen(true);
         setAlert({
           severity: "error",
-          message: "Issue creating new stock watcher, please try again."
+          message: "Issue updating current stock watcher, please try again."
         })
       }
     } catch(err) {
       console.log(err)
+      setAlertOpen(true);
+      setAlert({
+        severity: "error",
+        message: "Issue updating current stock watcher, please try again."
+      })
     }
     setLoading(false)
   }
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setAlertOpen(false);
+  };
+
   return (
-    <Grid container>
+    <div>
       <Grid
         item
         xs={12}
         className="text-center pt-2"
       >
-        <h3>Get notified when the price is out of this range: {min || stockData.currentPrice} - {max || stockData.currentPrice}</h3>
+        <Snackbar open={alertOpen} autoHideDuration={6000} onClose={handleClose}>
+          <Alert severity={alert.severity} onClose={handleClose}>{alert.message}</Alert>
+        </Snackbar>
+      </Grid>
+
+      <Grid
+        item
+        container
+        justifyContent="center"
+        alignItems="center"
+        xs={12}
+      >
+        {isLoading && <CircularProgress />}
       </Grid>
 
       <Grid
@@ -69,11 +93,9 @@ const WatchStockForm = ({
             container
             className="watch-stock--form"
           >
-            <Grid item xs={3}/>
 
             <Grid
               item
-              xs={3}
               className="center"
             >
               <FormControl>
@@ -81,6 +103,7 @@ const WatchStockForm = ({
                 <Input
                   id="min"
                   aria-describedby="min-price"
+                  defaultValue={prevMin}
                   onChange={(e) => setMin(e.target.value)}
                   type="number"
                 />
@@ -91,7 +114,6 @@ const WatchStockForm = ({
 
             <Grid
               item
-              xs={3}
               className="center"
             >
               <FormControl>
@@ -99,6 +121,7 @@ const WatchStockForm = ({
                 <Input
                   id="max"
                   aria-describedby="max-price"
+                  defaultValue={prevMax}
                   onChange={(e) => setMax(e.target.value)}
                   type="number"
                 />
@@ -107,7 +130,6 @@ const WatchStockForm = ({
               </FormControl>
             </Grid>
 
-            <Grid item xs={3}/>
 
             <Grid
               item
@@ -115,7 +137,7 @@ const WatchStockForm = ({
               className="watch-stock--form--submit"
             >
               <FormControl>
-                <Button variant="outlined" onClick={watchStock}>
+                <Button variant="outlined" onClick={editStockWatcher}>
                   Watch
                 </Button>
               </FormControl>
@@ -123,21 +145,18 @@ const WatchStockForm = ({
           </Grid>
         </FormGroup>
       </Grid>
-    </Grid>
-  );
+    </div>
+   );
 }
 
-WatchStockForm.propTypes = {
+StockWatcherEditForm.propTypes = {
   user: PropTypes.string,
-  symbol: PropTypes.string.isRequired,
-  min: PropTypes.string,
-  max: PropTypes.string,
-  setMin: PropTypes.func.isRequired,
-  setMax: PropTypes.func.isRequired,
-  stockData: PropTypes.object.isRequired,
-  setAlertOpen: PropTypes.object.isRequired,
-  setAlert: PropTypes.object.isRequired,
-  setLoading: PropTypes.func.isRequired
+  tickerWatcher: PropTypes.object.isRequired,
+  min: PropTypes.string.isRequired,
+  max: PropTypes.string.isRequired,
+  onSuccess: PropTypes.func.isRequired,
+  setMin: PropTypes.func,
+  setMax: PropTypes.func,
 }
 
 const mapStateToProps = (state) => {
@@ -147,4 +166,4 @@ const mapStateToProps = (state) => {
   }
 };
 
-export default connect(mapStateToProps, {})(WatchStockForm);
+export default connect(mapStateToProps, {})(StockWatcherEditForm);

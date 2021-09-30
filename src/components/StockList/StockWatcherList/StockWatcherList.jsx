@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types"
-import { Container, List } from '@material-ui/core';
+import { Button, Container, List } from '@material-ui/core';
 import moment from "moment"
 import StockWatcherListItem from '../StockWatcherListItem/StockWatcherListItem';
 import { getStockWatchersByEmail } from 'redux-store/actions/watcherActions';
+import StockWatcherEditForm from '../StockWatcherEditForm/StockWatcherEditForm';
 
 const StockWatcherList = (props) => {
   let { symbol, userEmail, setLoading, watchers } = props
+  const [ showEditForm, toggleEditForm ] = useState({
+    ticker: undefined
+  })
 
   const getStockWatchers = async () => {
     try {
@@ -32,6 +36,16 @@ const StockWatcherList = (props) => {
   }, [userEmail])
 
 
+  const [ tickerToEdit, setTickerToEdit ] = useState(undefined)
+
+  const handleEdit = (tickerSymbol) => {
+    if (tickerSymbol == tickerToEdit) {
+      setTickerToEdit(undefined)
+    } else {
+      setTickerToEdit(tickerSymbol)
+    }
+  }
+
   const listItems = () => {
     return watchers.map((tickerWatcher, i) => {
       const {
@@ -47,14 +61,32 @@ const StockWatcherList = (props) => {
       const lastUpdated = moment(ticker.updated_at).format(dateFormat).replace(', 2021', ', ')
 
       return (
-        <StockWatcherListItem
-          key={i}
-          ticker={ticker}
-          min_price={min_price}
-          max_price={max_price}
-          created={created}
-          lastUpdated={lastUpdated}
-        />
+        <div key={i}>
+          {((tickerToEdit === undefined) || (tickerToEdit === ticker.symbol)) && (
+            <div>
+              <StockWatcherListItem
+                ticker={ticker}
+                min={min_price}
+                max={max_price}
+                created={created}
+                lastUpdated={lastUpdated}
+              />
+
+              <Button onClick={() => handleEdit(ticker.symbol)}>Edit</Button>
+            </div>
+          )}
+
+
+          {tickerToEdit === ticker.symbol && (
+
+            <StockWatcherEditForm
+              tickerWatcher={tickerWatcher}
+              min={min_price}
+              max={max_price}
+              onSuccess={getStockWatchers}
+            />
+          )}
+        </div>
       )
     })
   }
