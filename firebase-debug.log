@@ -1088,3 +1088,338 @@ Before we get started, keep in mind:
 [debug] [2021-10-08T22:15:11.144Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
 [debug] [2021-10-08T22:15:11.145Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"9.1.2","browserURL":"https://www.gstatic.com/firebasejs/9.1.2/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/9.1.2/firebase.tgz"},"live":{"version":"9.1","browserURL":"https://www.gstatic.com/firebasejs/live/9.1/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/9.1/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/9.1.2/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js","app-check":"https://www.gstatic.com/firebasejs/9.1.2/firebase-app-check.js","auth":"https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js","auth/cordova":"https://www.gstatic.com/firebasejs/9.1.2/firebase-auth/cordova.js","auth/react-native":"https://www.gstatic.com/firebasejs/9.1.2/firebase-auth/react-native.js","functions":"https://www.gstatic.com/firebasejs/9.1.2/firebase-functions.js","firestore":"https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js","firestore/lite":"https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore/lite.js","storage":"https://www.gstatic.com/firebasejs/9.1.2/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/9.1.2/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/9.1.2/firebase-remote-config.js","messaging":"https://www.gstatic.com/firebasejs/9.1.2/firebase-messaging.js","messaging/sw":"https://www.gstatic.com/firebasejs/9.1.2/firebase-messaging/sw.js","database":"https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js","firestore.memory":"https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.memory.js"}}
 [info] i  Skipping write of build/index.html 
+[debug] [2021-10-08T22:16:50.468Z] ----------------------------------------------------------------------
+[debug] [2021-10-08T22:16:50.471Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2021-10-08T22:16:50.471Z] CLI Version:   9.20.0
+[debug] [2021-10-08T22:16:50.471Z] Platform:      darwin
+[debug] [2021-10-08T22:16:50.471Z] Node Version:  v14.15.0
+[debug] [2021-10-08T22:16:50.472Z] Time:          Fri Oct 08 2021 18:16:50 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-10-08T22:16:50.473Z] Env Overrides: FIREBASE_CLIENT_ID
+[debug] [2021-10-08T22:16:50.473Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-08T22:16:50.522Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-08T22:16:50.523Z] > authorizing via signed-in user (benaimjacob@gmail.com)
+[debug] [2021-10-08T22:16:50.523Z] [iam] checking project stock-watcher-7b087 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-10-08T22:16:50.526Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/stock-watcher-7b087:testIamPermissions  
+ {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-10-08T22:16:51.447Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:16:51 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=164","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:16:51.450Z] > refreshing access token with scopes: []
+[debug] [2021-10-08T22:16:51.450Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:16:51.922Z] <<< HTTP RESPONSE 401 {"pragma":"no-cache","date":"Fri, 08 Oct 2021 22:16:52 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:16:51.924Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 [none]
+[debug] [2021-10-08T22:16:52.361Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 401
+[debug] [2021-10-08T22:16:52.361Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2021-10-08T22:16:52.361Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2021-10-08T22:16:52.363Z] FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at module.exports (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Client.doRequest (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:238:23)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async Client.request (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:96:20)
+    at async Object.getFirebaseProject (/usr/local/lib/node_modules/firebase-tools/lib/management/projects.js:290:21)
+    at async Object.getDefaultHostingSite (/usr/local/lib/node_modules/firebase-tools/lib/getDefaultHostingSite.js:8:21)
+    at async requireHostingSite (/usr/local/lib/node_modules/firebase-tools/lib/requireHostingSite.js:9:18)
+    at async Object.fn (/usr/local/lib/node_modules/firebase-tools/lib/commands/deploy.js:65:9)
+    at async /usr/local/lib/node_modules/firebase-tools/lib/command.js:188:17
+[error] 
+[error] Error: Failed to get Firebase project stock-watcher-7b087. Please make sure the project exists and your account has permission to access it.
+[debug] [2021-10-08T22:17:07.114Z] ----------------------------------------------------------------------
+[debug] [2021-10-08T22:17:07.117Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2021-10-08T22:17:07.117Z] CLI Version:   9.20.0
+[debug] [2021-10-08T22:17:07.117Z] Platform:      darwin
+[debug] [2021-10-08T22:17:07.117Z] Node Version:  v14.15.0
+[debug] [2021-10-08T22:17:07.118Z] Time:          Fri Oct 08 2021 18:17:07 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-10-08T22:17:07.118Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-08T22:17:07.168Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-08T22:17:07.172Z] > authorizing via signed-in user (benaimjacob@gmail.com)
+[debug] [2021-10-08T22:17:07.173Z] [iam] checking project stock-watcher-7b087 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-10-08T22:17:07.175Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/stock-watcher-7b087:testIamPermissions  
+ {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-10-08T22:17:07.929Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:17:08 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=155","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:17:07.932Z] > refreshing access token with scopes: []
+[debug] [2021-10-08T22:17:07.932Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:17:08.297Z] <<< HTTP RESPONSE 200 {"date":"Fri, 08 Oct 2021 22:17:08 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:17:08.320Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 [none]
+[debug] [2021-10-08T22:17:08.939Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 200
+[debug] [2021-10-08T22:17:08.939Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 {"projectId":"stock-watcher-7b087","projectNumber":"919980135889","displayName":"Stock Watcher","name":"projects/stock-watcher-7b087","resources":{"hostingSite":"stock-watcher-7b087","realtimeDatabaseInstance":"stock-watcher-7b087-default-rtdb","storageBucket":"stock-watcher-7b087.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'stock-watcher-7b087'...
+[info] 
+[info] i  deploying firestore, hosting 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2021-10-08T22:17:08.943Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-10-08T22:17:08.943Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:17:09.159Z] <<< HTTP RESPONSE 200 {"date":"Fri, 08 Oct 2021 22:17:09 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:17:09.178Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/stock-watcher-7b087:test  
+ {"source":{"files":[{"name":"firestore.rules","content":"rules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /{document=**} {\n      allow read, write;\n    }\n  }\n}"}]}}
+[debug] [2021-10-08T22:17:09.876Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:17:09 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2021-10-08T22:17:09.880Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-10-08T22:17:10.696Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:17:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:17:10.700Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/stock-watcher-7b087/releases?pageSize=10&pageToken=  
+ 
+[debug] [2021-10-08T22:17:10.700Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1/projects/stock-watcher-7b087/databases/(default)/collectionGroups/-/indexes  
+ 
+[debug] [2021-10-08T22:17:10.951Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:17:11 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:17:10.952Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/stock-watcher-7b087/rulesets/24600fa0-b287-4abc-aac2-c7bc28ae0e1a  
+ 
+[debug] [2021-10-08T22:17:11.204Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:17:11 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  firestore: latest version of firestore.rules already up to date, skipping upload... 
+[debug] [2021-10-08T22:17:11.221Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:17:11 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:17:11.222Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1/projects/stock-watcher-7b087/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false  
+ 
+[debug] [2021-10-08T22:17:11.753Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:17:11 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  firestore: deployed indexes in firestore.indexes.json successfully 
+[info] i  hosting[stock-watcher-7b087]: beginning deploy... 
+[info] i  hosting[stock-watcher-7b087]: found 15 files in build 
+[debug] [2021-10-08T22:17:11.763Z] [hosting] hash cache [YnVpbGQ] not populated
+[debug] [2021-10-08T22:17:12.413Z] > refreshing access token with scopes: []
+[debug] [2021-10-08T22:17:12.413Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:17:12.414Z] [hosting] hash cache [YnVpbGQ] stored for 15 files
+[debug] [2021-10-08T22:17:12.415Z] [hosting][hash queue][FINAL] {"max":646,"min":8,"avg":57.53333333333333,"active":0,"complete":15,"success":15,"errored":0,"retried":0,"total":15,"elapsed":651}
+[debug] [2021-10-08T22:17:12.830Z] <<< HTTP RESPONSE 200 {"date":"Fri, 08 Oct 2021 22:17:12 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:17:12.850Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34:populateFiles [none]
+[debug] [2021-10-08T22:17:12.850Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34:populateFiles {"files":{"/manifest.json":"381760a5b7f5c06b98d4d9545ef6b04e790bca4821ea19c2044b937f35913987","/asset-manifest.json":"43744ae7b48f98f8c9cef6ff13ffd2755dbed6ea8c1b7ea7e7c424337c0b492e","/favicon.ico":"b72f7455f00e4e58792d2bca892abb068e2213838c0316d6b7a0d6d16acd1955","/precache-manifest.d6e525ec85c1600dd86ad278ff31a4a5.js":"d20d01697a5323bf6389b8a7d62c8b90589b79599ae39516b5ced8ac3456ed1e","/service-worker.js":"715c9c87029beb3050ac7a926e15057fbcae4c12992e02630f4f020e7a08f098","/static/js/2.19b18c5d.chunk.js.LICENSE.txt":"2ca077f3175e8a7476613a2a0df176e3b6e47c612827fbbc2bd805bc28eb062d","/static/css/main.3dde0863.chunk.css":"3754493bdcd2b59b8f4d78bc10c6ab8abf37c57fa7fbd774f88957af32c20d51","/static/css/main.3dde0863.chunk.css.map":"e2d10bd9f392bb1647f594d95dd0ffd9b053fcb6a41ba12943572d9335bf1085","/static/js/runtime-main.e51d0e06.js":"6ca637df60540ce9fe0b93619f41e6356cf10e8cb775575bae52e950f6ab718d","/static/js/main.7ea31d1d.chunk.js":"27e65cd4aeec267bd1ff2b8bab440554331e77bcc271d4eb3cdaea6021b80d6f","/static/js/runtime-main.e51d0e06.js.map":"fed274b3e754cb3c363d2dcc15d1eb331d9774740434cf775092c4410182c08a","/index.html":"835ebb3943b49c28c5ac0f1931cd5504a0a20f0d7843297425c19d9f755c24d7","/static/js/main.7ea31d1d.chunk.js.map":"71d6bfecc77e9e71e92631c7fa4b737f079430703da3b0a964aa7ecae0114814","/static/js/2.19b18c5d.chunk.js":"ccd7d0eb3512ab992d1a0592705ca8c4afde6f83dab5c3050bb1f5551c28516f","/static/js/2.19b18c5d.chunk.js.map":"d72b02d31fcde48573ba4b75f680f4a1de95ebedf9a9f37866d9d471af03e08d"}}
+[debug] [2021-10-08T22:17:13.469Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34:populateFiles 200
+[debug] [2021-10-08T22:17:13.469Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34:populateFiles {"uploadRequiredHashes":["6ca637df60540ce9fe0b93619f41e6356cf10e8cb775575bae52e950f6ab718d","ccd7d0eb3512ab992d1a0592705ca8c4afde6f83dab5c3050bb1f5551c28516f","fed274b3e754cb3c363d2dcc15d1eb331d9774740434cf775092c4410182c08a","71d6bfecc77e9e71e92631c7fa4b737f079430703da3b0a964aa7ecae0114814","715c9c87029beb3050ac7a926e15057fbcae4c12992e02630f4f020e7a08f098","43744ae7b48f98f8c9cef6ff13ffd2755dbed6ea8c1b7ea7e7c424337c0b492e","27e65cd4aeec267bd1ff2b8bab440554331e77bcc271d4eb3cdaea6021b80d6f","835ebb3943b49c28c5ac0f1931cd5504a0a20f0d7843297425c19d9f755c24d7","3754493bdcd2b59b8f4d78bc10c6ab8abf37c57fa7fbd774f88957af32c20d51","e2d10bd9f392bb1647f594d95dd0ffd9b053fcb6a41ba12943572d9335bf1085","2ca077f3175e8a7476613a2a0df176e3b6e47c612827fbbc2bd805bc28eb062d","d20d01697a5323bf6389b8a7d62c8b90589b79599ae39516b5ced8ac3456ed1e","d72b02d31fcde48573ba4b75f680f4a1de95ebedf9a9f37866d9d471af03e08d"],"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files"}
+[debug] [2021-10-08T22:17:13.474Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/6ca637df60540ce9fe0b93619f41e6356cf10e8cb775575bae52e950f6ab718d [none]
+[debug] [2021-10-08T22:17:13.474Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/6ca637df60540ce9fe0b93619f41e6356cf10e8cb775575bae52e950f6ab718d [stream]
+[debug] [2021-10-08T22:17:13.475Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/ccd7d0eb3512ab992d1a0592705ca8c4afde6f83dab5c3050bb1f5551c28516f [none]
+[debug] [2021-10-08T22:17:13.476Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/ccd7d0eb3512ab992d1a0592705ca8c4afde6f83dab5c3050bb1f5551c28516f [stream]
+[debug] [2021-10-08T22:17:13.477Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/fed274b3e754cb3c363d2dcc15d1eb331d9774740434cf775092c4410182c08a [none]
+[debug] [2021-10-08T22:17:13.477Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/fed274b3e754cb3c363d2dcc15d1eb331d9774740434cf775092c4410182c08a [stream]
+[debug] [2021-10-08T22:17:13.480Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/71d6bfecc77e9e71e92631c7fa4b737f079430703da3b0a964aa7ecae0114814 [none]
+[debug] [2021-10-08T22:17:13.480Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/71d6bfecc77e9e71e92631c7fa4b737f079430703da3b0a964aa7ecae0114814 [stream]
+[debug] [2021-10-08T22:17:13.481Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/715c9c87029beb3050ac7a926e15057fbcae4c12992e02630f4f020e7a08f098 [none]
+[debug] [2021-10-08T22:17:13.481Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/715c9c87029beb3050ac7a926e15057fbcae4c12992e02630f4f020e7a08f098 [stream]
+[debug] [2021-10-08T22:17:13.484Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/43744ae7b48f98f8c9cef6ff13ffd2755dbed6ea8c1b7ea7e7c424337c0b492e [none]
+[debug] [2021-10-08T22:17:13.485Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/43744ae7b48f98f8c9cef6ff13ffd2755dbed6ea8c1b7ea7e7c424337c0b492e [stream]
+[debug] [2021-10-08T22:17:13.486Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/27e65cd4aeec267bd1ff2b8bab440554331e77bcc271d4eb3cdaea6021b80d6f [none]
+[debug] [2021-10-08T22:17:13.486Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/27e65cd4aeec267bd1ff2b8bab440554331e77bcc271d4eb3cdaea6021b80d6f [stream]
+[debug] [2021-10-08T22:17:13.487Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/835ebb3943b49c28c5ac0f1931cd5504a0a20f0d7843297425c19d9f755c24d7 [none]
+[debug] [2021-10-08T22:17:13.487Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/835ebb3943b49c28c5ac0f1931cd5504a0a20f0d7843297425c19d9f755c24d7 [stream]
+[debug] [2021-10-08T22:17:13.488Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/3754493bdcd2b59b8f4d78bc10c6ab8abf37c57fa7fbd774f88957af32c20d51 [none]
+[debug] [2021-10-08T22:17:13.488Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/3754493bdcd2b59b8f4d78bc10c6ab8abf37c57fa7fbd774f88957af32c20d51 [stream]
+[debug] [2021-10-08T22:17:13.490Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/e2d10bd9f392bb1647f594d95dd0ffd9b053fcb6a41ba12943572d9335bf1085 [none]
+[debug] [2021-10-08T22:17:13.490Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/e2d10bd9f392bb1647f594d95dd0ffd9b053fcb6a41ba12943572d9335bf1085 [stream]
+[debug] [2021-10-08T22:17:13.491Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/2ca077f3175e8a7476613a2a0df176e3b6e47c612827fbbc2bd805bc28eb062d [none]
+[debug] [2021-10-08T22:17:13.491Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/2ca077f3175e8a7476613a2a0df176e3b6e47c612827fbbc2bd805bc28eb062d [stream]
+[debug] [2021-10-08T22:17:13.492Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/d20d01697a5323bf6389b8a7d62c8b90589b79599ae39516b5ced8ac3456ed1e [none]
+[debug] [2021-10-08T22:17:13.492Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/d20d01697a5323bf6389b8a7d62c8b90589b79599ae39516b5ced8ac3456ed1e [stream]
+[debug] [2021-10-08T22:17:13.493Z] >>> [apiv2][query] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/d72b02d31fcde48573ba4b75f680f4a1de95ebedf9a9f37866d9d471af03e08d [none]
+[debug] [2021-10-08T22:17:13.494Z] >>> [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/d72b02d31fcde48573ba4b75f680f4a1de95ebedf9a9f37866d9d471af03e08d [stream]
+[debug] [2021-10-08T22:17:13.495Z] [hosting][populate queue][FINAL] {"max":1061,"min":1061,"avg":1061,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":1082}
+[debug] [2021-10-08T22:17:13.495Z] [hosting] uploads queued: 13
+[debug] [2021-10-08T22:17:14.632Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/2ca077f3175e8a7476613a2a0df176e3b6e47c612827fbbc2bd805bc28eb062d 200
+[debug] [2021-10-08T22:17:14.633Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/2ca077f3175e8a7476613a2a0df176e3b6e47c612827fbbc2bd805bc28eb062d [stream]
+[debug] [2021-10-08T22:17:14.913Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/715c9c87029beb3050ac7a926e15057fbcae4c12992e02630f4f020e7a08f098 200
+[debug] [2021-10-08T22:17:14.913Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/715c9c87029beb3050ac7a926e15057fbcae4c12992e02630f4f020e7a08f098 [stream]
+[debug] [2021-10-08T22:17:14.914Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/3754493bdcd2b59b8f4d78bc10c6ab8abf37c57fa7fbd774f88957af32c20d51 200
+[debug] [2021-10-08T22:17:14.914Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/3754493bdcd2b59b8f4d78bc10c6ab8abf37c57fa7fbd774f88957af32c20d51 [stream]
+[debug] [2021-10-08T22:17:14.915Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/e2d10bd9f392bb1647f594d95dd0ffd9b053fcb6a41ba12943572d9335bf1085 200
+[debug] [2021-10-08T22:17:14.915Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/e2d10bd9f392bb1647f594d95dd0ffd9b053fcb6a41ba12943572d9335bf1085 [stream]
+[debug] [2021-10-08T22:17:14.916Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/6ca637df60540ce9fe0b93619f41e6356cf10e8cb775575bae52e950f6ab718d 200
+[debug] [2021-10-08T22:17:14.916Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/6ca637df60540ce9fe0b93619f41e6356cf10e8cb775575bae52e950f6ab718d [stream]
+[debug] [2021-10-08T22:17:14.916Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/43744ae7b48f98f8c9cef6ff13ffd2755dbed6ea8c1b7ea7e7c424337c0b492e 200
+[debug] [2021-10-08T22:17:14.917Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/43744ae7b48f98f8c9cef6ff13ffd2755dbed6ea8c1b7ea7e7c424337c0b492e [stream]
+[debug] [2021-10-08T22:17:14.917Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/27e65cd4aeec267bd1ff2b8bab440554331e77bcc271d4eb3cdaea6021b80d6f 200
+[debug] [2021-10-08T22:17:14.917Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/27e65cd4aeec267bd1ff2b8bab440554331e77bcc271d4eb3cdaea6021b80d6f [stream]
+[debug] [2021-10-08T22:17:14.918Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/d20d01697a5323bf6389b8a7d62c8b90589b79599ae39516b5ced8ac3456ed1e 200
+[debug] [2021-10-08T22:17:14.918Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/d20d01697a5323bf6389b8a7d62c8b90589b79599ae39516b5ced8ac3456ed1e [stream]
+[debug] [2021-10-08T22:17:14.919Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/fed274b3e754cb3c363d2dcc15d1eb331d9774740434cf775092c4410182c08a 200
+[debug] [2021-10-08T22:17:14.919Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/fed274b3e754cb3c363d2dcc15d1eb331d9774740434cf775092c4410182c08a [stream]
+[debug] [2021-10-08T22:17:14.928Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/835ebb3943b49c28c5ac0f1931cd5504a0a20f0d7843297425c19d9f755c24d7 200
+[debug] [2021-10-08T22:17:14.928Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/835ebb3943b49c28c5ac0f1931cd5504a0a20f0d7843297425c19d9f755c24d7 [stream]
+[debug] [2021-10-08T22:17:14.948Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/71d6bfecc77e9e71e92631c7fa4b737f079430703da3b0a964aa7ecae0114814 200
+[debug] [2021-10-08T22:17:14.949Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/71d6bfecc77e9e71e92631c7fa4b737f079430703da3b0a964aa7ecae0114814 [stream]
+[debug] [2021-10-08T22:17:15.160Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/ccd7d0eb3512ab992d1a0592705ca8c4afde6f83dab5c3050bb1f5551c28516f 200
+[debug] [2021-10-08T22:17:15.161Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/ccd7d0eb3512ab992d1a0592705ca8c4afde6f83dab5c3050bb1f5551c28516f [stream]
+[debug] [2021-10-08T22:17:16.430Z] <<< [apiv2][status] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/d72b02d31fcde48573ba4b75f680f4a1de95ebedf9a9f37866d9d471af03e08d 200
+[debug] [2021-10-08T22:17:16.430Z] <<< [apiv2][body] POST https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34/files/d72b02d31fcde48573ba4b75f680f4a1de95ebedf9a9f37866d9d471af03e08d [stream]
+[debug] [2021-10-08T22:17:16.431Z] [hosting][upload queue][FINAL] {"max":2958,"min":1160,"avg":1561.3076923076924,"active":0,"complete":13,"success":13,"errored":0,"retried":0,"total":13,"elapsed":2961}
+[info] ✔  hosting[stock-watcher-7b087]: file upload complete 
+[debug] [2021-10-08T22:17:16.431Z] [hosting] deploy completed after 4676ms
+[debug] [2021-10-08T22:17:16.432Z] [rules] releasing cloud.firestore with ruleset projects/stock-watcher-7b087/rulesets/24600fa0-b287-4abc-aac2-c7bc28ae0e1a
+[debug] [2021-10-08T22:17:16.432Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-10-08T22:17:16.433Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:17:16.663Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Fri, 08 Oct 2021 22:17:16 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:17:16.680Z] >>> HTTP REQUEST PATCH https://firebaserules.googleapis.com/v1/projects/stock-watcher-7b087/releases/cloud.firestore  
+ {"release":{"name":"projects/stock-watcher-7b087/releases/cloud.firestore","rulesetName":"projects/stock-watcher-7b087/rulesets/24600fa0-b287-4abc-aac2-c7bc28ae0e1a"}}
+[debug] [2021-10-08T22:17:17.102Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:17:17 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:17:17.103Z] [rules] updated release projects/stock-watcher-7b087/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore 
+[debug] [2021-10-08T22:17:17.103Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "stock-watcher-7b087"
+    },
+    "site": "stock-watcher-7b087",
+    "version": "sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34"
+  }
+]
+[info] i  hosting[stock-watcher-7b087]: finalizing version... 
+[debug] [2021-10-08T22:17:17.104Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34?updateMask=status  
+ {"status":"FINALIZED"}
+[debug] [2021-10-08T22:17:17.385Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:17:17 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:17:17.385Z] [hosting] finalized version for stock-watcher-7b087: {"name":"sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2021-10-08T22:17:10.603238Z","createUser":{"email":"benaimjacob@gmail.com"},"finalizeTime":"2021-10-08T22:17:17.502055Z","finalizeUser":{"email":"benaimjacob@gmail.com"}}
+[info] ✔  hosting[stock-watcher-7b087]: version finalized 
+[info] i  hosting[stock-watcher-7b087]: releasing new version... 
+[debug] [2021-10-08T22:17:17.386Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/releases?version_name=sites/stock-watcher-7b087/versions/e9f8cae3b0cd6f34  
+ {"message":null}
+[debug] [2021-10-08T22:17:17.656Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:17:17 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:21:13.262Z] ----------------------------------------------------------------------
+[debug] [2021-10-08T22:21:13.264Z] Command:       /usr/local/bin/node /usr/local/bin/firebase emulators:start
+[debug] [2021-10-08T22:21:13.264Z] CLI Version:   9.20.0
+[debug] [2021-10-08T22:21:13.264Z] Platform:      darwin
+[debug] [2021-10-08T22:21:13.264Z] Node Version:  v14.15.0
+[debug] [2021-10-08T22:21:13.265Z] Time:          Fri Oct 08 2021 18:21:13 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-10-08T22:21:13.265Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-08T22:21:13.324Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-08T22:21:13.325Z] > authorizing via signed-in user (benaimjacob@gmail.com)
+[info] i  emulators: Starting emulators: firestore, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: firestore, hosting"}}
+[debug] [2021-10-08T22:21:13.348Z] [hub] writing locator at /var/folders/zz/bhtq_8h51wvbq4ppfsj8556r0000gn/T/hub-stock-watcher-7b087.json
+[info] i  firestore: downloading cloud-firestore-emulator-v1.13.1.jar... {"metadata":{"emulator":{"name":"firestore"},"message":"downloading cloud-firestore-emulator-v1.13.1.jar..."}}
+[debug] [2021-10-08T22:21:13.373Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.13.1.jar 
+[debug] [2021-10-08T22:21:13.783Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.13.1.jar 200
+[debug] [2021-10-08T22:21:13.783Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.13.1.jar [stream]
+[debug] [2021-10-08T22:21:15.752Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2021-10-08T22:21:15.753Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2021-10-08T22:21:15.753Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/Users/jay/.cache/firebase/emulators/cloud-firestore-emulator-v1.13.1.jar","--host","localhost","--port",8080,"--rules","/Users/jay/projects/django/StockWatcher/StockWatcherClient/firestore.rules"],"optionalArgs":["port","webchannel_port","host","rules","functions_emulator","seed_from_export"],"joinArgs":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/Users/jay/.cache/firebase/emulators/cloud-firestore-emulator-v1.13.1.jar\",\"--host\",\"localhost\",\"--port\",8080,\"--rules\",\"/Users/jay/projects/django/StockWatcher/StockWatcherClient/firestore.rules\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"functions_emulator\",\"seed_from_export\"],\"joinArgs\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2021-10-08T22:21:19.047Z] Oct 08, 2021 6:21:19 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://localhost:60676
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:19 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\nINFO: Started WebSocket server on ws://localhost:60676\n"}}
+[debug] [2021-10-08T22:21:19.131Z] API endpoint: http://localhost:8080
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=localhost:8080
+
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://localhost:8080\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=localhost:8080\n\nDev App Server is now running.\n\n"}}
+[debug] [2021-10-08T22:21:19.163Z] > refreshing access token with scopes: []
+[debug] [2021-10-08T22:21:19.163Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:21:19.485Z] <<< HTTP RESPONSE 200 {"date":"Fri, 08 Oct 2021 22:21:19 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:21:19.503Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites 
+[debug] [2021-10-08T22:21:20.026Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites 200
+[debug] [2021-10-08T22:21:20.026Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites {"sites":[{"name":"projects/919980135889/sites/stock-watcher-7b087","defaultUrl":"https://stock-watcher-7b087.web.app","appId":"1:919980135889:web:6cac8ef1ef7e9efca33cf0","type":"DEFAULT_SITE"}]}
+[debug] [2021-10-08T22:21:20.027Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087/webApps/1:919980135889:web:6cac8ef1ef7e9efca33cf0/config [none]
+[debug] [2021-10-08T22:21:21.358Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087/webApps/1:919980135889:web:6cac8ef1ef7e9efca33cf0/config 200
+[debug] [2021-10-08T22:21:21.358Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087/webApps/1:919980135889:web:6cac8ef1ef7e9efca33cf0/config {"projectId":"stock-watcher-7b087","appId":"1:919980135889:web:6cac8ef1ef7e9efca33cf0","databaseURL":"https://stock-watcher-7b087-default-rtdb.firebaseio.com","storageBucket":"stock-watcher-7b087.appspot.com","locationId":"us-central","apiKey":"AIzaSyAPKBvgxHlWj_eLvlzux99pkgKekYgk-WQ","authDomain":"stock-watcher-7b087.firebaseapp.com","messagingSenderId":"919980135889","measurementId":"G-X0483QH77X"}
+[info] i  hosting: Serving hosting files from: build {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mbuild\u001b[22m"}}
+[info] ✔  hosting: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[info] i  ui: downloading ui-v1.6.3.zip... {"metadata":{"emulator":{"name":"ui"},"message":"downloading ui-v1.6.3.zip..."}}
+[debug] [2021-10-08T22:21:21.404Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.6.3.zip 
+[debug] [2021-10-08T22:21:21.641Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.6.3.zip 200
+[debug] [2021-10-08T22:21:21.641Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/ui-v1.6.3.zip [stream]
+[debug] [2021-10-08T22:21:22.067Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2021-10-08T22:21:22.067Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2021-10-08T22:21:22.067Z] Starting Emulator UI with command {"binary":"node","args":["/Users/jay/.cache/firebase/emulators/ui-v1.6.3/server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/jay/.cache/firebase/emulators/ui-v1.6.3/server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2021-10-08T22:21:22.157Z] Web / API server started at localhost:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at localhost:4000\n"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://localhost:4000                │
+└─────────────────────────────────────────────────────────────┘
+
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Firestore │ localhost:8080 │ http://localhost:4000/firestore │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Hosting   │ localhost:5000 │ n/a                             │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2021-10-08T22:21:35.588Z] Oct 08, 2021 6:21:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:35.749Z] Oct 08, 2021 6:21:35 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:35 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2021-10-08T22:21:35.901Z] Oct 08, 2021 6:21:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:35 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:36.026Z] Oct 08, 2021 6:21:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:36 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:39.581Z] Oct 08, 2021 6:21:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:41.599Z] Oct 08, 2021 6:21:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:41 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:43.618Z] Oct 08, 2021 6:21:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:43 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:45.645Z] Oct 08, 2021 6:21:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:45 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:47.666Z] Oct 08, 2021 6:21:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:47 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:49.688Z] Oct 08, 2021 6:21:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:49 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:51.704Z] Oct 08, 2021 6:21:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:53.732Z] Oct 08, 2021 6:21:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:53 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:55.755Z] Oct 08, 2021 6:21:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:55 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:57.773Z] Oct 08, 2021 6:21:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:57 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:21:59.796Z] Oct 08, 2021 6:21:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:21:59 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:22:01.816Z] Oct 08, 2021 6:22:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:22:01 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:22:03.837Z] Oct 08, 2021 6:22:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Oct 08, 2021 6:22:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2021-10-08T22:22:05.726Z] Received signal SIGINT (Ctrl-C) 1
+[info]  
+[info] i  emulators: Received SIGINT (Ctrl-C) for the first time. Starting a clean shutdown. 
+[info] i  emulators: Please wait for a clean shutdown or send the SIGINT (Ctrl-C) signal again to stop right now. 
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[info] i  ui: Stopping Emulator UI {"metadata":{"emulator":{"name":"ui"},"message":"Stopping Emulator UI"}}
+[warn] ⚠  Emulator UI has exited upon receiving signal: SIGINT 
+[info] i  hosting: Stopping Hosting Emulator {"metadata":{"emulator":{"name":"hosting"},"message":"Stopping Hosting Emulator"}}
+[info] i  firestore: Stopping Firestore Emulator {"metadata":{"emulator":{"name":"firestore"},"message":"Stopping Firestore Emulator"}}
+[debug] [2021-10-08T22:22:05.746Z] *** shutting down gRPC server since JVM is shutting down
+ {"metadata":{"emulator":{"name":"firestore"},"message":"*** shutting down gRPC server since JVM is shutting down\n"}}
+[debug] [2021-10-08T22:22:05.750Z] *** server shut down
+ {"metadata":{"emulator":{"name":"firestore"},"message":"*** server shut down\n"}}
+[info] i  hub: Stopping emulator hub {"metadata":{"emulator":{"name":"hub"},"message":"Stopping emulator hub"}}
+[info] i  logging: Stopping Logging Emulator {"metadata":{"emulator":{"name":"logging"},"message":"Stopping Logging Emulator"}}
