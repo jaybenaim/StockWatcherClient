@@ -1665,3 +1665,298 @@ Before we get started, keep in mind:
 [debug] [2021-10-08T22:25:15.509Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/releases?version_name=sites/stock-watcher-7b087/versions/4ba86a238a5b364d  
  {"message":null}
 [debug] [2021-10-08T22:25:15.790Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:25:15 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:29:55.132Z] ----------------------------------------------------------------------
+[debug] [2021-10-08T22:29:55.134Z] Command:       /usr/local/bin/node /usr/local/bin/firebase hosting:channel:deploy new-awesome-feature --expires 7d
+[debug] [2021-10-08T22:29:55.134Z] CLI Version:   9.20.0
+[debug] [2021-10-08T22:29:55.134Z] Platform:      darwin
+[debug] [2021-10-08T22:29:55.134Z] Node Version:  v14.15.0
+[debug] [2021-10-08T22:29:55.135Z] Time:          Fri Oct 08 2021 18:29:55 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-10-08T22:29:55.135Z] Env Overrides: FIREBASE_CLIENT_ID
+[debug] [2021-10-08T22:29:55.135Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-08T22:29:55.185Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-08T22:29:55.186Z] > authorizing via signed-in user (benaimjacob@gmail.com)
+[debug] [2021-10-08T22:29:55.186Z] [iam] checking project stock-watcher-7b087 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-10-08T22:29:55.188Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/stock-watcher-7b087:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-10-08T22:29:55.725Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:29:55 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=159","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:29:55.727Z] > refreshing access token with scopes: []
+[debug] [2021-10-08T22:29:55.727Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:29:56.101Z] <<< HTTP RESPONSE 401 {"date":"Fri, 08 Oct 2021 22:29:56 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:29:56.104Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 [none]
+[debug] [2021-10-08T22:29:56.731Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 401
+[debug] [2021-10-08T22:29:56.731Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2021-10-08T22:29:56.733Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2021-10-08T22:29:56.734Z] FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at module.exports (/usr/local/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Client.doRequest (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:238:23)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async Client.request (/usr/local/lib/node_modules/firebase-tools/lib/apiv2.js:96:20)
+    at async Object.getFirebaseProject (/usr/local/lib/node_modules/firebase-tools/lib/management/projects.js:290:21)
+    at async Object.getDefaultHostingSite (/usr/local/lib/node_modules/firebase-tools/lib/getDefaultHostingSite.js:8:21)
+    at async Object.requireHostingSite [as fn] (/usr/local/lib/node_modules/firebase-tools/lib/requireHostingSite.js:9:18)
+    at async /usr/local/lib/node_modules/firebase-tools/lib/command.js:188:17
+[error] 
+[error] Error: Failed to get Firebase project stock-watcher-7b087. Please make sure the project exists and your account has permission to access it.
+[debug] [2021-10-08T22:30:17.557Z] ----------------------------------------------------------------------
+[debug] [2021-10-08T22:30:17.559Z] Command:       /usr/local/bin/node /usr/local/bin/firebase login --reauth
+[debug] [2021-10-08T22:30:17.559Z] CLI Version:   9.20.0
+[debug] [2021-10-08T22:30:17.559Z] Platform:      darwin
+[debug] [2021-10-08T22:30:17.559Z] Node Version:  v14.15.0
+[debug] [2021-10-08T22:30:17.560Z] Time:          Fri Oct 08 2021 18:30:17 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-10-08T22:30:17.560Z] Env Overrides: FIREBASE_CLIENT_ID
+[debug] [2021-10-08T22:30:17.561Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://accounts.google.com/o/oauth2/auth?client_id=114176480848362905662&scope=email%20openid%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloudplatformprojects.readonly%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Ffirebase%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform&response_type=code&state=495698366&redirect_uri=http%3A%2F%2Flocalhost%3A9005&login_hint=benaimjacob%40gmail.com
+[info] 
+[info] Waiting for authentication...
+[debug] [2021-10-08T22:30:43.800Z] ----------------------------------------------------------------------
+[debug] [2021-10-08T22:30:43.802Z] Command:       /usr/local/bin/node /usr/local/bin/firebase hosting:channel:deploy new-awesome-feature --expires 7dfirebase hosting:channel:deploy new-awesome-feature --expires 7d
+[debug] [2021-10-08T22:30:43.802Z] CLI Version:   9.20.0
+[debug] [2021-10-08T22:30:43.802Z] Platform:      darwin
+[debug] [2021-10-08T22:30:43.802Z] Node Version:  v14.15.0
+[debug] [2021-10-08T22:30:43.803Z] Time:          Fri Oct 08 2021 18:30:43 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-10-08T22:30:43.803Z] ----------------------------------------------------------------------
+[debug] 
+[error] 
+[error] Error: Too many arguments. Run firebase help hosting:channel:deploy for usage instructions
+[debug] [2021-10-08T22:31:10.556Z] ----------------------------------------------------------------------
+[debug] [2021-10-08T22:31:10.558Z] Command:       /usr/local/bin/node /usr/local/bin/firebase hosting:channel:deploy new-awesome-feature --expires 7d
+[debug] [2021-10-08T22:31:10.558Z] CLI Version:   9.20.0
+[debug] [2021-10-08T22:31:10.558Z] Platform:      darwin
+[debug] [2021-10-08T22:31:10.558Z] Node Version:  v14.15.0
+[debug] [2021-10-08T22:31:10.559Z] Time:          Fri Oct 08 2021 18:31:10 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-10-08T22:31:10.559Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-08T22:31:10.607Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-08T22:31:10.608Z] > authorizing via signed-in user (benaimjacob@gmail.com)
+[debug] [2021-10-08T22:31:10.608Z] [iam] checking project stock-watcher-7b087 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-10-08T22:31:10.610Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/stock-watcher-7b087:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-10-08T22:31:11.626Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:31:11 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=220","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:31:11.628Z] > refreshing access token with scopes: []
+[debug] [2021-10-08T22:31:11.629Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:31:12.103Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Fri, 08 Oct 2021 22:31:12 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:31:12.126Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 [none]
+[debug] [2021-10-08T22:31:12.803Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 200
+[debug] [2021-10-08T22:31:12.803Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 {"projectId":"stock-watcher-7b087","projectNumber":"919980135889","displayName":"Stock Watcher","name":"projects/stock-watcher-7b087","resources":{"hostingSite":"stock-watcher-7b087","realtimeDatabaseInstance":"stock-watcher-7b087-default-rtdb","storageBucket":"stock-watcher-7b087.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[debug] [2021-10-08T22:31:12.803Z] Expires TTL: 604800000
+[debug] [2021-10-08T22:31:12.805Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites/stock-watcher-7b087/channels/new-awesome-feature [none]
+[debug] [2021-10-08T22:31:13.673Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites/stock-watcher-7b087/channels/new-awesome-feature 404
+[debug] [2021-10-08T22:31:13.674Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites/stock-watcher-7b087/channels/new-awesome-feature {"error":{"code":404,"message":"Requested entity was not found.","status":"NOT_FOUND"}}
+[debug] [2021-10-08T22:31:13.675Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites/stock-watcher-7b087/channels?channelId=new-awesome-feature [none]
+[debug] [2021-10-08T22:31:13.675Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites/stock-watcher-7b087/channels?channelId=new-awesome-feature {"ttl":"604800s"}
+[debug] [2021-10-08T22:31:14.040Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites/stock-watcher-7b087/channels?channelId=new-awesome-feature 200
+[debug] [2021-10-08T22:31:14.040Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites/stock-watcher-7b087/channels?channelId=new-awesome-feature {"name":"projects/919980135889/sites/stock-watcher-7b087/channels/new-awesome-feature","url":"https://stock-watcher-7b087--new-awesome-feature-9bcumdnn.web.app","createTime":"2021-10-08T22:31:14.123912865Z","updateTime":"2021-10-08T22:31:14.123912865Z","retainedReleaseCount":10,"expireTime":"2021-10-15T22:31:14.123912865Z"}
+[debug] [2021-10-08T22:31:14.041Z] [hosting] created new channnel for site stock-watcher-7b087 {"name":"projects/919980135889/sites/stock-watcher-7b087/channels/new-awesome-feature","url":"https://stock-watcher-7b087--new-awesome-feature-9bcumdnn.web.app","createTime":"2021-10-08T22:31:14.123912865Z","updateTime":"2021-10-08T22:31:14.123912865Z","retainedReleaseCount":10,"expireTime":"2021-10-15T22:31:14.123912865Z"}
+[info] ✔  hosting:channel: Channel new-awesome-feature has been created on site stock-watcher-7b087. 
+[info] 
+[info] === Deploying to 'stock-watcher-7b087'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2021-10-08T22:31:14.044Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-10-08T22:31:14.044Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:31:14.323Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Fri, 08 Oct 2021 22:31:14 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:31:14.343Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-10-08T22:31:14.840Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:31:14 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  hosting[stock-watcher-7b087]: beginning deploy... 
+[info] i  hosting[stock-watcher-7b087]: found 15 files in build 
+[debug] [2021-10-08T22:31:14.852Z] > refreshing access token with scopes: []
+[debug] [2021-10-08T22:31:14.852Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:31:14.854Z] [hosting] hash cache [YnVpbGQ] stored for 15 files
+[debug] [2021-10-08T22:31:14.854Z] [hosting][hash queue][FINAL] {"max":1,"min":0,"avg":0,"active":0,"complete":15,"success":15,"errored":0,"retried":0,"total":15,"elapsed":3}
+[debug] [2021-10-08T22:31:15.140Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Fri, 08 Oct 2021 22:31:15 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:31:15.158Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/221e32690f19d36c:populateFiles [none]
+[debug] [2021-10-08T22:31:15.158Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/221e32690f19d36c:populateFiles {"files":{"/asset-manifest.json":"e28fa285b6644752873d2362fcfe9860b431c8d2f632f8cb1d78c5ca8ce5f7ee","/favicon.ico":"b72f7455f00e4e58792d2bca892abb068e2213838c0316d6b7a0d6d16acd1955","/index.html":"56ed5d04e4cb62225bb7c3ec26802650ab904b651fe6934f6290f1358c504f96","/manifest.json":"381760a5b7f5c06b98d4d9545ef6b04e790bca4821ea19c2044b937f35913987","/precache-manifest.35198a0555dbda527e99bf07497b8f51.js":"1adc9068cc466d3715bc128c8f4652b49e6ea54a21ef3b0317209d5b71b25ce0","/service-worker.js":"93dc3459405e4cf0b27e06ff5d90cacbeaf052c9847ced609fd12f9385b5a8f9","/static/css/main.efa87f28.chunk.css":"39eecacd9e515a2f3fb811c517455f4e0d405e9b09974f63373040d7922d5960","/static/css/main.efa87f28.chunk.css.map":"12f54f1b5bb537c234022bf7d333d2d8be8c7f4e43eccbb11d07dddfbb50ea8a","/static/js/2.4b755189.chunk.js":"81c30e9e22b4c27ed2e68414e495af0242e517a2fd8712b0ff483724fccee25d","/static/js/2.4b755189.chunk.js.LICENSE.txt":"2ca077f3175e8a7476613a2a0df176e3b6e47c612827fbbc2bd805bc28eb062d","/static/js/2.4b755189.chunk.js.map":"e39c31d0cde0517e4ca21fb51b7a1fd08f43e52f90c60f37352521769f4ce5c5","/static/js/main.d91a6042.chunk.js":"43b52328508210fdd75d3b45b22c02ab04979705043a34ab94c5bc8bdba43872","/static/js/main.d91a6042.chunk.js.map":"1ed83c61db415e19c8524299926b756094387fb8502ebbc083449f8f37ea7278","/static/js/runtime-main.e51d0e06.js":"6ca637df60540ce9fe0b93619f41e6356cf10e8cb775575bae52e950f6ab718d","/static/js/runtime-main.e51d0e06.js.map":"fed274b3e754cb3c363d2dcc15d1eb331d9774740434cf775092c4410182c08a"}}
+[debug] [2021-10-08T22:31:15.534Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/221e32690f19d36c:populateFiles 200
+[debug] [2021-10-08T22:31:15.534Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/221e32690f19d36c:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/221e32690f19d36c/files"}
+[debug] [2021-10-08T22:31:15.534Z] [hosting][populate queue][FINAL] {"max":682,"min":682,"avg":682,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":682}
+[debug] [2021-10-08T22:31:15.535Z] [hosting] uploads queued: 0
+[debug] [2021-10-08T22:31:15.535Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1633732275535}
+[info] ✔  hosting[stock-watcher-7b087]: file upload complete 
+[debug] [2021-10-08T22:31:15.535Z] [hosting] deploy completed after 693ms
+[debug] [2021-10-08T22:31:15.536Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "stock-watcher-7b087"
+    },
+    "site": "stock-watcher-7b087",
+    "version": "sites/stock-watcher-7b087/versions/221e32690f19d36c"
+  }
+]
+[info] i  hosting[stock-watcher-7b087]: finalizing version... 
+[debug] [2021-10-08T22:31:15.537Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-10-08T22:31:15.537Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:31:15.823Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","date":"Fri, 08 Oct 2021 22:31:15 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:31:15.843Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/221e32690f19d36c?updateMask=status  
+ {"status":"FINALIZED"}
+[debug] [2021-10-08T22:31:16.125Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:31:16 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:31:16.126Z] [hosting] finalized version for stock-watcher-7b087: {"name":"sites/stock-watcher-7b087/versions/221e32690f19d36c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2021-10-08T22:31:14.729925Z","createUser":{"email":"benaimjacob@gmail.com"},"finalizeTime":"2021-10-08T22:31:16.242182Z","finalizeUser":{"email":"benaimjacob@gmail.com"}}
+[info] ✔  hosting[stock-watcher-7b087]: version finalized 
+[info] i  hosting[stock-watcher-7b087]: releasing new version... 
+[debug] [2021-10-08T22:31:16.127Z] [hosting] releasing to channel: new-awesome-feature
+[debug] [2021-10-08T22:31:16.127Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/channels/new-awesome-feature/releases?version_name=sites/stock-watcher-7b087/versions/221e32690f19d36c  
+ {"message":null}
+[debug] [2021-10-08T22:31:16.396Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:31:16 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:31:16.397Z] [hosting] release: {"name":"sites/stock-watcher-7b087/channels/new-awesome-feature/releases/1633732275987632","version":{"name":"sites/stock-watcher-7b087/versions/221e32690f19d36c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2021-10-08T22:31:14.729925Z","createUser":{"email":"benaimjacob@gmail.com"},"finalizeTime":"2021-10-08T22:31:16.242182Z","finalizeUser":{"email":"benaimjacob@gmail.com"}},"type":"DEPLOY","releaseTime":"2021-10-08T22:31:15.987632618Z","releaseUser":{"email":"benaimjacob@gmail.com"}}
+[info] ✔  hosting[stock-watcher-7b087]: release complete 
+[info] 
+[info] ✔  Deploy complete! 
+[info] 
+[info] Project Console: https://console.firebase.google.com/project/stock-watcher-7b087/overview
+[info] Hosting URL: https://stock-watcher-7b087.web.app
+[debug] [2021-10-08T22:31:16.400Z] > refreshing access token with scopes: []
+[debug] [2021-10-08T22:31:16.400Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:31:16.644Z] <<< HTTP RESPONSE 200 {"date":"Fri, 08 Oct 2021 22:31:16 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:31:16.659Z] >>> [apiv2][query] GET https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config [none]
+[debug] [2021-10-08T22:31:17.093Z] <<< [apiv2][status] GET https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config 200
+[debug] [2021-10-08T22:31:17.093Z] <<< [apiv2][body] GET https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config {"name":"projects/919980135889/config","signIn":{"email":{"enabled":true,"passwordRequired":true},"hashConfig":{"algorithm":"SCRYPT","signerKey":"bCNPBeFPKitunYk1R9dd8au7aeTzWQqe9tjep6krMJYDR7WBbnZDOBw9GmXFUlducBJO7StBg2yJK5I89gm/nw==","saltSeparator":"Bw==","rounds":8,"memoryCost":14}},"notification":{"sendEmail":{"method":"DEFAULT","resetPasswordTemplate":{"senderLocalPart":"noreply","subject":"Reset your password for %APP_NAME%","body":"<p>Hello,</p>\n<p>Follow this link to reset your %APP_NAME% password for your %EMAIL% account.</p>\n<p><a href='%LINK%'>%LINK%</a></p>\n<p>If you didn’t ask to reset your password, you can ignore this email.</p>\n<p>Thanks,</p>\n<p>Your %APP_NAME% team</p>","bodyFormat":"HTML","replyTo":"noreply"},"verifyEmailTemplate":{"senderLocalPart":"noreply","subject":"Verify your email for %APP_NAME%","body":"<p>Hello %DISPLAY_NAME%,</p>\n<p>Follow this link to verify your email address.</p>\n<p><a href='%LINK%'>%LINK%</a></p>\n<p>If you didn’t ask to verify this address, you can ignore this email.</p>\n<p>Thanks,</p>\n<p>Your %APP_NAME% team</p>","bodyFormat":"HTML","replyTo":"noreply"},"changeEmailTemplate":{"senderLocalPart":"noreply","subject":"Your sign-in email was changed for %APP_NAME%","body":"<p>Hello %DISPLAY_NAME%,</p>\n<p>Your sign-in email for %APP_NAME% was changed to %NEW_EMAIL%.</p>\n<p>If you didn’t ask to change your email, follow this link to reset your sign-in email.</p>\n<p><a href='%LINK%'>%LINK%</a></p>\n<p>Thanks,</p>\n<p>Your %APP_NAME% team</p>","bodyFormat":"HTML","replyTo":"noreply"},"callbackUri":"https://stock-watcher-7b087.firebaseapp.com/__/auth/action","dnsInfo":{"customDomainState":"NOT_STARTED","domainVerificationRequestTime":"1970-01-01T00:00:00Z"},"revertSecondFactorAdditionTemplate":{"senderLocalPart":"noreply","subject":"You've added 2 step verification to your %APP_NAME% account.","body":"<p>Hello %DISPLAY_NAME%,</p>\n<p>Your account in %APP_NAME% has been updated with a phone number %SECOND_FACTOR% for 2-step verification.</p>\n<p>If you didn't add this phone number for 2-step verification, click the link below to remove it.</p>\n<p><a href='%LINK%'>%LINK%</a></p>\n<p>Thanks,</p>\n<p>Your %APP_NAME% team</p>","bodyFormat":"HTML","replyTo":"noreply"}},"sendSms":{"smsTemplate":{"content":"%LOGIN_CODE% is your verification code for %APP_NAME%."}},"defaultLocale":"en"},"quota":{},"monitoring":{"requestLogging":{}},"multiTenant":{},"authorizedDomains":["localhost","stock-watcher-7b087.firebaseapp.com","stock-watcher-7b087.web.app","jaybenaim.github.io","192.168.0.184","192.168.0.91","f9fb-2607-fea8-3f60-6ff0-b5dc-bc35-1b15-223e.ngrok.io"],"subtype":"FIREBASE_AUTH","client":{"apiKey":"AIzaSyAPKBvgxHlWj_eLvlzux99pkgKekYgk-WQ","permissions":{},"firebaseSubdomain":"stock-watcher-7b087"},"mfa":{"state":"DISABLED"},"blockingFunctions":{}}
+[debug] [2021-10-08T22:31:17.095Z] >>> [apiv2][query] PATCH https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config update_mask=authorizedDomains
+[debug] [2021-10-08T22:31:17.095Z] >>> [apiv2][body] PATCH https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config {"authorizedDomains":["localhost","stock-watcher-7b087.firebaseapp.com","stock-watcher-7b087.web.app","jaybenaim.github.io","192.168.0.184","192.168.0.91","f9fb-2607-fea8-3f60-6ff0-b5dc-bc35-1b15-223e.ngrok.io","stock-watcher-7b087--new-awesome-feature-9bcumdnn.web.app"]}
+[debug] [2021-10-08T22:31:17.361Z] <<< [apiv2][status] PATCH https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config 200
+[debug] [2021-10-08T22:31:17.361Z] <<< [apiv2][body] PATCH https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config {"name":"projects/919980135889/config","signIn":{"email":{"enabled":true,"passwordRequired":true},"hashConfig":{"algorithm":"SCRYPT","signerKey":"bCNPBeFPKitunYk1R9dd8au7aeTzWQqe9tjep6krMJYDR7WBbnZDOBw9GmXFUlducBJO7StBg2yJK5I89gm/nw==","saltSeparator":"Bw==","rounds":8,"memoryCost":14}},"notification":{"sendEmail":{"method":"DEFAULT","callbackUri":"https://stock-watcher-7b087.firebaseapp.com/__/auth/action","dnsInfo":{"customDomainState":"NOT_STARTED","domainVerificationRequestTime":"1970-01-01T00:00:00Z"}},"sendSms":{"smsTemplate":{"content":"%LOGIN_CODE% is your verification code for %APP_NAME%."}},"defaultLocale":"en"},"quota":{},"monitoring":{"requestLogging":{}},"multiTenant":{},"authorizedDomains":["localhost","stock-watcher-7b087.firebaseapp.com","stock-watcher-7b087.web.app","jaybenaim.github.io","192.168.0.184","192.168.0.91","f9fb-2607-fea8-3f60-6ff0-b5dc-bc35-1b15-223e.ngrok.io","stock-watcher-7b087--new-awesome-feature-9bcumdnn.web.app"],"subtype":"FIREBASE_AUTH","client":{"apiKey":"AIzaSyAPKBvgxHlWj_eLvlzux99pkgKekYgk-WQ","permissions":{},"firebaseSubdomain":"stock-watcher-7b087"},"mfa":{"state":"DISABLED"},"blockingFunctions":{}}
+[debug] [2021-10-08T22:31:17.361Z] [hosting] added auth domain for urls ["https://stock-watcher-7b087--new-awesome-feature-9bcumdnn.web.app"]
+[debug] [2021-10-08T22:31:17.362Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites/stock-watcher-7b087/channels pageToken=&pageSize=10
+[debug] [2021-10-08T22:31:17.621Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites/stock-watcher-7b087/channels 200
+[debug] [2021-10-08T22:31:17.621Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/stock-watcher-7b087/sites/stock-watcher-7b087/channels {"channels":[{"name":"projects/919980135889/sites/stock-watcher-7b087/channels/new-awesome-feature","url":"https://stock-watcher-7b087--new-awesome-feature-9bcumdnn.web.app","release":{"name":"projects/919980135889/sites/stock-watcher-7b087/channels/new-awesome-feature/releases/1633732275987632","version":{"name":"projects/919980135889/sites/stock-watcher-7b087/versions/221e32690f19d36c","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2021-10-08T22:31:14.729925Z","createUser":{"email":"benaimjacob@gmail.com"},"finalizeTime":"2021-10-08T22:31:16.242182Z","finalizeUser":{"email":"benaimjacob@gmail.com"}},"type":"DEPLOY","releaseTime":"2021-10-08T22:31:15.987632618Z","releaseUser":{"email":"benaimjacob@gmail.com"}},"createTime":"2021-10-08T22:31:14.123912865Z","updateTime":"2021-10-08T22:31:15.987632618Z","retainedReleaseCount":10,"expireTime":"2021-10-15T22:31:14.123912865Z"},{"name":"projects/919980135889/sites/stock-watcher-7b087/channels/live","url":"https://stock-watcher-7b087.web.app","release":{"name":"projects/919980135889/sites/stock-watcher-7b087/channels/live/releases/1633731915384020","version":{"name":"projects/919980135889/sites/stock-watcher-7b087/versions/4ba86a238a5b364d","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2021-10-08T22:25:10.145574Z","createUser":{"email":"benaimjacob@gmail.com"},"finalizeTime":"2021-10-08T22:25:15.624215Z","finalizeUser":{"email":"benaimjacob@gmail.com"},"fileCount":"17","versionBytes":"1804228"},"type":"DEPLOY","releaseTime":"2021-10-08T22:25:15.384020442Z","releaseUser":{"email":"benaimjacob@gmail.com"}},"createTime":"2021-08-27T20:35:24.110864477Z","updateTime":"2021-10-08T22:25:15.384020442Z","retainedReleaseCount":2147483647}]}
+[debug] [2021-10-08T22:31:17.622Z] >>> [apiv2][query] GET https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config [none]
+[debug] [2021-10-08T22:31:17.874Z] <<< [apiv2][status] GET https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config 200
+[debug] [2021-10-08T22:31:17.874Z] <<< [apiv2][body] GET https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config {"name":"projects/919980135889/config","signIn":{"email":{"enabled":true,"passwordRequired":true},"hashConfig":{"algorithm":"SCRYPT","signerKey":"bCNPBeFPKitunYk1R9dd8au7aeTzWQqe9tjep6krMJYDR7WBbnZDOBw9GmXFUlducBJO7StBg2yJK5I89gm/nw==","saltSeparator":"Bw==","rounds":8,"memoryCost":14}},"notification":{"sendEmail":{"method":"DEFAULT","resetPasswordTemplate":{"senderLocalPart":"noreply","subject":"Reset your password for %APP_NAME%","body":"<p>Hello,</p>\n<p>Follow this link to reset your %APP_NAME% password for your %EMAIL% account.</p>\n<p><a href='%LINK%'>%LINK%</a></p>\n<p>If you didn’t ask to reset your password, you can ignore this email.</p>\n<p>Thanks,</p>\n<p>Your %APP_NAME% team</p>","bodyFormat":"HTML","replyTo":"noreply"},"verifyEmailTemplate":{"senderLocalPart":"noreply","subject":"Verify your email for %APP_NAME%","body":"<p>Hello %DISPLAY_NAME%,</p>\n<p>Follow this link to verify your email address.</p>\n<p><a href='%LINK%'>%LINK%</a></p>\n<p>If you didn’t ask to verify this address, you can ignore this email.</p>\n<p>Thanks,</p>\n<p>Your %APP_NAME% team</p>","bodyFormat":"HTML","replyTo":"noreply"},"changeEmailTemplate":{"senderLocalPart":"noreply","subject":"Your sign-in email was changed for %APP_NAME%","body":"<p>Hello %DISPLAY_NAME%,</p>\n<p>Your sign-in email for %APP_NAME% was changed to %NEW_EMAIL%.</p>\n<p>If you didn’t ask to change your email, follow this link to reset your sign-in email.</p>\n<p><a href='%LINK%'>%LINK%</a></p>\n<p>Thanks,</p>\n<p>Your %APP_NAME% team</p>","bodyFormat":"HTML","replyTo":"noreply"},"callbackUri":"https://stock-watcher-7b087.firebaseapp.com/__/auth/action","dnsInfo":{"customDomainState":"NOT_STARTED","domainVerificationRequestTime":"1970-01-01T00:00:00Z"},"revertSecondFactorAdditionTemplate":{"senderLocalPart":"noreply","subject":"You've added 2 step verification to your %APP_NAME% account.","body":"<p>Hello %DISPLAY_NAME%,</p>\n<p>Your account in %APP_NAME% has been updated with a phone number %SECOND_FACTOR% for 2-step verification.</p>\n<p>If you didn't add this phone number for 2-step verification, click the link below to remove it.</p>\n<p><a href='%LINK%'>%LINK%</a></p>\n<p>Thanks,</p>\n<p>Your %APP_NAME% team</p>","bodyFormat":"HTML","replyTo":"noreply"}},"sendSms":{"smsTemplate":{"content":"%LOGIN_CODE% is your verification code for %APP_NAME%."}},"defaultLocale":"en"},"quota":{},"monitoring":{"requestLogging":{}},"multiTenant":{},"authorizedDomains":["localhost","stock-watcher-7b087.firebaseapp.com","stock-watcher-7b087.web.app","jaybenaim.github.io","192.168.0.184","192.168.0.91","f9fb-2607-fea8-3f60-6ff0-b5dc-bc35-1b15-223e.ngrok.io","stock-watcher-7b087--new-awesome-feature-9bcumdnn.web.app"],"subtype":"FIREBASE_AUTH","client":{"apiKey":"AIzaSyAPKBvgxHlWj_eLvlzux99pkgKekYgk-WQ","permissions":{},"firebaseSubdomain":"stock-watcher-7b087"},"mfa":{"state":"DISABLED"},"blockingFunctions":{}}
+[debug] [2021-10-08T22:31:17.876Z] >>> [apiv2][query] PATCH https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config update_mask=authorizedDomains
+[debug] [2021-10-08T22:31:17.876Z] >>> [apiv2][body] PATCH https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config {"authorizedDomains":["localhost","stock-watcher-7b087.firebaseapp.com","stock-watcher-7b087.web.app","jaybenaim.github.io","192.168.0.184","192.168.0.91","f9fb-2607-fea8-3f60-6ff0-b5dc-bc35-1b15-223e.ngrok.io","stock-watcher-7b087--new-awesome-feature-9bcumdnn.web.app"]}
+[debug] [2021-10-08T22:31:18.146Z] <<< [apiv2][status] PATCH https://identitytoolkit.googleapis.com/admin/v2/projects/stock-watcher-7b087/config 200
+[debug] [2021-10-08T22:32:42.041Z] ----------------------------------------------------------------------
+[debug] [2021-10-08T22:32:42.043Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2021-10-08T22:32:42.044Z] CLI Version:   9.20.0
+[debug] [2021-10-08T22:32:42.044Z] Platform:      darwin
+[debug] [2021-10-08T22:32:42.044Z] Node Version:  v14.15.0
+[debug] [2021-10-08T22:32:42.044Z] Time:          Fri Oct 08 2021 18:32:42 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-10-08T22:32:42.045Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-08T22:32:42.093Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-08T22:32:42.094Z] > authorizing via signed-in user (benaimjacob@gmail.com)
+[debug] [2021-10-08T22:32:42.094Z] [iam] checking project stock-watcher-7b087 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-10-08T22:32:42.096Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-10-08T22:32:42.097Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:32:42.678Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","date":"Fri, 08 Oct 2021 22:32:42 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:32:42.694Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/stock-watcher-7b087:testIamPermissions  
+ {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2021-10-08T22:32:43.209Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:32:43 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=160","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:32:43.212Z] > refreshing access token with scopes: []
+[debug] [2021-10-08T22:32:43.212Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:32:43.536Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Fri, 08 Oct 2021 22:32:43 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:32:43.553Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 [none]
+[debug] [2021-10-08T22:32:44.061Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 200
+[debug] [2021-10-08T22:32:44.061Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/stock-watcher-7b087 {"projectId":"stock-watcher-7b087","projectNumber":"919980135889","displayName":"Stock Watcher","name":"projects/stock-watcher-7b087","resources":{"hostingSite":"stock-watcher-7b087","realtimeDatabaseInstance":"stock-watcher-7b087-default-rtdb","storageBucket":"stock-watcher-7b087.appspot.com","locationId":"us-central"},"state":"ACTIVE"}
+[info] 
+[info] === Deploying to 'stock-watcher-7b087'...
+[info] 
+[info] i  deploying firestore, hosting 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2021-10-08T22:32:44.065Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-10-08T22:32:44.065Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:32:44.354Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Fri, 08 Oct 2021 22:32:44 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:32:44.369Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/stock-watcher-7b087:test  
+ {"source":{"files":[{"name":"firestore.rules","content":"rules_version = '2';\nservice cloud.firestore {\n  match /databases/{database}/documents {\n    match /{document=**} {\n      allow read, write;\n    }\n  }\n}"}]}}
+[debug] [2021-10-08T22:32:45.068Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:32:44 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  cloud.firestore: rules file firestore.rules compiled successfully 
+[debug] [2021-10-08T22:32:45.071Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions  
+ {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2021-10-08T22:32:45.893Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:32:45 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:32:45.896Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/stock-watcher-7b087/releases?pageSize=10&pageToken=  
+ 
+[debug] [2021-10-08T22:32:45.897Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1/projects/stock-watcher-7b087/databases/(default)/collectionGroups/-/indexes  
+ 
+[debug] [2021-10-08T22:32:46.139Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:32:46 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:32:46.141Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/stock-watcher-7b087/rulesets/24600fa0-b287-4abc-aac2-c7bc28ae0e1a  
+ 
+[debug] [2021-10-08T22:32:46.332Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:32:46 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:32:46.333Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1/projects/stock-watcher-7b087/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false  
+ 
+[debug] [2021-10-08T22:32:46.400Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:32:46 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  firestore: latest version of firestore.rules already up to date, skipping upload... 
+[debug] [2021-10-08T22:32:46.636Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:32:46 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  firestore: deployed indexes in firestore.indexes.json successfully 
+[info] i  hosting[stock-watcher-7b087]: beginning deploy... 
+[info] i  hosting[stock-watcher-7b087]: found 15 files in build 
+[debug] [2021-10-08T22:32:46.650Z] > refreshing access token with scopes: []
+[debug] [2021-10-08T22:32:46.651Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:32:46.652Z] [hosting] hash cache [YnVpbGQ] stored for 15 files
+[debug] [2021-10-08T22:32:46.652Z] [hosting][hash queue][FINAL] {"max":1,"min":0,"avg":0,"active":0,"complete":15,"success":15,"errored":0,"retried":0,"total":15,"elapsed":3}
+[debug] [2021-10-08T22:32:46.949Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Fri, 08 Oct 2021 22:32:46 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:32:46.965Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/0f7cc58b4038ab57:populateFiles [none]
+[debug] [2021-10-08T22:32:46.965Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/0f7cc58b4038ab57:populateFiles {"files":{"/asset-manifest.json":"e28fa285b6644752873d2362fcfe9860b431c8d2f632f8cb1d78c5ca8ce5f7ee","/favicon.ico":"b72f7455f00e4e58792d2bca892abb068e2213838c0316d6b7a0d6d16acd1955","/index.html":"56ed5d04e4cb62225bb7c3ec26802650ab904b651fe6934f6290f1358c504f96","/manifest.json":"381760a5b7f5c06b98d4d9545ef6b04e790bca4821ea19c2044b937f35913987","/precache-manifest.35198a0555dbda527e99bf07497b8f51.js":"1adc9068cc466d3715bc128c8f4652b49e6ea54a21ef3b0317209d5b71b25ce0","/service-worker.js":"93dc3459405e4cf0b27e06ff5d90cacbeaf052c9847ced609fd12f9385b5a8f9","/static/css/main.efa87f28.chunk.css":"39eecacd9e515a2f3fb811c517455f4e0d405e9b09974f63373040d7922d5960","/static/css/main.efa87f28.chunk.css.map":"12f54f1b5bb537c234022bf7d333d2d8be8c7f4e43eccbb11d07dddfbb50ea8a","/static/js/2.4b755189.chunk.js":"81c30e9e22b4c27ed2e68414e495af0242e517a2fd8712b0ff483724fccee25d","/static/js/2.4b755189.chunk.js.LICENSE.txt":"2ca077f3175e8a7476613a2a0df176e3b6e47c612827fbbc2bd805bc28eb062d","/static/js/2.4b755189.chunk.js.map":"e39c31d0cde0517e4ca21fb51b7a1fd08f43e52f90c60f37352521769f4ce5c5","/static/js/main.d91a6042.chunk.js":"43b52328508210fdd75d3b45b22c02ab04979705043a34ab94c5bc8bdba43872","/static/js/main.d91a6042.chunk.js.map":"1ed83c61db415e19c8524299926b756094387fb8502ebbc083449f8f37ea7278","/static/js/runtime-main.e51d0e06.js":"6ca637df60540ce9fe0b93619f41e6356cf10e8cb775575bae52e950f6ab718d","/static/js/runtime-main.e51d0e06.js.map":"fed274b3e754cb3c363d2dcc15d1eb331d9774740434cf775092c4410182c08a"}}
+[debug] [2021-10-08T22:32:47.327Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/0f7cc58b4038ab57:populateFiles 200
+[debug] [2021-10-08T22:32:47.328Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/0f7cc58b4038ab57:populateFiles {"uploadUrl":"https://upload-firebasehosting.googleapis.com/upload/sites/stock-watcher-7b087/versions/0f7cc58b4038ab57/files"}
+[debug] [2021-10-08T22:32:47.328Z] [hosting][populate queue][FINAL] {"max":678,"min":678,"avg":678,"active":0,"complete":1,"success":1,"errored":0,"retried":0,"total":1,"elapsed":678}
+[debug] [2021-10-08T22:32:47.329Z] [hosting] uploads queued: 0
+[debug] [2021-10-08T22:32:47.329Z] [hosting][upload queue][FINAL] {"max":0,"min":9999999999,"avg":0,"active":0,"complete":0,"success":0,"errored":0,"retried":0,"total":0,"elapsed":1633732367329}
+[info] ✔  hosting[stock-watcher-7b087]: file upload complete 
+[debug] [2021-10-08T22:32:47.329Z] [hosting] deploy completed after 692ms
+[debug] [2021-10-08T22:32:47.330Z] [rules] releasing cloud.firestore with ruleset projects/stock-watcher-7b087/rulesets/24600fa0-b287-4abc-aac2-c7bc28ae0e1a
+[debug] [2021-10-08T22:32:47.331Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-10-08T22:32:47.331Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-10-08T22:32:47.684Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Fri, 08 Oct 2021 22:32:47 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:32:47.703Z] >>> HTTP REQUEST PATCH https://firebaserules.googleapis.com/v1/projects/stock-watcher-7b087/releases/cloud.firestore  
+ {"release":{"name":"projects/stock-watcher-7b087/releases/cloud.firestore","rulesetName":"projects/stock-watcher-7b087/rulesets/24600fa0-b287-4abc-aac2-c7bc28ae0e1a"}}
+[debug] [2021-10-08T22:32:48.345Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:32:48 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:32:48.346Z] [rules] updated release projects/stock-watcher-7b087/releases/cloud.firestore
+[info] ✔  firestore: released rules firestore.rules to cloud.firestore 
+[debug] [2021-10-08T22:32:48.347Z] [
+  {
+    "config": {
+      "public": "build",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ],
+      "site": "stock-watcher-7b087"
+    },
+    "site": "stock-watcher-7b087",
+    "version": "sites/stock-watcher-7b087/versions/0f7cc58b4038ab57"
+  }
+]
+[info] i  hosting[stock-watcher-7b087]: finalizing version... 
+[debug] [2021-10-08T22:32:48.347Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/versions/0f7cc58b4038ab57?updateMask=status  
+ {"status":"FINALIZED"}
+[debug] [2021-10-08T22:32:48.630Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:32:48 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-10-08T22:32:48.630Z] [hosting] finalized version for stock-watcher-7b087: {"name":"sites/stock-watcher-7b087/versions/0f7cc58b4038ab57","status":"FINALIZED","config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"},"createTime":"2021-10-08T22:32:45.585189Z","createUser":{"email":"benaimjacob@gmail.com"},"finalizeTime":"2021-10-08T22:32:48.690186Z","finalizeUser":{"email":"benaimjacob@gmail.com"}}
+[info] ✔  hosting[stock-watcher-7b087]: version finalized 
+[info] i  hosting[stock-watcher-7b087]: releasing new version... 
+[debug] [2021-10-08T22:32:48.631Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/stock-watcher-7b087/releases?version_name=sites/stock-watcher-7b087/versions/0f7cc58b4038ab57  
+ {"message":null}
+[debug] [2021-10-08T22:32:48.916Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 08 Oct 2021 22:32:48 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
