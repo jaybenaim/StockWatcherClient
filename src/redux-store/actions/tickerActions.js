@@ -11,6 +11,7 @@ export const getRecentTickers = (payload) => async (dispatch) => {
     }
 
     const response = await local.get(`/tickers${param}`)
+    console.log(response)
 
     if (response.status === 200) {
       dispatch ({

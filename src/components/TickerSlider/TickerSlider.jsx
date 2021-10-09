@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from "prop-types";
-import { connect, useDispatch } from "react-redux"
+import { connect } from "react-redux"
 import { getRecentTickers } from "redux-store/actions/tickerActions"
 import { Paper } from '@material-ui/core';
 import moment from 'moment';
@@ -8,10 +8,12 @@ import { Link } from 'react-router-dom';
 
 const TickerSlider = (props) => {
   const { recentTickers } = props
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getRecentTickers())
+    props.getRecentTickers({
+      all: 'true'
+    })
     // eslint-disable-next-line
   }, [])
 
