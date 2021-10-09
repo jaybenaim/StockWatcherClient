@@ -5,7 +5,6 @@ import { getRecentTickers } from "redux-store/actions/tickerActions"
 import { Paper } from '@material-ui/core';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import StockWatcherListItem from 'components/StockList/StockWatcherListItem/StockWatcherListItem';
 
 const TickerSlider = (props) => {
   const { recentTickers } = props

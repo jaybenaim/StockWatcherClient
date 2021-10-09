@@ -6,7 +6,7 @@ export const getRecentTickers = (payload) => async (dispatch) => {
 
   let param = ''
   try {
-    if (all && all == 'true') {
+    if (all && all === 'true') {
       param = '?all=true'
     }
 
