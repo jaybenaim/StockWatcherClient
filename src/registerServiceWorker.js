@@ -30,12 +30,12 @@ export default function register() {
     }
 
     window.addEventListener('load', () => {
-      const swUrl = `https://jaybenaim.github.io/StockWatcherClient/firebase-messaging-sw.js`;
+      const swUrl = 'https://jaybenaim.github.io/StockWatcherClient/firebase-messaging-sw.js';
 
       if (!isLocalhost) {
         // Is not local host. Just register service worker
         if (navigator.serviceWorker) {
-          navigator.serviceWorker.register('https://jaybenaim.github.io/StockWatcherClient/firebase-messaging-sw.js', { scope: '/src/' })
+          navigator.serviceWorker.register(swUrl, { scope: "/StockWatcherClient/"})
         }
         unregister()
         registerValidSW(swUrl);
@@ -50,7 +50,7 @@ export default function register() {
 
 function registerValidSW(swUrl) {
   navigator.serviceWorker
-    .register(swUrl)
+    .register(swUrl, { scope: "/StockWatcherClient/"})
     .then(registration => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
