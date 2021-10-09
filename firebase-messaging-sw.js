@@ -1,10 +1,3 @@
-import firebase from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
-import "firebase/storage";
-import "firebase/auth";
-import "firebase/firestore";
-import "firebase/messaging";
-
 // eslint-disable-next-line
 importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js');
 // eslint-disable-next-line
@@ -36,4 +29,8 @@ messaging.onBackgroundMessage(function(payload){
 
   self.registration.showNotification(notificationTitle,
     notificationOptions);
+});
+messaging.onMessage((payload) => {
+  console.log('Message received. ', payload);
+  // ...
 });
