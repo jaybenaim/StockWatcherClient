@@ -5,8 +5,10 @@ import "firebase/auth";
 import "firebase/firestore";
 import "firebase/messaging";
 
-// importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js');
-// importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js');
+// eslint-disable-next-line
+importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-app.js');
+// eslint-disable-next-line
+importScripts('https://www.gstatic.com/firebasejs/8.2.0/firebase-messaging.js');
 
 var firebaseConfig = {
   apiKey: "AIzaSyBucy-UeTjedwPID39714EAHoA9R3H_GGs",
@@ -24,7 +26,7 @@ firebase.initializeApp(firebaseConfig);
 // Retrieve firebase messaging
 const messaging = firebase.messaging();
 
-messaging.onBackgroundMessage((payload) => {
+messaging.onBackgroundMessage(function(payload){
   console.log('Received background message ', payload);
 
   const notificationTitle = payload.notification.title;
@@ -32,6 +34,6 @@ messaging.onBackgroundMessage((payload) => {
     body: payload.notification.body,
   };
 
-  this.registration.showNotification(notificationTitle,
+  self.registration.showNotification(notificationTitle,
     notificationOptions);
 });
