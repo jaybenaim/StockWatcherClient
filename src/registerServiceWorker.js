@@ -35,9 +35,9 @@ export default function register() {
       if (!isLocalhost) {
         // Is not local host. Just register service worker
         if (navigator.serviceWorker) {
-          navigator.serviceWorker.register('https://jaybenaim.github.io/StockWatcherClient/firebase-messaging-sw.js', { scope: '/StockWatcherClient/' })
+          navigator.serviceWorker.register('https://jaybenaim.github.io/StockWatcherClient/firebase-messaging-sw.js', { scope: '/src/' })
         }
-
+        unregister()
         registerValidSW(swUrl);
 
       } else {
