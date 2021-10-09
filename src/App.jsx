@@ -19,16 +19,16 @@ import { Button, Snackbar } from "@material-ui/core";
 
 const App = () => {
   const dispatch = useDispatch()
-  const [show, setShow] = useState(false);
-  const [notification, setNotification] = useState({title: '', body: ''});
-  const [isTokenFound, setTokenFound] = useState(false);
-  getToken(setTokenFound);
+  // const [show, setShow] = useState(false);
+  // const [notification, setNotification] = useState({title: '', body: ''});
+  // const [isTokenFound, setTokenFound] = useState(false);
+  // getToken(setTokenFound);
 
-  onMessageListener().then(payload => {
-    setShow(true);
-    setNotification({title: payload.notification.title, body: payload.notification.body})
-    console.log(payload);
-  }).catch(err => console.log('failed: ', err));
+  // onMessageListener().then(payload => {
+  //   setShow(true);
+  //   setNotification({title: payload.notification.title, body: payload.notification.body})
+  //   console.log(payload);
+  // }).catch(err => console.log('failed: ', err));
 
   useEffect(() => {
     dispatch({ type: SET_WINDOW_WIDTH })
@@ -43,7 +43,7 @@ const App = () => {
     <React.Fragment>
       <NavBar />
 
-      <Snackbar open={show} autoHideDuration={6000} onClose={() => setShow(false)}>
+      {/* <Snackbar open={show} autoHideDuration={6000} onClose={() => setShow(false)}>
           <Alert severity="error" onClose={() => setShow(false)}>
             {notification.title}
             {notification.body}
@@ -51,9 +51,9 @@ const App = () => {
       </Snackbar>
 
       {isTokenFound && (<h1> Notification permission enabled 👍🏻 </h1>)}
-      {!isTokenFound && (<h1> Need notification permission ❗️ </h1>)}
+      {!isTokenFound && (<h1> Need notification permission ❗️ </h1>)} */}
 
-      <Button onClick={() => setShow(true)}>Show Toast</Button>
+      {/* <Button onClick={() => setShow(true)}>Show Toast</Button> */}
       <Switch>
         <PrivateRoute exact path="/admin">
           <AdminHome />
