@@ -35,7 +35,7 @@ export default function register() {
       if (!isLocalhost) {
         // Is not local host. Just register service worker
         if (navigator.serviceWorker) {
-          navigator.serviceWorker.register(swUrl, { scope: "/StockWatcherClient/"})
+          navigator.serviceWorker.register(swUrl, { scope: "/"})
         }
         unregister()
         registerValidSW(swUrl);
