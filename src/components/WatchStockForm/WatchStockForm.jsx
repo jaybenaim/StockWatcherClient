@@ -30,7 +30,6 @@ const WatchStockForm = ({
       const response = await local.post(`stock/watch/`, data)
 
       if (response.data.status !== 500) {
-        console.log(response.data)
         setAlertOpen(true);
         setAlert({
           severity: "success",
