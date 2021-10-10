@@ -3,9 +3,15 @@ import thunk from "redux-thunk";
 import rootReducer from "./reducers";
 import { createLogger } from "redux-logger";
 
-const loggerMiddleware = createLogger();
+
 const initialState = {};
-const middleware = [thunk, loggerMiddleware];
+const middleware = [thunk];
+
+if (window.location.href.includes('localhost')) {
+  console.log('hello local host')
+  middleware.push(createLogger())
+}
+
 const store = createStore(
   rootReducer,
   initialState,
