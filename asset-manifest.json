@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/StockWatcherClient/static/css/main.efa87f28.chunk.css",
-    "main.js": "/StockWatcherClient/static/js/main.48966558.chunk.js",
-    "main.js.map": "/StockWatcherClient/static/js/main.48966558.chunk.js.map",
+    "main.js": "/StockWatcherClient/static/js/main.21665abe.chunk.js",
+    "main.js.map": "/StockWatcherClient/static/js/main.21665abe.chunk.js.map",
     "runtime-main.js": "/StockWatcherClient/static/js/runtime-main.e51d0e06.js",
     "runtime-main.js.map": "/StockWatcherClient/static/js/runtime-main.e51d0e06.js.map",
-    "static/js/2.be2a6afe.chunk.js": "/StockWatcherClient/static/js/2.be2a6afe.chunk.js",
-    "static/js/2.be2a6afe.chunk.js.map": "/StockWatcherClient/static/js/2.be2a6afe.chunk.js.map",
+    "static/js/2.d790980d.chunk.js": "/StockWatcherClient/static/js/2.d790980d.chunk.js",
+    "static/js/2.d790980d.chunk.js.map": "/StockWatcherClient/static/js/2.d790980d.chunk.js.map",
     "index.html": "/StockWatcherClient/index.html",
-    "precache-manifest.bdbada950c35e372052e01155d9ccda8.js": "/StockWatcherClient/precache-manifest.bdbada950c35e372052e01155d9ccda8.js",
+    "precache-manifest.1030c638dd3c7fd6e51b2cfa0d65067f.js": "/StockWatcherClient/precache-manifest.1030c638dd3c7fd6e51b2cfa0d65067f.js",
     "service-worker.js": "/StockWatcherClient/service-worker.js",
     "static/css/main.efa87f28.chunk.css.map": "/StockWatcherClient/static/css/main.efa87f28.chunk.css.map",
-    "static/js/2.be2a6afe.chunk.js.LICENSE.txt": "/StockWatcherClient/static/js/2.be2a6afe.chunk.js.LICENSE.txt"
+    "static/js/2.d790980d.chunk.js.LICENSE.txt": "/StockWatcherClient/static/js/2.d790980d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e51d0e06.js",
-    "static/js/2.be2a6afe.chunk.js",
+    "static/js/2.d790980d.chunk.js",
     "static/css/main.efa87f28.chunk.css",
-    "static/js/main.48966558.chunk.js"
+    "static/js/main.21665abe.chunk.js"
   ]
 }
