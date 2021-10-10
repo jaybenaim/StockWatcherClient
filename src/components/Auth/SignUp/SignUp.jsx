@@ -126,7 +126,6 @@ export default function SignUp() {
             password: userPassword,
           })
 
-        console.log('Res', response)
         const newUserEmail = response.profile.email || ''
         const token = await response.user.getIdToken()
         localStorage.setItem('fb-token', token)

@@ -28,7 +28,6 @@ const WatchStockForm = ({
       }
 
       const response = await local.post(`stock/watch/`, data)
-      console.log(response)
 
       if (response.data.status !== 500) {
         console.log(response.data)

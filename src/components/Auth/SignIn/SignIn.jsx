@@ -63,12 +63,10 @@ export default function SignIn() {
 
       // const token = await firebase.auth().currentUser.getIdToken()
       // localStorage.setItem('fb-token', token)
-      console.log(response)
 
       const newUserEmail = response.user.email || ''
 
       const token = await auth.currentUser.getIdToken(true)
-      console.log('Token', token)
       localStorage.setItem('fb-token', token)
 
       if (provider !== "email" && newUserEmail.length > 0) {
@@ -84,7 +82,6 @@ export default function SignIn() {
             })
           }
 
-          console.log('new USer', newUser)
 
           if (newUser.data.status !== 409) {
             // const token = await firebase.auth().currentUser.getIdToken()

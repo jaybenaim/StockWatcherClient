@@ -30,7 +30,7 @@ export default function register() {
     }
 
     window.addEventListener('load', () => {
-      const swUrl = 'https://jaybenaim.github.io/StockWatcherClient/firebase-messaging-sw.js';
+      const swUrl = '/service-worker.js';
 
       if (!isLocalhost) {
         // Is not local host. Just register service worker

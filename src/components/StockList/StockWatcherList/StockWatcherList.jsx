@@ -28,7 +28,6 @@ const StockWatcherList = (props) => {
       setLoading(true)
       // const response = dispatch({ type: GET_STOCK_WATCHERS_BY_EMAIL, payload: { email: userEmail, symbol: symbol }})
       const response = await props.getStockWatchersByEmail({ email: userEmail, symbol })
-      console.log(response)
       // setStockWatchers(response.results)
     } catch(err) {
       console.log(err)
@@ -57,7 +56,6 @@ const StockWatcherList = (props) => {
     try {
       const response = await local.delete(`/watchers/${id}`)
 
-      console.log(response)
       if (response.status !== 500) {
         setAlertOpen(true);
         setAlert({
