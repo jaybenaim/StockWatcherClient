@@ -23,7 +23,7 @@ if (fbToken !== undefined) {
   }
 
   local = axios.create({
-    baseURL: "http://localhost:8000/api",
+    baseURL: "https://stock-watcher-api.herokuapp.com/api",
     withCredentials: true,
     xsrfHeaderName: 'X-CSRFToken',
     xsrfCookieName: 'csrftoken',
