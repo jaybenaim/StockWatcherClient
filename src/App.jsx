@@ -1,5 +1,4 @@
-﻿import React, { useEffect, useState } from "react";
-import { getToken, onMessageListener } from 'config/firebase';
+﻿import React, { useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/Layout/NavBar";
@@ -14,8 +13,6 @@ import { connect, useDispatch } from "react-redux";
 import ForgotPassword from "components/Auth/ForgotPassword/ForgotPassword";
 import { SET_WINDOW_WIDTH } from "redux-store/types";
 import PropTypes from "prop-types";
-import { Alert } from "@material-ui/lab";
-import { Button, Snackbar } from "@material-ui/core";
 
 const App = () => {
   const dispatch = useDispatch()
