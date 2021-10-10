@@ -4,17 +4,19 @@ import local from 'api/local';
 import { connect } from 'react-redux';
 import { Grid, Button } from '@material-ui/core';
 
-const WatchStockData = ({
-  symbol,
-  stockData,
-  setStockData,
-  watchStockForm,
-  showWatchStockForm,
-  setAlert,
-  isLoading,
-  setLoading
-}) => {
+const WatchStockData = (props) => {
+  const {
+    symbol,
+    stockData,
+    setStockData,
+    watchStockForm,
+    showWatchStockForm,
+    setAlert,
+    isLoading,
+    setLoading
+  } = props
   const getStockData = async (e, stockSymbol = '') => {
+    setLoading(true)
     let query;
 
     if (e && 'target' in e.keys()) {
@@ -27,25 +29,24 @@ const WatchStockData = ({
 
     if (query.length > 0) {
       try {
-        setLoading(true)
         const response = await local.get(`/stock/summary?symbol=${symbol}`)
 
         if (response.status === 200) {
           setStockData(response.data)
-          setLoading(false)
-
         }
       } catch(err) {
         console.log(err)
-        setLoading(false)
       }
     }
+    setLoading(false)
   }
+
+  // const { querySymbol } = props.location.match
 
   useEffect(() => {
     symbol.length > 1 && getStockData(null, symbol)
     // eslint-disable-next-line
-  }, [])
+  }, [symbol])
 
   return (
     <Grid container spacing={2}>
@@ -163,7 +164,8 @@ WatchStockData.propTypes = {
   showWatchStockForm: PropTypes.func.isRequired,
   setAlert: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  setLoading: PropTypes.func.isRequired
+  setLoading: PropTypes.func.isRequired,
+  location: PropTypes.object
 }
 
 const mapStateToProps = (state) => {
