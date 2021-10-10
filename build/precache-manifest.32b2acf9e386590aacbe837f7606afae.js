@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8da137c36304c3e869a0eb34ac023b7f",
+    "revision": "9642ad6f22b4643fed3f7c292425fe05",
     "url": "/StockWatcherClient/index.html"
   },
   {
-    "revision": "1bce40518fb590be640e",
+    "revision": "9b1d16563d7f9ba2ed15",
     "url": "/StockWatcherClient/static/css/main.efa87f28.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/StockWatcherClient/static/js/2.d790980d.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1bce40518fb590be640e",
-    "url": "/StockWatcherClient/static/js/main.21665abe.chunk.js"
+    "revision": "9b1d16563d7f9ba2ed15",
+    "url": "/StockWatcherClient/static/js/main.b455d417.chunk.js"
   },
   {
     "revision": "e50336665c812b0b28c0",
