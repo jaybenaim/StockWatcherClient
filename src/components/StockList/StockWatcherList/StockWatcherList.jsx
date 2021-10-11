@@ -133,11 +133,11 @@ const StockWatcherList = (props) => {
                   </Button>
 
                   <Button
-                    onClick={() => handleDelete(tickerWatcher.id)}
                     variant="contained"
                     color={deleteClass ? "error" : "secondary"}
                     onMouseEnter={() => toggleDeleteClass(!deleteClass)}
                     onMouseLeave={() => toggleDeleteClass(!deleteClass)}
+                    onClick={() => handleDelete(tickerWatcher.id)}
                   >
                     Delete
                   </Button>
@@ -146,6 +146,10 @@ const StockWatcherList = (props) => {
                 <div
                   className="stock-watcher-list__edit-toggle-icon"
                   onMouseEnter={() => toggleEditButton({
+                    watcher: id,
+                    open: true
+                  })}
+                  onClick={() => toggleEditButton({
                     watcher: id,
                     open: true
                   })}

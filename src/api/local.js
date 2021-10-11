@@ -11,7 +11,6 @@ if (fbToken !== undefined) {
 
   const headers =  {
     // "Authorization" : "Token ${token}"
-
   }
 
   if (csrfToken) {
