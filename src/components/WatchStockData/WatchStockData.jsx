@@ -11,7 +11,6 @@ const WatchStockData = (props) => {
     setStockData,
     watchStockForm,
     showWatchStockForm,
-    setAlert,
     isLoading,
     setLoading
   } = props

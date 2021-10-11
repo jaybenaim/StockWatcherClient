@@ -27,7 +27,7 @@ const WatchStock = (props) => {
   const [max, setMax] = useState()
   const [alertOpen, setAlertOpen] = useState(false)
   const [alert, setAlert] = useState({
-    severity: "",
+    severity: "error",
     message: ""
   })
 
@@ -110,6 +110,8 @@ const WatchStock = (props) => {
       <StockWatcherList
         symbol={symbol}
         setLoading={setLoading}
+        setAlertOpen={setAlertOpen}
+        setAlert={setAlert}
       />
     </Container>
    );

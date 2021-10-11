@@ -8,26 +8,29 @@ import { getStockWatchersByEmail } from 'redux-store/actions/watcherActions';
 import StockWatcherEditForm from '../StockWatcherEditForm/StockWatcherEditForm';
 import { ArrowDownward } from '@material-ui/icons';
 import local from 'api/local';
-import { Alert } from '@material-ui/lab';
 
 const StockWatcherList = (props) => {
-  let { symbol, userEmail, setLoading, watchers } = props
-  const [alertOpen, setAlertOpen] = useState(false)
-  const [alert, setAlert] = useState({
-    severity: "info",
-    message: ""
-  })
+  let {
+    symbol,
+    userEmail,
+    setLoading,
+    watchers,
+    setAlert,
+    setAlertOpen
+  } = props
+  const [ deleteClass, toggleDeleteClass ] = useState('delete-btn')
   const [ tickerToEdit, setTickerToEdit ] = useState(undefined)
-  const [ showEditButton, toggleEditButton ] = useState({
-    ticker: undefined,
+  const [ showDropdownButtons, toggleEditButton ] = useState({
+    watcher: undefined,
     open: false
   })
+
 
   const getStockWatchers = async () => {
     try {
       setLoading(true)
       // const response = dispatch({ type: GET_STOCK_WATCHERS_BY_EMAIL, payload: { email: userEmail, symbol: symbol }})
-      const response = await props.getStockWatchersByEmail({ email: userEmail, symbol })
+      await props.getStockWatchersByEmail({ email: userEmail, symbol })
       // setStockWatchers(response.results)
     } catch(err) {
       console.log(err)
@@ -60,7 +63,7 @@ const StockWatcherList = (props) => {
         setAlertOpen(true);
         setAlert({
           severity: "success",
-          message: `Deleted Stock Watcher for ${showEditButton.ticker}`
+          message: `Deleted Stock Watcher for ${showDropdownButtons.watcher}`
         })
         getStockWatchers()
       } else {
@@ -77,11 +80,13 @@ const StockWatcherList = (props) => {
         message: err.message
       })
     }
+    setTickerToEdit(undefined)
   }
 
   const listItems = () => {
     return watchers.map((tickerWatcher, i) => {
       const {
+        id,
         ticker,
         min_price,
         max_price,
@@ -98,11 +103,11 @@ const StockWatcherList = (props) => {
           key={i}
           className="stock-watcher-list__item"
           onMouseLeave={() => toggleEditButton({
-            ticker: ticker.symbol,
+            watcher: id,
             open: false
           })}
         >
-          {((tickerToEdit === undefined) || (tickerToEdit === ticker.symbol)) && (
+          {((tickerToEdit === undefined) || (tickerToEdit === id)) && (
             <div className="stock-watcher-list__item-wrapper">
               <StockWatcherListItem
                 ticker={ticker}
@@ -112,18 +117,22 @@ const StockWatcherList = (props) => {
                 lastUpdated={lastUpdated}
               />
 
-              {(showEditButton.ticker === ticker.symbol) && showEditButton.open ? (
+              {(showDropdownButtons.watcher === id) && showDropdownButtons.open ? (
                 <div className="stock-watcher-list__dropdown-buttons">
                   <Button
-                    onClick={() => handleEdit(ticker.symbol)}
+                    onClick={() => handleEdit(id)}
                     variant="outlined"
                   >
-                    {tickerToEdit === ticker.symbol ? "Hide" : "Edit"}
+                    {tickerToEdit === id ? "Hide" : "Edit"}
                   </Button>
 
                   <Button
+                    className={deleteClass}
                     onClick={() => handleDelete(tickerWatcher.id)}
                     variant="contained"
+                    color={deleteClass ? "error" : "secondary"}
+                    onMouseEnter={() => toggleDeleteClass(!deleteClass)}
+                    onMouseLeave={() => toggleDeleteClass(!deleteClass)}
                   >
                     Delete
                   </Button>
@@ -132,7 +141,7 @@ const StockWatcherList = (props) => {
                 <div
                   className="stock-watcher-list__edit-toggle-icon"
                   onMouseEnter={() => toggleEditButton({
-                    ticker: ticker.symbol,
+                    watcher: id,
                     open: true
                   })}
                 >
@@ -143,27 +152,21 @@ const StockWatcherList = (props) => {
           )}
 
 
-          {tickerToEdit === ticker.symbol && (
+          {tickerToEdit === id && (
 
             <StockWatcherEditForm
               tickerWatcher={tickerWatcher}
               min={min_price}
               max={max_price}
               onSuccess={getStockWatchers}
+              setAlert={setAlert}
+              setAlertOpen={setAlertOpen}
             />
           )}
         </div>
       )
     })
   }
-
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setAlertOpen(false);
-  };
 
   return (
     <Container>
@@ -176,10 +179,6 @@ const StockWatcherList = (props) => {
       <List className="stock-watcher--list">
         {watchers && listItems()}
       </List>
-
-      <Snackbar open={alertOpen} autoHideDuration={6000} onClose={handleClose}>
-        <Alert severity={alert.severity} onClose={handleClose}>{alert.message}</Alert>
-      </Snackbar>
     </Container>
    );
 }
@@ -190,7 +189,9 @@ StockWatcherList.propTypes = {
   loading: PropTypes.bool,
   setLoading: PropTypes.func,
   getStockWatchersByEmail: PropTypes.func,
-  watchers: PropTypes.array
+  watchers: PropTypes.array,
+  setAlert: PropTypes.func.isRequired,
+  setAlertOpen: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => {

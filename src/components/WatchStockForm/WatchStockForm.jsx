@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormControl, FormGroup, FormHelperText, InputLabel, Grid, Input, Button } from '@material-ui/core';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types"
@@ -48,6 +48,22 @@ const WatchStockForm = ({
     setLoading(false)
   }
 
+  const listener = event => {
+    console.log(event)
+    if (event.code === "Enter" || event.code === "NumpadEnter") {
+      event.preventDefault();
+      watchStock()
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keypress", listener);
+    return () => {
+      document.removeEventListener("keypress", listener);
+    };
+    // eslint-disable-next-line
+  }, [min, max]);
+
   return (
     <Grid container>
       <Grid
@@ -62,64 +78,66 @@ const WatchStockForm = ({
         item
         xs={12}
       >
-        <FormGroup>
-          <Grid
-            container
-            className="watch-stock--form"
-          >
-            <Grid item xs={3}/>
-
+        <form>
+          <FormGroup>
             <Grid
-              item
-              xs={3}
-              className="center"
+              container
+              className="watch-stock--form"
             >
-              <FormControl>
-                <InputLabel htmlFor="min">Min: </InputLabel>
-                <Input
-                  id="min"
-                  aria-describedby="min-price"
-                  onChange={(e) => setMin(e.target.value)}
-                  type="number"
-                />
+              <Grid item xs={3}/>
 
-                <FormHelperText id="min-price">Min Price</FormHelperText>
-              </FormControl>
+              <Grid
+                item
+                xs={3}
+                className="center"
+              >
+                <FormControl>
+                  <InputLabel htmlFor="min">Min: </InputLabel>
+                  <Input
+                    id="min"
+                    aria-describedby="min-price"
+                    onChange={(e) => setMin(e.target.value)}
+                    type="number"
+                  />
+
+                  <FormHelperText id="min-price">Min Price</FormHelperText>
+                </FormControl>
+              </Grid>
+
+              <Grid
+                item
+                xs={3}
+                className="center"
+              >
+                <FormControl>
+                  <InputLabel htmlFor="max">Max: </InputLabel>
+                  <Input
+                    id="max"
+                    aria-describedby="max-price"
+                    onChange={(e) => setMax(e.target.value)}
+                    type="number"
+                  />
+
+                  <FormHelperText id="max-price">Max Price</FormHelperText>
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={3}/>
+
+              <Grid
+                item
+                xs={12}
+                className="watch-stock--form--submit"
+              >
+                <FormControl>
+                  <Button variant="outlined" onClick={watchStock}>
+                    Watch
+                  </Button>
+                </FormControl>
+              </Grid>
             </Grid>
-
-            <Grid
-              item
-              xs={3}
-              className="center"
-            >
-              <FormControl>
-                <InputLabel htmlFor="max">Max: </InputLabel>
-                <Input
-                  id="max"
-                  aria-describedby="max-price"
-                  onChange={(e) => setMax(e.target.value)}
-                  type="number"
-                />
-
-                <FormHelperText id="max-price">Max Price</FormHelperText>
-              </FormControl>
-            </Grid>
-
-            <Grid item xs={3}/>
-
-            <Grid
-              item
-              xs={12}
-              className="watch-stock--form--submit"
-            >
-              <FormControl>
-                <Button variant="outlined" onClick={watchStock}>
-                  Watch
-                </Button>
-              </FormControl>
-            </Grid>
-          </Grid>
-        </FormGroup>
+          </FormGroup>
+        </form>
       </Grid>
     </Grid>
   );
@@ -133,8 +151,8 @@ WatchStockForm.propTypes = {
   setMin: PropTypes.func.isRequired,
   setMax: PropTypes.func.isRequired,
   stockData: PropTypes.object.isRequired,
-  setAlertOpen: PropTypes.object.isRequired,
-  setAlert: PropTypes.object.isRequired,
+  setAlertOpen: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
   setLoading: PropTypes.func.isRequired
 }
 
