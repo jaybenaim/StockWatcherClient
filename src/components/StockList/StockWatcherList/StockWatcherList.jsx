@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types"
-import { Button, Container, List, Snackbar } from '@material-ui/core';
+import { Container, List, Button } from '@material-ui/core';
 import moment from "moment"
 import StockWatcherListItem from '../StockWatcherListItem/StockWatcherListItem';
 import { getStockWatchersByEmail } from 'redux-store/actions/watcherActions';
@@ -127,7 +127,6 @@ const StockWatcherList = (props) => {
                   </Button>
 
                   <Button
-                    className={deleteClass}
                     onClick={() => handleDelete(tickerWatcher.id)}
                     variant="contained"
                     color={deleteClass ? "error" : "secondary"}
