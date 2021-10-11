@@ -20,8 +20,6 @@ if (fbToken) {
   headers['Authorization'] = `Token ${fbToken}`
 }
 
-console.log("No token provided")
-
 local = axios.create({
   baseURL: "https://stock-watcher-api.herokuapp.com/api",
   withCredentials: true,

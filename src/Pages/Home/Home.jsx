@@ -2,9 +2,12 @@
 import { Alert } from "@material-ui/lab";
 import StockWatcherList from "components/StockList/StockWatcherList/StockWatcherList";
 import TickerSlider from "components/TickerSlider/TickerSlider";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types"
 
-const Home = () => {
+const Home = ({ auth }) => {
+  const [forceRefresh, setForceRefresh] = useState(false)
   const [loading, setLoading] = useState(false)
   const [alertOpen, setAlertOpen] = useState(false)
   const [alert, setAlert] = useState({
@@ -19,6 +22,11 @@ const Home = () => {
 
     setAlertOpen(false);
   };
+
+  useEffect(() => {
+    setForceRefresh(!forceRefresh)
+  // eslint-disable-next-line
+  }, [auth])
 
   return (
     <main id="mainContent">
@@ -39,4 +47,14 @@ const Home = () => {
     </main>
   );
 };
-export default Home;
+
+Home.propTypes = {
+  auth: PropTypes.object
+}
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth
+  }
+}
+export default connect(mapStateToProps, {})(Home);
