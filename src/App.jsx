@@ -7,7 +7,7 @@ import Home from "./Pages/Home/Home";
 import PrivateRoute from "./components/Auth/PrivateRoute/PrivateRoute";
 import SignIn from "components/Auth/SignIn/SignIn";
 import SignUp from "./components/Auth/SignUp/SignUp";
-import AdminHome from "./components/Admin/AdminHome/AdminHome";
+import AdminHome from "./Pages/Admin/AdminHome/AdminHome";
 import WatchStock from "./Pages/WatchStock/WatchStock";
 import { connect, useDispatch } from "react-redux";
 import ForgotPassword from "components/Auth/ForgotPassword/ForgotPassword";
