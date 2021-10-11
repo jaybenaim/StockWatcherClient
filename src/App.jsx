@@ -13,8 +13,10 @@ import { connect, useDispatch } from "react-redux";
 import ForgotPassword from "components/Auth/ForgotPassword/ForgotPassword";
 import { SET_WINDOW_WIDTH } from "redux-store/types";
 import PropTypes from "prop-types";
+import { checkDbStatus } from "redux-store/actions/generalActions";
 
-const App = () => {
+const App = (props) => {
+  const { dbStatus } = props
   const dispatch = useDispatch()
   // const [show, setShow] = useState(false);
   // const [notification, setNotification] = useState({title: '', body: ''});
@@ -26,6 +28,11 @@ const App = () => {
   //   setNotification({title: payload.notification.title, body: payload.notification.body})
   //   console.log(payload);
   // }).catch(err => console.log('failed: ', err));
+
+  useEffect(() => {
+    dbStatus.status !== 'active' && props.checkDbStatus()
+    // eslint-disable-next-line
+  }, [])
 
   useEffect(() => {
     dispatch({ type: SET_WINDOW_WIDTH })
@@ -66,13 +73,18 @@ const App = () => {
 };
 
 App.propTypes = {
-  showSearchFilters: PropTypes.bool
+  showSearchFilters: PropTypes.bool,
+  checkDbStatus: PropTypes.func,
+  dbStatus: PropTypes.object
 }
 
 const mapStateToProps = (state) => {
   return {
-    showSearchFilters: state.general.showSearchFilters
+    showSearchFilters: state.general.showSearchFilters,
+    dbStatus: state.general.dbStatus
   }
 };
 
-export default connect(mapStateToProps, {})(App);
+
+
+export default connect(mapStateToProps, { checkDbStatus })(App);
