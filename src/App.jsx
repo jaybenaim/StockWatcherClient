@@ -47,17 +47,6 @@ const App = (props) => {
     <React.Fragment>
       <NavBar />
 
-      {/* <Snackbar open={show} autoHideDuration={6000} onClose={() => setShow(false)}>
-          <Alert severity="error" onClose={() => setShow(false)}>
-            {notification.title}
-            {notification.body}
-          </Alert>
-      </Snackbar>
-
-      {isTokenFound && (<h1> Notification permission enabled 👍🏻 </h1>)}
-      {!isTokenFound && (<h1> Need notification permission ❗️ </h1>)} */}
-
-      {/* <Button onClick={() => setShow(true)}>Show Toast</Button> */}
       <Switch>
         <PrivateRoute exact path="/admin">
           <AdminHome />
