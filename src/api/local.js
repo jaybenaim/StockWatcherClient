@@ -7,27 +7,27 @@ const fbToken = localStorage.getItem('fb-token')
 // axios.defaults.xsrfCookieName = csrfToken;
 
 let local;
-if (fbToken !== undefined) {
 
-  const headers =  {
-    // "Authorization" : "Token ${token}"
-  }
-
-  if (csrfToken) {
-    headers['X-CSRFToken'] = csrfToken
-  }
-
-  if (fbToken) {
-    headers['Authorization'] = `Token ${fbToken}`
-  }
-
-  local = axios.create({
-    baseURL: "https://stock-watcher-api.herokuapp.com/api",
-    withCredentials: true,
-    xsrfHeaderName: 'X-CSRFToken',
-    xsrfCookieName: 'csrftoken',
-    headers
-  });
+const headers =  {
+  // "Authorization" : "Token ${token}"
 }
+
+if (csrfToken) {
+  headers['X-CSRFToken'] = csrfToken
+}
+
+if (fbToken) {
+  headers['Authorization'] = `Token ${fbToken}`
+}
+
+console.log("No token provided")
+
+local = axios.create({
+  baseURL: "https://stock-watcher-api.herokuapp.com/api",
+  withCredentials: true,
+  xsrfHeaderName: 'X-CSRFToken',
+  xsrfCookieName: 'csrftoken',
+  headers
+});
 
 export default local

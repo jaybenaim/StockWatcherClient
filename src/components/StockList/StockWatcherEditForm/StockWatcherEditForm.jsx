@@ -55,8 +55,6 @@ const StockWatcherEditForm = ({
 
     if (event.code === "Enter" || event.code === "NumpadEnter") {
       event.preventDefault();
-      console.log(prevMin, min)
-      console.log(prevMax, max)
 
       if (prevMin !== min || prevMax !== max) return editStockWatcher()
     }
