@@ -23,6 +23,7 @@ const WatchStock = (props) => {
   })
   const [isLoading, setLoading] = useState(false)
   const [watchStockForm, showWatchStockForm] = useState(false)
+  const [refreshWatchers, setRefreshWatchers] = useState(false)
   const [min, setMin] = useState()
   const [max, setMax] = useState()
   const [alertOpen, setAlertOpen] = useState(false)
@@ -103,6 +104,7 @@ const WatchStock = (props) => {
           setAlertOpen={setAlertOpen}
           setAlert={setAlert}
           setLoading={setLoading}
+          onSuccess={() => setRefreshWatchers(true)}
         />
       )}
 
@@ -112,6 +114,7 @@ const WatchStock = (props) => {
         setLoading={setLoading}
         setAlertOpen={setAlertOpen}
         setAlert={setAlert}
+        refreshWatchers={refreshWatchers}
       />
     </Container>
    );

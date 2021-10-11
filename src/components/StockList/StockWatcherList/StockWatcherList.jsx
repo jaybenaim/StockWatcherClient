@@ -16,7 +16,8 @@ const StockWatcherList = (props) => {
     setLoading,
     watchers,
     setAlert,
-    setAlertOpen
+    setAlertOpen,
+    refreshWatchers
   } = props
   const [ deleteClass, toggleDeleteClass ] = useState('delete-btn')
   const [ tickerToEdit, setTickerToEdit ] = useState(undefined)
@@ -46,6 +47,11 @@ const StockWatcherList = (props) => {
 
   // eslint-disable-next-line
   }, [userEmail])
+
+  useEffect(() => {
+    refreshWatchers && getStockWatchers()
+  // eslint-disable-next-line
+  }, [refreshWatchers])
 
   const handleEdit = (tickerSymbol) => {
     if (tickerSymbol === tickerToEdit) {
@@ -191,6 +197,7 @@ StockWatcherList.propTypes = {
   watchers: PropTypes.array,
   setAlert: PropTypes.func.isRequired,
   setAlertOpen: PropTypes.func.isRequired,
+  refreshWatchers: PropTypes.bool
 }
 
 const mapStateToProps = (state) => {

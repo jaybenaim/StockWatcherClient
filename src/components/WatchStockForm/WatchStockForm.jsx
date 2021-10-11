@@ -14,7 +14,8 @@ const WatchStockForm = ({
   stockData,
   setAlertOpen,
   setAlert,
-  setLoading
+  setLoading,
+  onSuccess
 }) => {
   const watchStock = async () => {
     try {
@@ -35,15 +36,21 @@ const WatchStockForm = ({
           severity: "success",
           message: "New Stock Watcher Created"
         })
+        onSuccess && onSuccess()
       } else {
         setAlertOpen(true);
         setAlert({
           severity: "error",
-          message: "Issue creating new stock watcher, please try again."
+          message: response.error ? response.error : "Issue creating new stock watcher, please try again."
         })
       }
     } catch(err) {
       console.log(err)
+      setAlertOpen(true);
+      setAlert({
+        severity: "error",
+        message: err ? err : "Issue creating new stock watcher, please try again."
+      })
     }
     setLoading(false)
   }
@@ -153,7 +160,8 @@ WatchStockForm.propTypes = {
   stockData: PropTypes.object.isRequired,
   setAlertOpen: PropTypes.func.isRequired,
   setAlert: PropTypes.func.isRequired,
-  setLoading: PropTypes.func.isRequired
+  setLoading: PropTypes.func.isRequired,
+  onSuccess: PropTypes.func
 }
 
 const mapStateToProps = (state) => {
