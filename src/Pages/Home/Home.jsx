@@ -26,7 +26,7 @@ const Home = ({ auth }) => {
   useEffect(() => {
     setForceRefresh(!forceRefresh)
   // eslint-disable-next-line
-  }, [auth])
+  }, [auth.isEmpty])
 
   return (
     <main id="mainContent">

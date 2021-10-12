@@ -56,32 +56,43 @@ export default function SignUp() {
     let userPassword = password.length >= 1 ? password : "";
     if (provider === "email") {
       try {
-        const response = await firebase
+        await firebase
           .createUser({
             email,
             password,
           })
 
-          const newUserEmail = response.email || ''
           const token = await auth.currentUser.getIdToken()
           localStorage.setItem('fb-token', token)
 
-          if (provider !== "email" && newUserEmail.length > 0) {
+          if (token) {
             try {
               const newUser = await local.post('/users/', {
-                username: newUserEmail,
-                email: newUserEmail
+                username: email,
+                email: email,
+                avatar: {
+                  url: ""
+                }
               })
 
               if (newUser.data.id) {
-                 firebase.updateProfile({
-                  "id": newUser.data.id
+                const profile = newUser.data.profile
+
+                profile.avatarUrl = profile.avatar_url
+                delete profile.avatar_url
+
+                profile.displayName = profile.display_name
+                delete profile.display_name
+
+                await firebase.updateProfile({
+                  ...profile
                 })
               }
 
-              if (newUser.data.status !== 409) {
+
+              if (newUser.status !== 500) {
                 history.push("/");
-              } else {
+              } else if (newUser.status === 400) {
                 setErrors({
                   ...errors,
                   "error": "User already exists."
@@ -93,8 +104,7 @@ export default function SignUp() {
                 "error": err
               });
             }
-          }
-      history.push("/");
+        }
     } catch (err) {
         if (err.code?.includes('email')) {
           setErrors({
@@ -123,41 +133,63 @@ export default function SignUp() {
             provider: provider,
             type: "popup",
             email: userEmail,
-            password: userPassword,
+            password: userPassword
           })
 
-        const newUserEmail = response.profile.email || ''
         const token = await response.user.getIdToken()
         localStorage.setItem('fb-token', token)
-        if (provider !== "email" && newUserEmail.length > 0) {
+
+        const {email: fbEmail, displayName = email, photoURL = ''} = response.user
+
+        if (token) {
           try {
             const newUser = await local.post('/users/', {
-              username: newUserEmail,
-              email: newUserEmail
+              username: displayName,
+              email: fbEmail,
+              avatar: {
+                url: photoURL
+              }
             })
 
             if (newUser.data.id) {
-               firebase.updateProfile({
-                "id": newUser.data.id
+              const profile = newUser.data.profile
+
+              profile.avatarUrl = profile.avatar_url
+              delete profile.avatar_url
+
+              profile.displayName = profile.display_name
+              delete profile.display_name
+
+               await firebase.updateProfile({
+                ...profile
               })
             }
 
-            if (newUser.data.status !== 409) {
+            if (newUser.status !== 500) {
               history.push("/");
-            } else {
+            } else if (newUser.status === 400) {
               setErrors({
                 ...errors,
                 "error": "User already exists."
               });
             }
           } catch (err) {
-            setErrors({
-              ...errors,
-              "error": err
-            });
+            const errorMsg = err.response.data || ""
+
+            if ((errorMsg).toLowerCase().includes('username')) {
+
+              setErrors({
+                ...errors,
+                "email": err.response.data
+              });
+            } else {
+              setErrors({
+                ...errors,
+                "error": err.response.data
+              });
+            }
           }
         }
-        history.push("/");
     } catch (err) {
         if (err.code?.includes('email')) {
           setErrors({

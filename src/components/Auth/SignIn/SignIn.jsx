@@ -60,49 +60,59 @@ export default function SignIn() {
         email: userEmail,
         password: userPassword,
       })
-
-      // const token = await firebase.auth().currentUser.getIdToken()
-      // localStorage.setItem('fb-token', token)
-
-      const newUserEmail = response.user.email || ''
-
       const token = await auth.currentUser.getIdToken(true)
       localStorage.setItem('fb-token', token)
 
-      if (provider !== "email" && newUserEmail.length > 0) {
+      const {email, displayName, photoURL} = response.user
+
+      if (token) {
         try {
           const newUser = await local.post('/users/', {
-            username: newUserEmail,
-            email: newUserEmail
+            username: displayName,
+            email: email,
+            avatar: {
+              url: photoURL
+            }
           })
 
           if (newUser.data.id) {
-             firebase.updateProfile({
-              "id": newUser.data.id
+            const profile = newUser.data.profile
+
+            profile.avatarUrl = profile.avatar_url
+            delete profile.avatar_url
+
+            profile.displayName = profile.display_name
+            delete profile.display_name
+
+             await firebase.updateProfile({
+              ...profile
             })
           }
 
-
-          if (newUser.data.status !== 409) {
-            // const token = await firebase.auth().currentUser.getIdToken()
-            localStorage.setItem('fb-token', token)
+          if (newUser.status !== 500) {
             history.push("/");
-          } else {
+          } else if (newUser.status === 400) {
             setErrors({
               ...errors,
               "error": "User already exists."
             });
           }
         } catch (err) {
-          setErrors({
-            ...errors,
-            "error": err
-          });
+          const errorMsg = err.response?.data || ""
+          if ((errorMsg).toLowerCase().includes('username')) {
+            setErrors({
+              ...errors,
+              "email": errorMsg
+            });
+          } else {
+            setErrors({
+              ...errors,
+              "error": err
+            });
+          }
         }
       }
-      history.push("/");
     } catch(err) {
-      console.log(err)
       console.log(`Error: ${err.message}`)
       if (err.code?.includes('email')) {
         setErrors({
