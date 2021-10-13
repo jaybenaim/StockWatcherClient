@@ -49,7 +49,7 @@ const WatchStockForm = ({
       setAlertOpen(true);
       setAlert({
         severity: "error",
-        message: err ? err : "Issue creating new stock watcher, please try again."
+        message: err.message ? err.message : "Issue creating new stock watcher, please try again."
       })
     }
     setLoading(false)

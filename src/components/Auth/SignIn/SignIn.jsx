@@ -63,16 +63,13 @@ export default function SignIn() {
       const token = await auth.currentUser.getIdToken(true)
       localStorage.setItem('fb-token', token)
 
-      const {email, displayName = "", photoURL = ""} = response.user
+      const {email, displayName = ""} = response.user
 
       if (token) {
         try {
           const newUser = await local.post('/users/', {
-            username: displayName,
-            email: email,
-            avatar: {
-              as_url: photoURL
-            }
+            username: displayName || email,
+            email: email
           })
 
           if (newUser.data.id) {
@@ -104,7 +101,7 @@ export default function SignIn() {
           } else {
             setErrors({
               ...errors,
-              "error": err
+              "error": err.message ? err.message : "Something wrong with the username you provided."
             });
           }
         }
@@ -114,20 +111,17 @@ export default function SignIn() {
       if (err.code?.includes('email')) {
         setErrors({
           "email": err.message,
-          "password": errors.password,
-          "error": errors.error
+          ...errors
         });
       } else if (err.code?.includes('password')) {
         setErrors({
-          "email": errors.email,
           "password": err.message,
-          "error": errors.error
+          ...errors
         });
       } else {
       setErrors({
-        "email": errors.email,
-        "password": errors.password,
         "error": err.message,
+        ...errors,
       });
     }
     }

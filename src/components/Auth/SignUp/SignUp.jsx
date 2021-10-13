@@ -133,13 +133,16 @@ export default function SignUp() {
         const token = await response.user.getIdToken()
         localStorage.setItem('fb-token', token)
 
-        const {email: fbEmail, displayName = email} = response.user
+        const {email: fbEmail, displayName = email, photoURL = ''} = response.user
 
         if (token) {
           try {
             const newUser = await local.post('/users/', {
               username: displayName,
-              email: fbEmail
+              email: fbEmail,
+              avatar: {
+                url: photoURL
+              }
             })
 
             if (newUser.data.id) {
@@ -162,10 +165,9 @@ export default function SignUp() {
               });
             }
           } catch (err) {
-            const errorMsg = err.response.data || ""
+            const errorMsg = err.response?.data || "Unknown Error"
 
             if ((errorMsg).toLowerCase().includes('username')) {
-
               setErrors({
                 ...errors,
                 "email": err.response.data
@@ -182,20 +184,18 @@ export default function SignUp() {
         if (err.code?.includes('email')) {
           setErrors({
             "email": err.message,
-            "password": errors.password,
-            "error": errors.error
+            ...errors
+
           });
         } else if (err.code?.includes('password')) {
           setErrors({
-            "email": errors.email,
             "password": err.message,
-            "error": errors.error
+            ...errors
           });
         } else {
           setErrors({
-            "email": errors.email,
-            "password": errors.password,
             "error": err.message,
+            ...errors
           });
         }
       }

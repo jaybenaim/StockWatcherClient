@@ -99,11 +99,9 @@ const ProfileImageUpload = ({ profileData: { id, displayName, avatar: {
   };
 
   const handleImageAsUrl = async (imageUrl = undefined) => {
-    console.log("IMAGE", typeof imageUrl)
     if (typeof imageUrl === "object") {
       imageUrl = imageAsUrl.imgUrl
     }
-    console.log("IMAGE 2", imageUrl)
 
     try {
       const response = await local.patch(`/profiles/${id}/`, {
@@ -112,7 +110,6 @@ const ProfileImageUpload = ({ profileData: { id, displayName, avatar: {
        }
       })
 
-      console.log(response)
       if (response.status === 200) {
 
         await firebase.updateProfile({
