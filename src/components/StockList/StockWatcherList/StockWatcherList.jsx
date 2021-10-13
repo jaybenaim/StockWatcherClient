@@ -41,10 +41,14 @@ const StockWatcherList = (props) => {
   }
 
   useEffect(() => {
+    getStockWatchers()
+  // eslint-disable-next-line
+  }, [])
+
+  useEffect(() => {
     if (userEmail && userEmail.length > 0) {
       getStockWatchers()
     }
-
   // eslint-disable-next-line
   }, [userEmail])
 

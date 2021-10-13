@@ -46,6 +46,7 @@ export default function SignIn() {
     "password": "",
     "error": ""
   });
+  const [token, setToken] = useState()
 
   const signInWithProvider = async (event, provider) => {
     event.preventDefault()
@@ -60,12 +61,13 @@ export default function SignIn() {
         email: userEmail,
         password: userPassword,
       })
-      const token = await auth.currentUser.getIdToken(true)
-      localStorage.setItem('fb-token', token)
+      const fbToken = await auth.currentUser.getIdToken(true)
+      localStorage.setItem('fb-token', fbToken)
+      setToken(fbToken)
 
       const {email, displayName = ""} = response.user
 
-      if (token) {
+      if (fbToken) {
         try {
           const newUser = await local.post('/users/', {
             username: displayName || email,
@@ -84,7 +86,7 @@ export default function SignIn() {
           }
 
           if (newUser.status !== 500) {
-            history.push("/admin");
+            history.push("/admin", { refresh: true });
           } else if (newUser.status === 400) {
             setErrors({
               ...errors,

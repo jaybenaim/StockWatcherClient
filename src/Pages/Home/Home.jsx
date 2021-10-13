@@ -6,7 +6,7 @@ import React, {useEffect, useState} from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types"
 
-const Home = ({ auth }) => {
+const Home = ({ auth, refresh }) => {
   const [forceRefresh, setForceRefresh] = useState(false)
   const [loading, setLoading] = useState(false)
   const [alertOpen, setAlertOpen] = useState(false)
@@ -26,7 +26,7 @@ const Home = ({ auth }) => {
   useEffect(() => {
     setForceRefresh(!forceRefresh)
   // eslint-disable-next-line
-  }, [auth.isEmpty])
+  }, [refresh])
 
   return (
     <main id="mainContent">
@@ -49,7 +49,8 @@ const Home = ({ auth }) => {
 };
 
 Home.propTypes = {
-  auth: PropTypes.object
+  auth: PropTypes.object,
+  refresh: PropTypes.bool
 }
 
 const mapStateToProps = (state) => {
