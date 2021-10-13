@@ -1,0 +1,10 @@
+.profile-image-upload {
+ &__url-upload {
+  @include flex($dir: column);
+ }
+
+ &__buttons {
+  margin-top: 2em;
+  @include flex($dir: column);
+ }
+}

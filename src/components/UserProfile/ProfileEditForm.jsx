@@ -39,7 +39,7 @@ const styles = {
 };
 const useStyles = makeStyles(styles);
 
-const ProfileEditForm = ({ profileData: { id, displayName, email, phone }}) => {
+const ProfileEditForm = ({ profileData: { id, displayName, phone, user: { email }}}) => {
   const dispatch = useDispatch()
   const firebase = useFirebase();
   const classes = useStyles();
@@ -54,11 +54,18 @@ const ProfileEditForm = ({ profileData: { id, displayName, email, phone }}) => {
     try {
       const response = await local.patch(`/profiles/${id}/`, formData)
 
+      console.log(response.data)
       if (response.status === 200) {
+        if (formData.email !== response.data.email) {
+          await firebase.updateEmail(formData.email, true)
+        }
+
         await firebase.updateProfile({
           displayName: formData.username,
-          email: formData.email,
-          phone: formData.phone
+          phone: response.data.phone,
+          user: {
+            email: response.data.user.email
+          }
         })
       }
     } catch (err) {
@@ -85,7 +92,7 @@ const ProfileEditForm = ({ profileData: { id, displayName, email, phone }}) => {
                 fullWidth: true,
                 onChange: ({ target: { value }}) => setFormData({
                   ...formData,
-                  displayName: value
+                  username: value
                 })
               }}
             />

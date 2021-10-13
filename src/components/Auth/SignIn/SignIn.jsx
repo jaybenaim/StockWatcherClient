@@ -63,7 +63,7 @@ export default function SignIn() {
       const token = await auth.currentUser.getIdToken(true)
       localStorage.setItem('fb-token', token)
 
-      const {email, displayName, photoURL} = response.user
+      const {email, displayName = "", photoURL = ""} = response.user
 
       if (token) {
         try {
@@ -71,15 +71,12 @@ export default function SignIn() {
             username: displayName,
             email: email,
             avatar: {
-              url: photoURL
+              as_url: photoURL
             }
           })
 
           if (newUser.data.id) {
             const profile = newUser.data.profile
-
-            profile.avatarUrl = profile.avatar_url
-            delete profile.avatar_url
 
             profile.displayName = profile.display_name
             delete profile.display_name
@@ -90,7 +87,7 @@ export default function SignIn() {
           }
 
           if (newUser.status !== 500) {
-            history.push("/");
+            history.push("/admin");
           } else if (newUser.status === 400) {
             setErrors({
               ...errors,

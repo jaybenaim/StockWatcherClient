@@ -11,10 +11,10 @@ import CardBody from "components/Card/CardBody.js";
 
 import ProfileEditForm from "./ProfileEditForm";
 
-import avatar from "assets/img/faces/marc.jpg";
-
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import ProfilePhoto from "./ProfilePhoto";
+import ProfileImageUpload from "./ProfileImageUpload";
 
 const styles = {
   cardCategoryWhite: {
@@ -41,6 +41,7 @@ const useStyles = makeStyles(styles);
 const UserProfile = ({ profileData }) => {
   const classes = useStyles();
   const [editProfile, toggleEditProfile] = useState(false)
+  const [editProfilePhoto, toggleEditProfilePhoto] = useState(false)
 
   return (
     <div className="user-profile">
@@ -48,11 +49,24 @@ const UserProfile = ({ profileData }) => {
         {/* Profile Card */}
         <GridItem xs={12} sm={12} md={editProfile ? 4 : 12}>
             <Card profile>
-              <CardAvatar profile>
-                <img src={profileData.avatarUrl || avatar} alt="..." />
+              <CardAvatar
+                profile
+                onClick={() => toggleEditProfilePhoto(!editProfilePhoto)}
+              >
+                <ProfilePhoto
+                  profileData={profileData}
+                />
               </CardAvatar>
+
+              {/* Image Upload */}
+              {editProfilePhoto && (
+                <ProfileImageUpload
+                  profileData={profileData}
+                />
+              )}
+
               <CardBody profile className="user-profile__body">
-                <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
+                <h6 className={classes.cardCategory}>CEO / FOUNDER</h6>
                 <h4 className={classes.cardTitle}>{profileData.displayName}</h4>
                 <p className={classes.description}>
                   {profileData.email}

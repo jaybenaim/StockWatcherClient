@@ -70,16 +70,10 @@ export default function SignUp() {
               const newUser = await local.post('/users/', {
                 username: email,
                 email: email,
-                avatar: {
-                  url: ""
-                }
               })
 
               if (newUser.data.id) {
                 const profile = newUser.data.profile
-
-                profile.avatarUrl = profile.avatar_url
-                delete profile.avatar_url
 
                 profile.displayName = profile.display_name
                 delete profile.display_name
@@ -91,7 +85,7 @@ export default function SignUp() {
 
 
               if (newUser.status !== 500) {
-                history.push("/");
+                history.push("/admin");
               } else if (newUser.status === 400) {
                 setErrors({
                   ...errors,
@@ -139,23 +133,17 @@ export default function SignUp() {
         const token = await response.user.getIdToken()
         localStorage.setItem('fb-token', token)
 
-        const {email: fbEmail, displayName = email, photoURL = ''} = response.user
+        const {email: fbEmail, displayName = email} = response.user
 
         if (token) {
           try {
             const newUser = await local.post('/users/', {
               username: displayName,
-              email: fbEmail,
-              avatar: {
-                url: photoURL
-              }
+              email: fbEmail
             })
 
             if (newUser.data.id) {
               const profile = newUser.data.profile
-
-              profile.avatarUrl = profile.avatar_url
-              delete profile.avatar_url
 
               profile.displayName = profile.display_name
               delete profile.display_name
@@ -166,7 +154,7 @@ export default function SignUp() {
             }
 
             if (newUser.status !== 500) {
-              history.push("/");
+              history.push("/admin");
             } else if (newUser.status === 400) {
               setErrors({
                 ...errors,
