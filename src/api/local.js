@@ -20,8 +20,14 @@ if (fbToken) {
   headers['Authorization'] = `Token ${fbToken}`
 }
 
+let baseURL = "https://stock-watcher-api.herokuapp.com/api"
+
+if (process.env.REACT_APP_ENV === "development") {
+  baseURL = "http://localhost:8000/api"
+}
+
 local = axios.create({
-  baseURL: "http://localhost:8000/api",
+  baseURL,
   withCredentials: true,
   xsrfHeaderName: 'X-CSRFToken',
   xsrfCookieName: 'csrftoken',
